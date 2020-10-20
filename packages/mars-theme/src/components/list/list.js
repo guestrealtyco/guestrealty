@@ -2,6 +2,7 @@ import React from "react";
 import { connect, styled, decode } from "frontity";
 import Item from "./list-item";
 import Pagination from "./pagination";
+import star_arch from "../../assets/elements/star_arch.png";
 
 const List = ({ state }) => {
   // Get the data of the current list.
@@ -16,7 +17,8 @@ const List = ({ state }) => {
       {/* If the list is a blog posts, we render a title. */}
       {data.isPostArchive && (
         <Header>
-          {title}
+          <img className ="titleImg" src={star_arch} />
+          <h2>{title}</h2>
         </Header>
       )}
         {/* If the list is a AWSM Job career page, we render a title. */}
@@ -73,11 +75,22 @@ const List = ({ state }) => {
 export default connect(List);
 
 const Container = styled.section`
+  background: #f6f2ec;
   width: 1200px;
   margin: 0 auto;
   padding-right: 15px;
   padding-left: 15px;
   list-style: none;
+  color: #153211;
+  .titleImg{
+    width: 20%;
+    height: auto;
+    margin-bottom: -10px;
+  }
+  h2{
+    margin-top: -10px;
+    font-size: 4.5rem;
+  }
 `;
 
 const Header = styled.h1`

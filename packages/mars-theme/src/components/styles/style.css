@@ -39,6 +39,12 @@ h4{
     background: #013110;
     color: #f6f2ec;
     border: 2px solid #013110;
+    transition: all .3s ease; 
+  }
+  .btn-dark:hover{
+    background: #013110;
+    color: #f6f2ec;
+    border: 2px solid #ccb25c;
   }
   .btn-gold-dark{
     background: #ccb25c;
@@ -46,15 +52,33 @@ h4{
     border: 2px solid #ccb25c;
     
   }    
+  .btn-gold-dark:hover{
+    background: #ccb25c;
+    color: #013110;
+    border: 2px solid #f6f2ec;
+    transition: all .3s ease; 
+  }    
   .btn-light{
     background: transparent;
     color: #013110;
     border: 2px solid #013110;
+    transition: all .3s ease; 
+  }
+  .btn-light:hover{
+    color: #f6f2ec;
+    background: #013110;
+    border: 2px solid #ccb25c;
   }
   .btn-gold-light{
     background: transparent;
     color: #F6F2EC;
     border: 2px solid #ccb25c;
+    transition: all .3s ease; 
+  }
+  .btn-gold-light:hover{
+    color: #013110;
+    background: #ccb25c;
+    border: 2px solid #f6f2ec;
   }
   #star{
     height: 10px;

@@ -21,6 +21,7 @@
     "@frontity/html2react": "^1.4.0",
     "@frontity/mars-theme": "./packages/mars-theme",
     "@frontity/tiny-router": "^1.2.2",
+    "@frontity/wp-comments": "^0.2.3",
     "@frontity/wp-source": "^1.9.1",
     "frontity": "^1.12.0",
     "frontity-contact-form-7": "^0.1.7",

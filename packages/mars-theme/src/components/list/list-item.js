@@ -82,29 +82,45 @@ const Item = ({ state, item }) => {
 // Connect the Item to gain access to `state` as a prop
 export default connect(Item);
 const Article = styled.article`
+  background-color: #153211;
+  color: #f6f2ec;
+  border: 3px solid #ccb25c;
+  border-radius: 15px;
   max-width:771px;
+  padding: 20px;
   margin:0 auto;
   position: relative;
   margin-bottom:3.5rem;
+  -webkit-box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
+  -moz-box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
+  box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
+  
   .bio-info {
+    color: #ccb25c;
     margin-bottom:1rem;
     img {
       border-radius:50%;
       margin-right:0.5rem;
     }
   }
-  .article-title {    
+  .article-title {  
+    color:#ccb25c;
+    font-weight: 400;
+    transition: all .3s ease;  
     &:hover {
       h1 {
-        color:var(--brand);
+        color:#ccb25c;
+        font-weight: 800; 
       }
     }
   }
   .redmore-btn {
-    color:var(--brand);
+    color: #ccb25c;
+    font-weight: 400;
     transition: all .3s ease;
     &:hover {
-      color:var(--black);
+      color:#ccb25c;
+      font-weight: 800;
     }
   }
   /**Job articles**/
@@ -190,13 +206,13 @@ const Article = styled.article`
 const Title = styled.h1`
   font-size: 2rem;
   margin-bottom:1.5rem;
-  color: var(--black);
+  color: #ccb25c;
   box-sizing: border-box;
   transition: all .3s ease;
 `;
 
 const AuthorName = styled.span`
-  color: var(--black);
+  color: #ccb25c;
   font-size: 1rem;
   margin-right:1rem;
 `;
@@ -206,7 +222,7 @@ const StyledLink = styled(Link)`
 `;
 
 const PublishDate = styled.span`
-  color: var(--gray);
+  color: #ccb25c;
   font-size: 0.875rem;
 `;
 

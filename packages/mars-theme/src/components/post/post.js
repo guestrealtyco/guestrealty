@@ -3,6 +3,8 @@ import { connect, styled } from "frontity";
 import Link from "../link";
 import List from "../list";
 import FeaturedMedia from "../featured-media";
+import Comments from "../comments";
+import star_arch from "../../assets/elements/star_arch.png";
 
 const Post = ({ state, actions, libraries }) => {
   // Get information about the current URL.
@@ -31,6 +33,7 @@ const Post = ({ state, actions, libraries }) => {
   return data.isReady ? (
     <ArticleContainer>
       <div className="post-title">
+        <img className ="titleImg" src={star_arch} />
         <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
 
         {/* Only display author and date on posts */}
@@ -59,6 +62,7 @@ const Post = ({ state, actions, libraries }) => {
       <Content>
         <Html2React html={post.content.rendered} />
       </Content>
+      <Comments postId ={post.id} />
     </ArticleContainer>
   ) : null;
 };
@@ -72,26 +76,34 @@ const ArticleContainer = styled.div`
   padding-right: 15px;
   padding-left: 15px; 
   .post-title {
-    text-align:center;    
+    text-align:center;  
+  }
+  background-color: #f6f2ec;
+  .titleImg{
+    width: 20%;
+    height: auto;
   }
 `;
 
 const Title = styled.h1`
   margin-bottom: 1.2rem;
+  color: #153211;
+  font-size: 4.5rem;  
 `;
 
 const StyledLink = styled(Link)`
   padding: 15px 0;
+  color: #153211;
 `;
 
 const Author = styled.p`
-  color: rgba(12, 17, 43, 0.9);
   font-size: 0.9em;
   display: inline;
+  color: #153211;
 `;
 
 const DateWrapper = styled.p`
-  color: rgba(12, 17, 43, 0.9);
+  color: #153211;
   font-size: 0.9em;
   display: inline;
 `;
