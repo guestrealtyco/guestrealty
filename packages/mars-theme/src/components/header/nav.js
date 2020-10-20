@@ -61,11 +61,16 @@ const NavItem = styled.div`
     line-height: 2em;
     border-bottom: 2px solid;
     border-bottom-color: transparent;
+    transition: all .3s ease; 
     /* Use for semantic approach to style the current link */
     &[aria-current="page"] {
       border-bottom-color: #ccb25c;
       font-weight: 750;
     }
+    &:hover {
+        color:#ccb25c;
+        font-weight: 800; 
+      }
   }
 
   &:first-of-type {

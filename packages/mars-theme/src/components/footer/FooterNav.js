@@ -72,4 +72,8 @@ const StyledLink = styled(Link)`
   justify-content: center;
   padding: 10px;
   width: 20%;
+  &:hover {
+    color:#ccb25c;
+    font-weight: 800;
+  } 
 `;
