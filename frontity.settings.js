@@ -60,13 +60,19 @@ const settings = {
             {
               type: "sub",
               endpoint: "sub"
+            },
+            {
+              type: "property",
+              endpoint: "property",
+              archive: "/property-list"
             }
           ],
         }
       }
     },
     "@frontity/tiny-router",
-    "@frontity/html2react"
+    "@frontity/html2react",
+    "frontity-contact-form-7"
   ]
 };
 
