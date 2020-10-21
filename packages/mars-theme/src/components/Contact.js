@@ -1,5 +1,6 @@
 import React from "react";
 import { connect, styled } from "frontity"
+import star_arch from "../assets/elements/star_arch.png";
 
 const Contact = ({ state, libraries }) => {
 
@@ -11,6 +12,7 @@ const Contact = ({ state, libraries }) => {
         <>
         <ContactContainer>
             <ContactForm>
+            <img className ="titleImg" src={star_arch} />
             <h2>Contact Us</h2>
                 <Html2React html={contactForm.content.rendered} />
             </ContactForm>  
@@ -39,7 +41,7 @@ const ContactForm = styled.div`
     align-items: center;
     max-width: 90%;
     width: 900px;
-    padding: 15px;
+    padding: 10px;
     box-sizing: border-box;
     border-radius: 15px;
     border: 1px solid #ccb25c;
@@ -47,6 +49,10 @@ const ContactForm = styled.div`
     -webkit-box-shadow: 25px 23px 19px -10px rgba(0,0,0,0.47);
     -moz-box-shadow: 25px 23px 19px -10px rgba(0,0,0,0.47);
     box-shadow: 25px 23px 19px -14px rgba(0,0,0,0.47);
+
+    .titleImg{
+        width: 10%;
+    }
 
     form{
         display: flex;
@@ -60,12 +66,12 @@ const ContactForm = styled.div`
         font-weight: 800;
     }
     input{
-        padding: 1px;
-        margin: 1px;
+        padding: 10px;
+        margin: 10px;
         -webkit-box-shadow: 25px 23px 19px -10px rgba(0,0,0,0.47);
         -moz-box-shadow: 25px 23px 19px -10px rgba(0,0,0,0.47);
         box-shadow: 25px 23px 19px -14px rgba(0,0,0,0.47);
-    }
+        }
     textarea{
         padding: 1px;
         margin: 1px;

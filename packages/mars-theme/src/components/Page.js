@@ -5,15 +5,15 @@ import List from "./list";
 import FeaturedMedia from "./featured-media";
 import homeHero from "../assets/elements/homeHero.gif"
 
-const Post = ({ state, actions, libraries }) => {
+const Page = ({ state, actions, libraries }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
   // Get the data of the post.
-  const post = state.source[data.type][data.id];
+  const page = state.source[data.type][data.id];
   // Get the data of the author.
-  const author = state.source.author[post.author];
+  const author = state.source.author[page.author];
   // Get a human readable date.
-  const date = new Date(post.date);
+  const date = new Date(page.date);
 
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
@@ -34,38 +34,24 @@ const Post = ({ state, actions, libraries }) => {
       <div>
         {/* <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} /> */}
         {/* Only display author and date on posts */}
-        {data.isPost && (
-          <div>
-            {author && (
-              <StyledLink link={author.link}>
-                <Author>
-                  By <b>{author.name}</b>
-                </Author>
-              </StyledLink>
-            )}
-            <DateWrapper>
-              {" "}
-              on <b>{date.toDateString()}</b>
-            </DateWrapper>
-          </div>
-        )}
+        {data.isPage}
       </div>
 
       {/* Look at the settings to see if we should include the featured image */}
       {state.theme.featured.showOnPost && (
-        <FeaturedMedia id={post.featured_media} />
+        <FeaturedMedia id={page.featured_media} />
       )}
 
       {/* Render the content using the Html2React component so the HTML is processed
        by the processors we included in the libraries.html2react.processors array. */}
       <Content>
-        <Html2React html={post.content.rendered} />
+        <Html2React html={page.content.rendered} />
       </Content>
     </Container>
   ) : null;
 };
 
-export default connect(Post);
+export default connect(Page);
 
 const Container = styled.div`
   font-family: 'Montserrat', sans-serif;
@@ -106,6 +92,7 @@ const Container = styled.div`
     }
     .hero-header{
       font-style: normal;
+      padding: 20px;
       font-weight: 800;
       font-size: 4rem;
       line-height: 80px;
@@ -120,17 +107,19 @@ const Container = styled.div`
       background-color: #f6f2ec;
       display: flex;
       flex-direction: column;
-      padding-bottom: 10px;
+      padding: 10px;
         .sub-header{
           margin-left: 10px;
           h2{
           color: #013110;
           font-size: 2.5em;
           font-weight: 600;
+          padding: 10px;
           }
           h4{
             font-size: 1.5rem;
             color: #013110;
+            padding: 10px;
           }
       }
       .sub-content{
@@ -160,17 +149,18 @@ const Container = styled.div`
         align-items: center;
         justify-content: center;
         color: #c1ab22; 
-        .body1-img{
-          height: 625px;
-          width: 55%;
-          background: -webkit-linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/800/650");
-          background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/800/650"); /* The least supported option. */
-        }
+          .body1-img{
+            height: 900px;
+            width: 50%;
+            background: -webkit-linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/800/650");
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/800/650"); /* The least supported option. */
+            background-size: cover;
+          }
         }
         .body1-text{
           width: 45%;
-          margin-left: 20px;
-          padding-left: 20px;
+          margin-left: 10px;
+          padding: 20px;
           h3{
           font-size: 2.5rem;
           color: #ccb25c;
@@ -201,6 +191,7 @@ const Container = styled.div`
       display: flex;
       flex-direction: column;
       background-color: #f6f2ec;
+      padding: 20px;
     }
     .benefits-header{
         display: flex;
@@ -208,13 +199,24 @@ const Container = styled.div`
         align-items: center;
         font-size: 2rem;
         color: #013110;
+        padding: 10px;
       }
       .benefits-content{
         display: flex;
         flex-direction: row;
         align-items: baseline;
         justify-content: space-around;
+        padding: 20px;
+        img{
+          height: 100px;
+          width: 100px;
+        }
       }
+      .benefit-icon{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
       .reviews{
         display: flex;
         flex-direction: row;
@@ -265,25 +267,7 @@ const Container = styled.div`
             flex-direction: row;
           }
         }
-      }
 `
-
-
-const StyledLink = styled(Link)`
-  padding: 15px 0;
-`;
-
-const Author = styled.p`
-  color: rgba(12, 17, 43, 0.9);
-  font-size: 0.9em;
-  display: inline;
-`;
-
-const DateWrapper = styled.p`
-  color: rgba(12, 17, 43, 0.9);
-  font-size: 0.9em;
-  display: inline;
-`;
 
 /**
  * This component is the parent of the `content.rendered` HTML. We can use nested
@@ -384,7 +368,133 @@ const Content = styled.div`
   }
 
   /* WordPress Core Align Classes */
-
+  @media (max-width: 750px) {
+    .hero {
+      height: 60vh;
+    }
+    img {
+      object-fit: cover;
+    }
+    .hero-header{
+      display: none;
+    }
+    .hero-buttons{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    .sub-hero{
+      background-color: #f6f2ec;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+        .sub-header{
+          margin-left: 10px;
+          padding: 5px;
+          h2{
+          color: #013110;
+          font-size: 1.5em;
+          font-weight: 600;
+          }
+          h4{
+            font-size: 1rem;
+          }
+      }
+      .sub-content{
+      background-color: #f6f2ec;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: stretch;
+        .sub-text{
+          padding: 25px;
+          width: 85%;
+          p{
+            font-size: 0.85rem;
+          }
+        }
+      }
+    }
+    .body1{
+      .body1-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #c1ab22; 
+          .body1-img{
+            display: none;
+          }
+        }
+        .body1-text{
+          width: 85%;
+          padding-left: 10px;
+            h3{
+            font-size: 1.5rem;
+            }
+            p{
+            font-size: 0.75rem;
+            }
+          }
+        }
+        .benefits{
+        display: none;
+      }
+      .reviews{
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f2ec;
+    padding: 10px;
+    .reviews-content{
+      width: 100%;
+      .reviews-header{
+        h2{
+          color: #013110;
+          font-size: 2rem;
+        }
+        p{
+          color: #000;
+        }
+      }
+      .reviews-logos{
+        display: flex;
+        flex-direction: row;
+      }
+    }
+    .reviews-featured{
+      width: 80%;
+      padding: 20px;
+      
+      h3{
+        color: #013110;
+        font-size: 1.5rem;
+      }
+      p{
+        font-size: 0.75rem;
+      }
+    }
+  }
+  .signup{
+    background-color: #013110;
+    padding: 40px;
+    .signup-container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .signup-text{
+        font-size: 1rem;
+      }
+      .signup-buttons{
+        display: flex;
+        flex-direction: column;
+      }
+    } 
+  }
+     
+    }
+      
+    
+  }
   @media (min-width: 420px) {
     img.aligncenter,
     img.alignleft,
