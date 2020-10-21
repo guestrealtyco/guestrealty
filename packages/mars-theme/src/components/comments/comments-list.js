@@ -51,6 +51,7 @@ color: #153211;
 
 const Comment = styled.div`
 border: 1px solid gray;
+border-radius: 15px;
 background-color: #153211;
 color: #ccb25c;
 width: 80%;

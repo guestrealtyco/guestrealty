@@ -255,7 +255,7 @@ const Container = styled.div`
         }
       }
       .signup-container{
-        display: flex;
+        /* display: flex;
         form{
           display: flex;
           flex-direction: column;
@@ -265,18 +265,19 @@ const Container = styled.div`
           font-weight: 600;
           input{
             background-color: #DBDBB6;
-          }
+          } */
         }
       }
     }
 `
 
 const ContactContainer = styled.div`
-  border: 2px solid #153211;
-  background-color: #153211;
+  background-color: #f6f2ec;
   width: 100%;
   padding: 10px;
-  align-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 `
 
 /**
