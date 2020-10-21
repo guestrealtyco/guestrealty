@@ -70,7 +70,7 @@ const Post = ({ state, actions, libraries }) => {
 export default connect(Post);
 
 const ArticleContainer = styled.div`
-  width:100%;
+  width:90%;
   max-width:1035px;
   margin: 0 auto;
   padding-right: 15px;
@@ -83,12 +83,17 @@ const ArticleContainer = styled.div`
     width: 20%;
     height: auto;
   }
+
 `;
 
 const Title = styled.h1`
   margin-bottom: 1.2rem;
   color: #153211;
-  font-size: 4.5rem;  
+  font-size: 4.5rem;
+  padding: 10px;  
+  @media (max-width: 768px) {
+      font-size: 2rem;
+    }
 `;
 
 const StyledLink = styled(Link)`
@@ -107,6 +112,7 @@ const DateWrapper = styled.p`
   font-size: 0.9em;
   display: inline;
 `;
+
 
 /**
  * This component is the parent of the `content.rendered` HTML. We can use nested
@@ -217,6 +223,8 @@ const Content = styled.div`
     background-color:var(--brand);
   }
   /* WordPress Core Align Classes */
+ 
+  
   @media (min-width: 420px) {
     img.aligncenter,
     img.alignleft,

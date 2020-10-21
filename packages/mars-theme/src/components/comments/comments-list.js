@@ -46,7 +46,6 @@ color: #153211;
       width: 40%;
       background-color: #DBC472;
     }
-    }
 `
 
 const Comment = styled.div`
