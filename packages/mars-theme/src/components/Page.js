@@ -268,7 +268,7 @@ const Container = styled.div`
           }
         }
       }
-`
+`;
 
 
 const StyledLink = styled(Link)`
