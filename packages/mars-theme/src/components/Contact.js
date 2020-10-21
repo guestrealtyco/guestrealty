@@ -61,16 +61,38 @@ const ContactForm = styled.div`
         width: 100%;
     }
     label{
+        display: inline-block;
+        margin: 0 auto;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
         color: #ccb25c;
         font-size: 1rem;
         font-weight: 800;
     }
     input{
-        padding: 10px;
-        margin: 10px;
-        -webkit-box-shadow: 25px 23px 19px -10px rgba(0,0,0,0.47);
-        -moz-box-shadow: 25px 23px 19px -10px rgba(0,0,0,0.47);
-        box-shadow: 25px 23px 19px -14px rgba(0,0,0,0.47);
+        display: block;
+        padding: 20px 12px;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #f6f2ec;
+        background-clip: padding-box;
+        border: 1px solid gray;
+        border-radius: 4px;
+        outline-color: transparent;
+        transition: outline-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        margin: 8px 0 4px 0;
+        -webkit-box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
+        -moz-box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
+        box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
+
+        &:focus {
+            outline-color: #ccb25c;
+        }
         }
     textarea{
         padding: 1px;
@@ -113,4 +135,14 @@ const ContactForm = styled.div`
         border: 1px solid #f6f2ec;
         font-weight: 800; 
       }
+    }
+
+    @media (max-width: 768px) {
+      input{
+          width: 80%;
+      }
+      input[type="submit"] {
+          width: 100%;
+      }
+    }
 `

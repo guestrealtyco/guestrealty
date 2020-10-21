@@ -403,7 +403,7 @@ const Content = styled.div`
             font-size: 1.5rem;
           }
           h4{
-            1
+            font-size: 1rem;
           }
       }
     }
