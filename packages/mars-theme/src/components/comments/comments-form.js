@@ -90,6 +90,7 @@ align-items: center;
 justify-content: space-between;
 border: 0.25px solid gray;
 background-color: #153211;
+border-radius: 15px;
 padding: 50px;
 margin-bottom: 20px;
 width: 80%;
