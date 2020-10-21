@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { connect } from "Frontity";
+import { connect } from "frontity";
 import CommentsList from "./comments-list";
 import CommentsForm from "./comments-form";
 
