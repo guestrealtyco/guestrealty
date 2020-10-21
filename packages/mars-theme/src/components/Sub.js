@@ -260,7 +260,11 @@ const Container = styled.div`
           color: #153211;
         }
       }
+<<<<<<< HEAD
+    }
+=======
   }
+>>>>>>> origin/master
 `
 
 const ContactContainer = styled.div`

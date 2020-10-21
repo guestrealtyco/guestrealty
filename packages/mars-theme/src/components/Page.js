@@ -3,7 +3,8 @@ import { connect, styled } from "frontity";
 import Link from "./link";
 import List from "./list";
 import FeaturedMedia from "./featured-media";
-import homeHero from "../assets/elements/homeHero.gif"
+
+const homeHero = "https://guestrealty.co/wp-content/uploads/hero/home-hero.gif";
 
 const Page = ({ state, actions, libraries }) => {
   // Get information about the current URL.
@@ -17,6 +18,7 @@ const Page = ({ state, actions, libraries }) => {
 
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
+
 
   /**
    * Once the post has loaded in the DOM, prefetch both the
@@ -267,7 +269,12 @@ const Container = styled.div`
             flex-direction: row;
           }
         }
+<<<<<<< HEAD
+      }
+`;
+=======
 `
+>>>>>>> origin/master
 
 /**
  * This component is the parent of the `content.rendered` HTML. We can use nested
