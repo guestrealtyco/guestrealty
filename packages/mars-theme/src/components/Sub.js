@@ -4,16 +4,13 @@ import Link from "./link";
 import List from "./list";
 import FeaturedMedia from "./featured-media";
 import Contact from "./Contact";
-
 const Sub = ({ state, actions, libraries }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
   // Get the data of the post.
   const sub = state.source[data.type][data.id];
-
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
-
   /**
    * Once the post has loaded in the DOM, prefetch both the
    * home posts and the list component so if the user visits
@@ -23,7 +20,6 @@ const Sub = ({ state, actions, libraries }) => {
     actions.source.fetch("/");
     List.preload();
   }, []);
-
   // Load the post, but only if the data is ready.
   return data.isReady ? (
     <Container>
@@ -32,12 +28,10 @@ const Sub = ({ state, actions, libraries }) => {
         {/* Only display author and date on posts */}
         {data.isSub}
       </div>
-
       {/* Look at the settings to see if we should include the featured image */}
       {state.theme.featured.showOnPost && (
         <FeaturedMedia id={sub.featured_media} />
       )}
-
       {/* Render the content using the Html2React component so the HTML is processed
        by the processors we included in the libraries.html2react.processors array. */}
       <Content>
@@ -49,9 +43,7 @@ const Sub = ({ state, actions, libraries }) => {
     </Container>
   ) : null;
 };
-
 export default connect(Sub);
-
 const Container = styled.div`
   font-family: 'Montserrat', sans-serif;
   width: 100%;
@@ -150,7 +142,6 @@ const Container = styled.div`
             padding: 20px;
             p{
               color: #DBDBB6;
-
             }
               .body1-point{
               display: flex;
@@ -260,9 +251,8 @@ const Container = styled.div`
           color: #153211;
         }
       }
-    }
+  }
 `
-
 const ContactContainer = styled.div`
   background-color: #f6f2ec;
   width: 100%;
@@ -271,7 +261,6 @@ const ContactContainer = styled.div`
   display: flex;
   flex-direction: column;
 `
-
 /**
  * This component is the parent of the `content.rendered` HTML. We can use nested
  * selectors to style that HTML.
@@ -279,48 +268,39 @@ const ContactContainer = styled.div`
 const Content = styled.div`
   color: rgba(12, 17, 43, 0.8);
   word-break: break-word;
-
   * {
     max-width: 100%;
   }
-
   p {
     line-height: 1.6em;
   }
-
   img {
     width: 100%;
     object-fit: cover;
     object-position: center;
   }
-
   figure {
     margin: 24px auto;
     /* next line overrides an inline style of the figure element. */
     width: 100% !important;
-
     figcaption {
       font-size: 0.7em;
     }
   }
-
   iframe {
     display: block;
     margin: auto;
   }
-
   blockquote {
     margin: 16px 0;
     background-color: rgba(0, 0, 0, 0.1);
     border-left: 4px solid rgba(12, 17, 43);
     padding: 4px 16px;
   }
-
   a {
     color: rgb(31, 56, 197);
     text-decoration: underline;
   }
-
   /* Input fields styles */
   label {
     color: #ccb25c;
@@ -346,12 +326,10 @@ const Content = styled.div`
     outline-color: transparent;
     transition: outline-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     margin: 8px 0 4px 0;
-
     &:focus {
       outline-color: #153211;
     }
   }
-
   input[type="submit"] {
     display: inline-block;
     margin-bottom: 0;
@@ -371,7 +349,6 @@ const Content = styled.div`
     color: #153211;
     background-color: #f6f2ec;
   }
-
   /* WordPress Core Align Classes */
   @media (max-width: 750px) {
     .hero{
@@ -473,34 +450,26 @@ const Content = styled.div`
         }
       }
     }
-
     
   }
-
-
   @media (min-width: 420px) {
     img.aligncenter,
     img.alignleft,
     img.alignright {
       width: auto;
     }
-
     .aligncenter {
       display: block;
       margin-left: auto;
       margin-right: auto;
     }
-
     .alignright {
       float: right;
       margin-left: 24px;
     }
-
     .alignleft {
       float: left;
       margin-right: 24px;
     }
   }
 `;
-
-

@@ -3,7 +3,7 @@ import { connect, styled } from "frontity";
 import Link from "./link";
 import List from "./list";
 import FeaturedMedia from "./featured-media";
-import homeHero from "../assets/elements/homeHero.gif"
+const homeHero = "https://guestrealty.co/wp-content/uploads/hero/home-hero.gif";
 
 const Page = ({ state, actions, libraries }) => {
   // Get information about the current URL.
@@ -14,10 +14,8 @@ const Page = ({ state, actions, libraries }) => {
   const author = state.source.author[page.author];
   // Get a human readable date.
   const date = new Date(page.date);
-
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
-
   /**
    * Once the post has loaded in the DOM, prefetch both the
    * home posts and the list component so if the user visits
@@ -27,7 +25,6 @@ const Page = ({ state, actions, libraries }) => {
     actions.source.fetch("/");
     List.preload();
   }, []);
-
   // Load the post, but only if the data is ready.
   return data.isReady ? (
     <Container>
@@ -36,12 +33,10 @@ const Page = ({ state, actions, libraries }) => {
         {/* Only display author and date on posts */}
         {data.isPage}
       </div>
-
       {/* Look at the settings to see if we should include the featured image */}
       {state.theme.featured.showOnPost && (
         <FeaturedMedia id={page.featured_media} />
       )}
-
       {/* Render the content using the Html2React component so the HTML is processed
        by the processors we included in the libraries.html2react.processors array. */}
       <Content>
@@ -50,9 +45,7 @@ const Page = ({ state, actions, libraries }) => {
     </Container>
   ) : null;
 };
-
 export default connect(Page);
-
 const Container = styled.div`
   font-family: 'Montserrat', sans-serif;
   width: 100%;
@@ -268,7 +261,6 @@ const Container = styled.div`
           }
         }
 `
-
 /**
  * This component is the parent of the `content.rendered` HTML. We can use nested
  * selectors to style that HTML.
@@ -276,50 +268,40 @@ const Container = styled.div`
 const Content = styled.div`
   color: rgba(12, 17, 43, 0.8);
   word-break: break-word;
-
   * {
     max-width: 100%;
   }
-
   p {
     line-height: 1.6em;
   }
-
   img {
     width: 100%;
     object-fit: cover;
     object-position: center;
   }
-
   figure {
     margin: 24px auto;
     /* next line overrides an inline style of the figure element. */
     width: 100% !important;
-
     figcaption {
       font-size: 0.7em;
     }
   }
-
   iframe {
     display: block;
     margin: auto;
   }
-
   blockquote {
     margin: 16px 0;
     background-color: rgba(0, 0, 0, 0.1);
     border-left: 4px solid rgba(12, 17, 43);
     padding: 4px 16px;
   }
-
   a {
     color: rgb(31, 56, 197);
     text-decoration: underline;
   }
-
   /* Input fields styles */
-
   input[type="text"],
   input[type="email"],
   input[type="url"],
@@ -341,12 +323,10 @@ const Content = styled.div`
     outline-color: transparent;
     transition: outline-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     margin: 8px 0 4px 0;
-
     &:focus {
       outline-color: #1f38c5;
     }
   }
-
   input[type="submit"] {
     display: inline-block;
     margin-bottom: 0;
@@ -366,7 +346,6 @@ const Content = styled.div`
     color: #fff;
     background-color: #1f38c5;
   }
-
   /* WordPress Core Align Classes */
   @media (max-width: 750px) {
     .hero {
@@ -441,78 +420,73 @@ const Content = styled.div`
         display: none;
       }
       .reviews{
-    display: flex;
-    flex-direction: column;
-    background-color: #f6f2ec;
-    padding: 10px;
-    .reviews-content{
-      width: 100%;
-      .reviews-header{
-        h2{
-          color: #013110;
-          font-size: 2rem;
-        }
-        p{
-          color: #000;
-        }
-      }
-      .reviews-logos{
-        display: flex;
-        flex-direction: row;
-      }
-    }
-    .reviews-featured{
-      width: 80%;
-      padding: 20px;
-      
-      h3{
-        color: #013110;
-        font-size: 1.5rem;
-      }
-      p{
-        font-size: 0.75rem;
-      }
-    }
-  }
-  .signup{
-    background-color: #013110;
-    padding: 40px;
-    .signup-container{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      .signup-text{
-        font-size: 1rem;
-      }
-      .signup-buttons{
         display: flex;
         flex-direction: column;
+        background-color: #f6f2ec;
+        padding: 10px;
+        .reviews-content{
+          width: 100%;
+          .reviews-header{
+            h2{
+              color: #013110;
+              font-size: 2rem;
+            }
+          p{
+              color: #000;
+            }
+          }
+          .reviews-logos{
+            display: flex;
+            flex-direction: row;
+          }
+        }
+        .reviews-featured{
+          width: 80%;
+          padding: 20px;
+            h3{
+              color: #013110;
+              font-size: 1.5rem;
+            }
+            p{
+              font-size: 0.75rem;
+            }
+        }
       }
-    } 
-  }
-     
-    }
       
-    
+    .signup{
+      background-color: #013110;
+      padding: 40px;
+      .signup-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .signup-text{
+          font-size: 1rem;
+        }
+        .signup-buttons{
+          display: flex;
+          flex-direction: column;
+        }
+      } 
+    }
+     
   }
+  
   @media (min-width: 420px) {
     img.aligncenter,
     img.alignleft,
     img.alignright {
       width: auto;
     }
-
     .aligncenter {
       display: block;
       margin-left: auto;
       margin-right: auto;
     }
-
     .alignright {
       float: right;
       margin-left: 24px;
     }
-
     .alignleft {
       float: left;
       margin-right: 24px;
