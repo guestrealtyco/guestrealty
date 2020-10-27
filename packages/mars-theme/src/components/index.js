@@ -14,6 +14,9 @@ import Loading from "./loading";
 import Title from "./title";
 import PageError from "./page-error";
 import style from "./styles/style.css";
+import 'pure-react-carousel/dist/react-carousel.es.css';
+
+
 /**
  * Theme is the root React component of our theme. The one we will export
  * in roots.
@@ -49,7 +52,7 @@ const Theme = ({ state }) => {
           <Loading when={data.isFetching} />
           <List when={data.isArchive} />
           <Sub when={data.isSub} />
-          <Page when={data.isProperty} />
+          <Property when={data.isProperty} />
           <Page when={data.isPage} />
           <Post when={data.isPostType} />
           <PageError when={data.isError} />

@@ -8,20 +8,16 @@ const Testimonial = ({ state, libraries }) => {
     const data = state.source.get("/testimonials");
     const quotes = state.source.page[data.id];
     const Html2React = libraries.html2react.Component;
-
+    console.log({quotes})
       return (
         <ContactContainer>
             <CarouselProvider
                 naturalSlideWidth={100}
                 naturalSlideHeight={125}
-                totalSlides={quotes.length}
+                totalSlides={4}
             >
-            <Slider>
-            {quotes.map((quote, i) => {
-                <Slide key={quote} index={i}>
-                    <Html2React html={quote.content.rendered} />
-                </Slide>
-            })}
+            <Slider>                
+                    <Html2React html={quotes.content.rendered} />
             </Slider>
             <ButtonBack>Back</ButtonBack>
             <ButtonNext>Next</ButtonNext>

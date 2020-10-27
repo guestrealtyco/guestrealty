@@ -12,6 +12,7 @@ const Sub = ({ state, actions, libraries }) => {
   const sub = state.source[data.type][data.id];
 
   const postType = sub.acf.posttype
+  
   console.log(postType)
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
@@ -41,13 +42,16 @@ const Sub = ({ state, actions, libraries }) => {
       <Content>
         <Html2React html={sub.content.rendered} />
         <ContactContainer>
-        <iframe 
-              src="https://beds24.com/booking2.php?ownerid=65282&amp;referer=iframe"
-              title="GuestRealtyBooking"
-              width= "80%"
-              height= "900px"
-            />
-            <Contact />
+        {postType === "renters" ? 
+          <iframe 
+          src="https://beds24.com/booking2.php?ownerid=65282&amp;referer=iframe"
+          title="Frontity"
+          width= "80%"
+          height= "3250px"
+        />
+          :
+          <Contact />
+      }
         </ContactContainer>
       </Content>
     </Container>
@@ -302,7 +306,7 @@ const Content = styled.div`
   }
   iframe {
     display: block;
-    margin: auto;
+    margin-top: -75px;
   }
   blockquote {
     margin: 16px 0;
@@ -463,7 +467,9 @@ const Content = styled.div`
         }
       }
     }
-    
+    iframe{
+      height: 6750px;
+    }
   }
   @media (min-width: 420px) {
     img.aligncenter,

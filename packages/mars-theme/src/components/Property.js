@@ -3,15 +3,25 @@ import { connect, styled } from "frontity";
 import Link from "./link";
 import List from "./list";
 import FeaturedMedia from "./featured-media";
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+
+
 
 const Property = ({ state, actions, libraries }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
   // Get the data of the post.
   const property = state.source[data.type][data.id];
-  const bathroom = property.acf.bathrooms;
+  
+  //Grab advanced custom fields
+  const acf = property.acf;
+  const images = acf.images;
+  console.log(acf);
+  console.log(acf.images);
 
-
+  // grabs bed 24 id to load into iframe
+  const bed24 = `https://beds24.com/booking2.php?ownerid=65282&propid=${acf.bed24id}`
 
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
@@ -44,13 +54,20 @@ const Property = ({ state, actions, libraries }) => {
       {/* Render the content using the Html2React component so the HTML is processed
        by the processors we included in the libraries.html2react.processors array. */}
       <Content>
-        {/* <Html2React html={property.content.rendered} /> */}
-      
-          <h2> Place Info:</h2>
-          <ul>
-          <li>{acf.bathrooms}</li>
-          <li>{acf.pets_allowed}</li>
-        </ul>
+        <Html2React html={property.content.rendered} />
+        {acf.bed24id === null ? 
+          <PageError />
+          :
+          <IframeContainer>
+            <iframe 
+            src={bed24}
+            title="Frontity"
+            width= "100%"
+            height= "100%"
+           />
+          </IframeContainer>
+          
+      }
       </Content>
     </Container>
   ) : null;
@@ -76,7 +93,15 @@ const Title = styled.h2`
  * This component is the parent of the `content.rendered` HTML. We can use nested
  * selectors to style that HTML.
  */
+
+ const IframeContainer = styled.div`
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: stretch;
+ `
 const Content = styled.div`
+  background-color: #f6f1eb;
   color: rgba(12, 17, 43, 0.8);
   word-break: break-word;
 
@@ -90,8 +115,7 @@ const Content = styled.div`
 
   img {
     width: 100%;
-    object-fit: cover;
-    object-position: center;
+    height: auto;
   }
 
   figure {
@@ -105,8 +129,11 @@ const Content = styled.div`
   }
 
   iframe {
-    display: block;
+    display: absolute;
     margin: auto;
+    width: 95%;
+    height: 1000px;
+    border: 0;
   }
 
   blockquote {

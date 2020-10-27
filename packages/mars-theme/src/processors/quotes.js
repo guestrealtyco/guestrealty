@@ -1,16 +1,19 @@
 import React from 'react';
 import { styled } from "frontity";
+import { Slide } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 const Quote = ({ quote, author}) => {
     console.log('Quote')
     console.log({ quote, author})
     return (
-        <Container>  
+        <Slide>  
             <Blockquote>
                 <h3>" {quote} "</h3>
                 <h4>- {author} </h4>
             </Blockquote>
-        </Container>
+        </Slide>
+        
     )
 }
 

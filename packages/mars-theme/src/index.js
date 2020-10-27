@@ -2,6 +2,7 @@ import Theme from "./components";
 import image from "@frontity/html2react/processors/image";
 import iframe from "@frontity/html2react/processors/iframe";
 import quotes from "./processors/quotes.js";
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 
 const marsTheme = {
