@@ -14,17 +14,18 @@ const List = ({ state }) => {
 
   return (
     <Container>
-      {/* If the list is a blog posts, we render a title. */}
+      {/* If the list is a list of blog posts, we render a title. */}
       {data.isPostArchive && (
         <Header>
           <img className ="titleImg" src={star_arch} />
-          <h2>{title}</h2>
+          <h2>Recent Posts</h2>
         </Header>
       )}
         {/* If the list is a AWSM Job career page, we render a title. */}
-      {data.isAwsmJobOpeningsArchive && (
+      {data.isPropertyArchive && (
         <Header>
-          {title}
+          <img className ="titleImg" src={star_arch} />
+          <h2>Our Properties</h2>
         </Header>
       )}
       {/* If the list is a taxonomy, we render a title. */}

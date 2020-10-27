@@ -3,9 +3,7 @@ import { connect, styled } from "frontity";
 import Link from "./link";
 import List from "./list";
 import FeaturedMedia from "./featured-media";
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
-
+import star_divider from "../assets/elements/star_divider.png";
 
 
 const Property = ({ state, actions, libraries }) => {
@@ -39,11 +37,11 @@ const Property = ({ state, actions, libraries }) => {
   // Load the post, but only if the data is ready.
   return data.isReady ? (
     <Container>
-      <div>
+      <div className ="titleBox">
         <Title dangerouslySetInnerHTML={{ __html: property.title.rendered }} /> 
+        <img className ="titleImg" src={star_divider} />
         {/* Only display author and date on posts */}
         {data.isProperty}
-
       </div>
 
       {/* Look at the settings to see if we should include the featured image */}
@@ -58,15 +56,10 @@ const Property = ({ state, actions, libraries }) => {
         {acf.bed24id === null ? 
           <PageError />
           :
-          <IframeContainer>
             <iframe 
             src={bed24}
-            title="Frontity"
-            width= "100%"
-            height= "100%"
+            title="bed 24 widget"
            />
-          </IframeContainer>
-          
       }
       </Content>
     </Container>
@@ -81,10 +74,25 @@ const Container = styled.div`
   width: 100%;
   margin: 0;
   background: #f6f2ec;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .titleBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .titleImg{
+    width: 20%;
+    height: auto;
+    margin-top: -10px;
+  }
 `
 
 const Title = styled.h2`
-  font-size: 2.5rem;
+  font-size: 3.5rem;
+  color: #153211;
 `
 
 
@@ -94,12 +102,6 @@ const Title = styled.h2`
  * selectors to style that HTML.
  */
 
- const IframeContainer = styled.div`
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  justify-content: stretch;
- `
 const Content = styled.div`
   background-color: #f6f1eb;
   color: rgba(12, 17, 43, 0.8);
@@ -129,11 +131,15 @@ const Content = styled.div`
   }
 
   iframe {
-    display: absolute;
-    margin: auto;
-    width: 95%;
+    max-width: 95%;
+    width: 1500px;
     height: 1000px;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
     border: 0;
+    margin: 0 auto;
+
   }
 
   blockquote {
