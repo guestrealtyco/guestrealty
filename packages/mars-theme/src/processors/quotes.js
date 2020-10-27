@@ -1,14 +1,11 @@
 import React from 'react';
 import { styled } from "frontity";
 
-
-
-
 const Quote = ({ quote, author}) => {
     console.log('Quote')
     console.log({ quote, author})
     return (
-        <Container>
+        <Container>  
             <Blockquote>
                 <h3>" {quote} "</h3>
                 <h4>- {author} </h4>

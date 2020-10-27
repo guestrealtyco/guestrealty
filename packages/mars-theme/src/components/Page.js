@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
 import Link from "./link";
 import List from "./list";
-import Testimonials from "./testimonials/Testimonials.js";
+// import Testimonials from "./testimonials/Testimonials.js";
 import FeaturedMedia from "./featured-media";
 const homeHero = "https://guestrealty.co/wp-content/uploads/hero/home-hero.gif";
 
@@ -49,7 +49,7 @@ const Page = ({ state, actions, libraries }) => {
       <Content>
         <Html2React html={page.content.rendered} />
       </Content>
-      <Testimonials />
+
     </Container>
   ) : null;
 };

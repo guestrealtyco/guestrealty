@@ -14,14 +14,17 @@ const Testimonial = ({ state, libraries }) => {
             <CarouselProvider
                 naturalSlideWidth={100}
                 naturalSlideHeight={125}
-                totalSlides={4}
+                totalSlides={quotes.length}
             >
-                <Slider>
-                    
-                <Html2React html={quotes.content.rendered} />
-                </Slider>
-                <ButtonBack>Back</ButtonBack>
-                <ButtonNext>Next</ButtonNext>
+            <Slider>
+            {quotes.map((quote, i) => {
+                <Slide key={quote} index={i}>
+                    <Html2React html={quote.content.rendered} />
+                </Slide>
+            })}
+            </Slider>
+            <ButtonBack>Back</ButtonBack>
+            <ButtonNext>Next</ButtonNext>
             </CarouselProvider>
         </ContactContainer>
     );

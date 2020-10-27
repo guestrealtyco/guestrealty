@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
+
 import Link from "./link";
 import List from "./list";
 import FeaturedMedia from "./featured-media";
@@ -9,6 +10,9 @@ const Sub = ({ state, actions, libraries }) => {
   const data = state.source.get(state.router.link);
   // Get the data of the post.
   const sub = state.source[data.type][data.id];
+
+  const postType = sub.acf.posttype
+  console.log(postType)
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
   /**
@@ -37,7 +41,13 @@ const Sub = ({ state, actions, libraries }) => {
       <Content>
         <Html2React html={sub.content.rendered} />
         <ContactContainer>
-          <Contact/>
+        <iframe 
+              src="https://beds24.com/booking2.php?ownerid=65282&amp;referer=iframe"
+              title="GuestRealtyBooking"
+              width= "80%"
+              height= "900px"
+            />
+            <Contact />
         </ContactContainer>
       </Content>
     </Container>

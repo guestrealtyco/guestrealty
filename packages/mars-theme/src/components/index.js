@@ -2,6 +2,7 @@ import React from "react";
 import { Global, css, connect, styled, Head } from "frontity";
 import FontFace from "./styles/fontFace"
 import Switch from "@frontity/components/switch";
+import Iframe from "@frontity/html2react/processors/iframe";
 import Header from "./header/header";
 import Footer from "./footer/Footer";
 import List from "./list";
