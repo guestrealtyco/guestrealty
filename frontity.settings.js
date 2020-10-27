@@ -44,8 +44,9 @@ const settings = {
           },
           "postMeta": {
             "showOnList": true,
-            "showOnPost": false
-          }
+            "showOnPost": true
+          },
+          autoPrefetch: "all",
         }
       }
     },

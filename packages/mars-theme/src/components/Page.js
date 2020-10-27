@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
 import Link from "./link";
 import List from "./list";
+import Testimonials from "./testimonials/Testimonials.js";
 import FeaturedMedia from "./featured-media";
 const homeHero = "https://guestrealty.co/wp-content/uploads/hero/home-hero.gif";
 
@@ -15,6 +16,10 @@ const Page = ({ state, actions, libraries }) => {
   // Get a human readable date.
   const date = new Date(page.date);
   // Get the html2react component.
+
+  const testimonial = state.source.get("/testimonials");
+
+
   const Html2React = libraries.html2react.Component;
   /**
    * Once the post has loaded in the DOM, prefetch both the
@@ -23,10 +28,12 @@ const Page = ({ state, actions, libraries }) => {
    */
   useEffect(() => {
     actions.source.fetch("/");
-    List.preload();
+    List.preload()
+    actions.source.fetch("/testimonials");
+    List.preload()
   }, []);
   // Load the post, but only if the data is ready.
-  return data.isReady ? (
+  return data.isReady && testimonial.isReady ? (
     <Container>
       <div>
         {/* <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} /> */}
@@ -42,12 +49,14 @@ const Page = ({ state, actions, libraries }) => {
       <Content>
         <Html2React html={page.content.rendered} />
       </Content>
+      <Testimonials />
     </Container>
   ) : null;
 };
 export default connect(Page);
 const Container = styled.div`
-  font-family: 'Montserrat', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SourceSansPro", "Segoe UI", Roboto,
+      "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   width: 100%;
   margin: 0;
     .directions{
@@ -100,7 +109,7 @@ const Container = styled.div`
       background-color: #f6f2ec;
       display: flex;
       flex-direction: column;
-      padding: 10px;
+      padding: 20px 20px 40px 20px;
         .sub-header{
           margin-left: 10px;
           h2{
@@ -210,38 +219,46 @@ const Container = styled.div`
           flex-direction: column;
           align-items: center;
         }
-      .reviews{
+    .testimonials{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1%;
+      .testimonialTitle{
         display: flex;
-        flex-direction: row;
-        background-color: #f6f2ec;
-        .reviews-content{
-          width: 40%;
-          margin: 10px;
-          padding: 5%;
-          .reviews-header{
-            h2{
-              color: #013110;
-              font-size: 2rem;
-            }
-            p{
-              color: #000;
-            }
-          }
-          .reviews-logos{
-            display: flex;
-            flex-direction: row;
-          }
+        flex-direction: column;
+        align-items: center;
+        font-size: 2rem;
+        color: #153211;
+        p{
+          font-size: 1.5rem;
+          color: #153211;
         }
-        .reviews-featured{
-          width: 40%;
-          margin: 5%;
-          padding: 5%;
-          h3{
-            color: #013110;
-            font-size: 1.5rem;
+      }
+      .testimonialBox{
+      display: flex;
+      justify-content: space-evenly;
+      .userComment{
+      display: flex;
+      flex-direction: column;
+      flex-basis: 30%;
+      align-items: center;
+        p {
+          width: 90%;
+          color: #153211;
+        }
+          .user-pic-ph{ 
+          img{
+            width: 25%;
+            border-radius: 50px;
           }
         }
       }
+    }
+    }
+    
+    
       .signup{
         background-color: #013110;
         padding: 40px;
@@ -260,6 +277,7 @@ const Container = styled.div`
             flex-direction: row;
           }
         }
+        
 `
 /**
  * This component is the parent of the `content.rendered` HTML. We can use nested
@@ -419,39 +437,51 @@ const Content = styled.div`
         .benefits{
         display: none;
       }
-      .reviews{
+      .testimonials{
         display: flex;
         flex-direction: column;
-        background-color: #f6f2ec;
-        padding: 10px;
-        .reviews-content{
-          width: 100%;
-          .reviews-header{
-            h2{
-              color: #013110;
-              font-size: 2rem;
-            }
+        justify-content: space-between;
+        align-items: center;
+        padding: 1%;
+        .testimonialTitle{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          font-size: 1rem;
+          color: #153211;
           p{
-              color: #000;
-            }
-          }
-          .reviews-logos{
-            display: flex;
-            flex-direction: row;
+            font-size: 1rem;
+            color: #153211;
           }
         }
-        .reviews-featured{
-          width: 80%;
-          padding: 20px;
-            h3{
-              color: #013110;
-              font-size: 1.5rem;
+    .testimonialBox{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        color: #153211;
+        .userComment{
+          display: flex;
+          flex-direction: column;
+          flex-basis: 30%;
+          width: 75%;
+          align-items: center;
+          color: #153211;
+          p {
+            width: 90%;
+            color: #153211;
+          }
+          .user-pic-ph {
+            img{
+              background-color: #f5f5f5;
+              height: 100px;
+              width: 100px;
+              border-radius: 50px;
             }
-            p{
-              font-size: 0.75rem;
-            }
+          }
         }
       }
+    }  
       
     .signup{
       background-color: #013110;
@@ -467,8 +497,20 @@ const Content = styled.div`
           display: flex;
           flex-direction: column;
         }
-      } 
+      }
     }
+  }
+    
+    input[type="text"],
+  input[type="email"],
+  input[type="url"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="date"],
+  textarea,
+  select {
+    font-size: 0.75rem;
+  }
      
   }
   

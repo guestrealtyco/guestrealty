@@ -32,7 +32,7 @@ const Theme = ({ state }) => {
 
       {/* Add some global styles for the whole site, like body or a's. 
       Not classes here because we use CSS-in-JS. Only global HTML tags. */}
-       <FontFace />
+      <FontFace />
       <Global styles={globalStyles} />
       <Global styles={css(style)} />
 
@@ -66,7 +66,7 @@ export default connect(Theme);
 const globalStyles = css`
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Montserrat", "SourceSansPro", "Segoe UI", Roboto,
+    font-family: -apple-system, BlinkMacSystemFont, "SourceSansPro", "Segoe UI", Roboto,
       "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
   a,

@@ -45,7 +45,8 @@ const Sub = ({ state, actions, libraries }) => {
 };
 export default connect(Sub);
 const Container = styled.div`
-  font-family: 'Montserrat', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SourceSansPro", "Segoe UI", Roboto,
+      "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   width: 100%;
   margin: 0;
   background: #f6f2ec;
@@ -253,6 +254,7 @@ const Container = styled.div`
       }
   }
 `
+
 const ContactContainer = styled.div`
   background-color: #f6f2ec;
   width: 100%;
@@ -261,6 +263,7 @@ const ContactContainer = styled.div`
   display: flex;
   flex-direction: column;
 `
+
 /**
  * This component is the parent of the `content.rendered` HTML. We can use nested
  * selectors to style that HTML.

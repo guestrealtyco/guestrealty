@@ -9,9 +9,7 @@ const Property = ({ state, actions, libraries }) => {
   const data = state.source.get(state.router.link);
   // Get the data of the post.
   const property = state.source[data.type][data.id];
-  const bedrooms = property.acf.bedrooms;
-  const bathrooms = property.acf.bahtrooms;
-  const pets_allowed = property.acf.pets_allowed
+  const bathroom = property.acf.bathrooms;
 
 
 
@@ -46,11 +44,12 @@ const Property = ({ state, actions, libraries }) => {
       {/* Render the content using the Html2React component so the HTML is processed
        by the processors we included in the libraries.html2react.processors array. */}
       <Content>
-        <Html2React html={property.content.rendered} />
-        {bathrooms}
-          
-          <ul><li>{bedrooms}</li>
-          <li>{pets_allowed}</li>
+        {/* <Html2React html={property.content.rendered} /> */}
+      
+          <h2> Place Info:</h2>
+          <ul>
+          <li>{acf.bathrooms}</li>
+          <li>{acf.pets_allowed}</li>
         </ul>
       </Content>
     </Container>
@@ -60,7 +59,8 @@ const Property = ({ state, actions, libraries }) => {
 export default connect(Property);
 
 const Container = styled.div`
-  font-family: 'Montserrat', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SourceSansPro", "Segoe UI", Roboto,
+      "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   width: 100%;
   margin: 0;
   background: #f6f2ec;
