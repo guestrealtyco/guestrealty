@@ -18,10 +18,6 @@ const settings = {
               "/"
             ],
             [
-              "About",
-              "/sub/about/"
-            ],
-            [
               "For Property Owners",
               "/sub/property-owners/"
             ],

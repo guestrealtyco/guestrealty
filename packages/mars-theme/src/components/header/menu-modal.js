@@ -20,8 +20,8 @@ const MenuModal = ({ state }) => {
               {name}
             </MenuLink>
           ))}
-              <a href="tel:+610280956240"><button className="button btn-light">Call us</button></a>
-              <a href="/sub/for-renters/"><button className="button btn-dark">Book Now</button></a>
+              <a href="tel:+610280956240"><button className="button btn-dark">Call us</button></a>
+              {/* <a href="/sub/for-renters/"><button className="button btn-dark">Book Now</button></a> */}
       </MenuContent>
     </>
   );

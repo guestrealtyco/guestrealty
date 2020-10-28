@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
 import Link from "./link";
 import List from "./list";
-import Testimonials from "./testimonials/Testimonials.js";
+// import Testimonials from "./testimonials/Testimonials.js";
 import FeaturedMedia from "./featured-media";
 const homeHero = "https://guestrealty.co/wp-content/uploads/hero/home-hero.gif";
 
@@ -49,7 +49,7 @@ const Page = ({ state, actions, libraries }) => {
       <Content>
         <Html2React html={page.content.rendered} />
       </Content>
-    <Testimonials />
+    {/* <Testimonials /> */}
     </Container>
   ) : null;
 };
@@ -128,17 +128,20 @@ const Container = styled.div`
       background-color: #f6f2ec;
       display: flex;
       flex-direction: row;
-      flex-wrap: wrap;
+      flex-wrap: no-wrap;
       justify-content: space-around;
-      align-items: stretch;
+      align-items: baseline;
         .sub-text{
           background-color: #f6f2ec;
           width: 40%;
           h3{
-            color: #013110
+            color: #013110;
+            font-size: 1rem;
           }
           p{
             color: #000;
+            font-size: 0.80rem;
+            margin: 0px 0.5px 0px 0.5px;
           }
         }
       }
@@ -147,22 +150,32 @@ const Container = styled.div`
       background-color: #013110;
       .body1-content{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         color: #c1ab22; 
           .body1-img{
-            height: 900px;
-            width: 50%;
-            background: -webkit-linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/800/650");
-            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/800/650"); /* The least supported option. */
-            background-size: cover;
+            width: 45%;
+            margin: 0 auto;
+            padding: 0;
+            img{
+              width: 95%;
+            }
           }
         }
+        .body1-top{
+          width: 95%;
+          display: flex;
+          flex-direction: row-reverse;
+          align-items: center;
+          justify-content: center;
+        }
         .body1-text{
+          margin-top: 0;
+          padding-top: 0;
           width: 45%;
-          margin-left: 10px;
-          padding: 20px;
+          margin: 0 auto;
+          padding: 0;
           h3{
           font-size: 2.5rem;
           color: #ccb25c;
@@ -170,7 +183,8 @@ const Container = styled.div`
           p{
             color: #DBDBB6;
           }
-          .body1-points{
+        }
+        .body1-points{
             display: flex;
             flex-direction: column;
             .body1-point{
@@ -181,12 +195,12 @@ const Container = styled.div`
                 width: 90px;
                 height: 90px;
               }
-              p{
-                padding-top: px;
+              h4{
+                padding-top: 12px;
+                color: #DBDBB6;
               }
             }
           }
-        }
       }
     }
     .benefits{
@@ -365,7 +379,7 @@ const Content = styled.div`
     background-color: #1f38c5;
   }
   /* WordPress Core Align Classes */
-  @media (max-width: 750px) {
+  @media screen and (max-width: 750px) {
     .hero {
       height: 60vh;
     }
@@ -386,7 +400,7 @@ const Content = styled.div`
       flex-direction: column;
       padding: 10px;
         .sub-header{
-          margin-left: 10px;
+          margin-left: 5px;
           padding: 5px;
           h2{
           color: #013110;
@@ -413,27 +427,49 @@ const Content = styled.div`
       }
     }
     .body1{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       .body1-content{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         color: #c1ab22; 
-          .body1-img{
-            display: none;
+        }
+        .body1-top{
+          width: 95%;
+          flex-direction: column-reverse;
+          align-items: center;
+          justify-content: center;
+        
+        .body1-img{
+          width: 95%;
+          img{
+            width: 100%;
           }
         }
         .body1-text{
-          width: 85%;
-          padding-left: 10px;
+          width: 95%;
+          
             h3{
             font-size: 1.5rem;
             }
             p{
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             }
           }
         }
+        }
+        .body1-points{
+          margin: 0px 20px 0px 20px;
+            .body1-point{
+              p{
+                font-size: 0.85rem;
+              }
+            }
+          }
         .benefits{
         display: none;
       }
@@ -512,7 +548,7 @@ const Content = styled.div`
     font-size: 0.75rem;
   }
      
-  }
+
   
   @media (min-width: 420px) {
     img.aligncenter,

@@ -177,16 +177,25 @@ const Container = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-around;
+      justify-content: center;
       padding: 20px;
       h3{
         color: #153211;
         font-size: 2rem;
       }
       .summary-points{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
+        /* grid-template-columns: 32% 32% 32%;    */
+        column-gap: 10px;
+        row-gap: 15px;
+        /* This is better for small screens, once min() is better supported */
+        /* grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); */
+        grid-gap: 1rem;
+        align-items: baseline;
+        justify-content: center;
+        /* This is the standardized property now, but has slightly less support */
+        /* gap: 1rem */
         width: 90%;
         flex-wrap: wrap;
         h3{
@@ -196,9 +205,9 @@ const Container = styled.div`
           color: #153211;
         }
         .summary-point{
-          display: flex;
-          flex-direction: column;
-          width: 45%;
+          padding: 1.5rem;
+          border-radius: 1rem;
+          width: 100%;
         }
       }
     }
@@ -221,6 +230,10 @@ const Container = styled.div`
           width: 50%;
           margin-left: 20px;
           padding-left: 20px;
+          h3{
+          font-size: 1.5rem;
+          color: #153211;
+          }
           h4{
           font-size: 1.5rem;
           color: #153211;
@@ -266,6 +279,10 @@ const Container = styled.div`
           color: #153211;
         }
       }
+  }
+  .page-elms {
+    height: 25%;
+    margin: -10px;
   }
 `
 
