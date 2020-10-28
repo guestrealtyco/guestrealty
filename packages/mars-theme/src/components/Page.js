@@ -138,6 +138,11 @@ const Container = styled.div`
             color: #013110;
             font-size: 1rem;
           }
+          img{
+            width: 50%;
+            height: auto;
+            margin-left: 10px;
+          }
           p{
             color: #000;
             font-size: 0.80rem;
