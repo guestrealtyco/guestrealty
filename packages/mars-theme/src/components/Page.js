@@ -142,6 +142,7 @@ const Container = styled.div`
             width: 50%;
             height: auto;
             margin-left: 10px;
+            border-radius: 20px;
           }
           p{
             color: #000;

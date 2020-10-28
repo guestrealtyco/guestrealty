@@ -179,9 +179,13 @@ const Container = styled.div`
       align-items: center;
       justify-content: center;
       padding: 20px;
+      h2{
+        color: #153211;
+        font-size: 2.5rem;
+      }
       h3{
         color: #153211;
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
       .summary-points{
         display: grid;
@@ -201,13 +205,16 @@ const Container = styled.div`
         h3{
           font-size: 1.5rem;
         }
-        p{
-          color: #153211;
-        }
+        
         .summary-point{
           padding: 1.5rem;
           border-radius: 1rem;
           width: 100%;
+          img{
+          width: 25%;
+          height: auto;
+          margin: 0 auto;
+        }
         }
       }
     }
@@ -271,9 +278,9 @@ const Container = styled.div`
         flex-direction: column;
         align-items: center;
         padding: 20px;
-        h3{
+        h2{
           color: #153211;
-          font-size: 2rem;
+          font-size: 3rem;
         }
         p{
           color: #153211;

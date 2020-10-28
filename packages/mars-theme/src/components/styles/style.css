@@ -98,3 +98,14 @@ h4{
   .directions{
     display: none;
   }
+
+  #bar2{
+    height: 5px;
+    width: 25%;
+    background-color: #DBC472;
+  }
+  #bar{
+    height: 5px;
+    width: 40%;
+    background-color: #DBC472;
+  }
