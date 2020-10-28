@@ -2,6 +2,7 @@ import React from "react";
 import { Global, css, connect, styled, Head } from "frontity";
 import FontFace from "./styles/fontFace"
 import Switch from "@frontity/components/switch";
+import Iframe from "@frontity/html2react/processors/iframe";
 import Header from "./header/header";
 import Footer from "./footer/Footer";
 import List from "./list";
@@ -13,6 +14,9 @@ import Loading from "./loading";
 import Title from "./title";
 import PageError from "./page-error";
 import style from "./styles/style.css";
+import 'pure-react-carousel/dist/react-carousel.es.css';
+
+
 /**
  * Theme is the root React component of our theme. The one we will export
  * in roots.
@@ -32,7 +36,7 @@ const Theme = ({ state }) => {
 
       {/* Add some global styles for the whole site, like body or a's. 
       Not classes here because we use CSS-in-JS. Only global HTML tags. */}
-       <FontFace />
+      <FontFace />
       <Global styles={globalStyles} />
       <Global styles={css(style)} />
 
@@ -48,7 +52,7 @@ const Theme = ({ state }) => {
           <Loading when={data.isFetching} />
           <List when={data.isArchive} />
           <Sub when={data.isSub} />
-          <Page when={data.isProperty} />
+          <Property when={data.isProperty} />
           <Page when={data.isPage} />
           <Post when={data.isPostType} />
           <PageError when={data.isError} />
@@ -66,7 +70,7 @@ export default connect(Theme);
 const globalStyles = css`
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Montserrat", "SourceSansPro", "Segoe UI", Roboto,
+    font-family: -apple-system, BlinkMacSystemFont, "SourceSansPro", "Segoe UI", Roboto,
       "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
   a,

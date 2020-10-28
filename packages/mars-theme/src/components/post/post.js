@@ -83,7 +83,6 @@ const ArticleContainer = styled.div`
     width: 20%;
     height: auto;
   }
-
 `;
 
 const Title = styled.h1`

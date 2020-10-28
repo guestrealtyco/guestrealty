@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
+
 import Link from "./link";
 import List from "./list";
 import FeaturedMedia from "./featured-media";
@@ -9,6 +10,10 @@ const Sub = ({ state, actions, libraries }) => {
   const data = state.source.get(state.router.link);
   // Get the data of the post.
   const sub = state.source[data.type][data.id];
+
+  const postType = sub.acf.posttype
+  
+  console.log(postType)
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
   /**
@@ -37,7 +42,16 @@ const Sub = ({ state, actions, libraries }) => {
       <Content>
         <Html2React html={sub.content.rendered} />
         <ContactContainer>
-          <Contact/>
+        {postType === "renters" ? 
+          <iframe 
+          src="https://beds24.com/booking2.php?ownerid=65282&amp;referer=iframe"
+          title="Frontity"
+          width= "80%"
+          height= "3250px"
+        />
+          :
+          <Contact />
+      }
         </ContactContainer>
       </Content>
     </Container>
@@ -45,7 +59,8 @@ const Sub = ({ state, actions, libraries }) => {
 };
 export default connect(Sub);
 const Container = styled.div`
-  font-family: 'Montserrat', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SourceSansPro", "Segoe UI", Roboto,
+      "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   width: 100%;
   margin: 0;
   background: #f6f2ec;
@@ -162,28 +177,44 @@ const Container = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-around;
+      justify-content: center;
       padding: 20px;
+      h2{
+        color: #153211;
+        font-size: 2.5rem;
+      }
       h3{
         color: #153211;
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
       .summary-points{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
+        /* grid-template-columns: 32% 32% 32%;    */
+        column-gap: 10px;
+        row-gap: 15px;
+        /* This is better for small screens, once min() is better supported */
+        /* grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); */
+        grid-gap: 1rem;
+        align-items: baseline;
+        justify-content: center;
+        /* This is the standardized property now, but has slightly less support */
+        /* gap: 1rem */
         width: 90%;
         flex-wrap: wrap;
         h3{
           font-size: 1.5rem;
         }
-        p{
-          color: #153211;
-        }
+        
         .summary-point{
-          display: flex;
-          flex-direction: column;
-          width: 45%;
+          padding: 1.5rem;
+          border-radius: 1rem;
+          width: 100%;
+          img{
+          width: 25%;
+          height: auto;
+          margin: 0 auto;
+        }
         }
       }
     }
@@ -206,6 +237,10 @@ const Container = styled.div`
           width: 50%;
           margin-left: 20px;
           padding-left: 20px;
+          h3{
+          font-size: 1.5rem;
+          color: #153211;
+          }
           h4{
           font-size: 1.5rem;
           color: #153211;
@@ -243,16 +278,21 @@ const Container = styled.div`
         flex-direction: column;
         align-items: center;
         padding: 20px;
-        h3{
+        h2{
           color: #153211;
-          font-size: 2rem;
+          font-size: 3rem;
         }
         p{
           color: #153211;
         }
       }
   }
+  .page-elms {
+    height: 25%;
+    margin: -10px;
+  }
 `
+
 const ContactContainer = styled.div`
   background-color: #f6f2ec;
   width: 100%;
@@ -261,6 +301,7 @@ const ContactContainer = styled.div`
   display: flex;
   flex-direction: column;
 `
+
 /**
  * This component is the parent of the `content.rendered` HTML. We can use nested
  * selectors to style that HTML.
@@ -289,7 +330,7 @@ const Content = styled.div`
   }
   iframe {
     display: block;
-    margin: auto;
+    margin-top: -75px;
   }
   blockquote {
     margin: 16px 0;
@@ -450,7 +491,9 @@ const Content = styled.div`
         }
       }
     }
-    
+    iframe{
+      height: 6750px;
+    }
   }
   @media (min-width: 420px) {
     img.aligncenter,

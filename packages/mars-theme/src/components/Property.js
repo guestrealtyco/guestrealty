@@ -3,17 +3,23 @@ import { connect, styled } from "frontity";
 import Link from "./link";
 import List from "./list";
 import FeaturedMedia from "./featured-media";
+import star_divider from "../assets/elements/star_divider.png";
+
 
 const Property = ({ state, actions, libraries }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
   // Get the data of the post.
   const property = state.source[data.type][data.id];
-  const bedrooms = property.acf.bedrooms;
-  const bathrooms = property.acf.bahtrooms;
-  const pets_allowed = property.acf.pets_allowed
+  
+  //Grab advanced custom fields
+  const acf = property.acf;
+  const images = acf.images;
+  console.log(acf);
+  console.log(acf.images);
 
-
+  // grabs bed 24 id to load into iframe
+  const bed24 = `https://beds24.com/booking2.php?ownerid=65282&propid=${acf.bed24id}`
 
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
@@ -31,11 +37,11 @@ const Property = ({ state, actions, libraries }) => {
   // Load the post, but only if the data is ready.
   return data.isReady ? (
     <Container>
-      <div>
+      <div className ="titleBox">
         <Title dangerouslySetInnerHTML={{ __html: property.title.rendered }} /> 
+        <img className ="titleImg" src={star_divider} />
         {/* Only display author and date on posts */}
         {data.isProperty}
-
       </div>
 
       {/* Look at the settings to see if we should include the featured image */}
@@ -47,11 +53,14 @@ const Property = ({ state, actions, libraries }) => {
        by the processors we included in the libraries.html2react.processors array. */}
       <Content>
         <Html2React html={property.content.rendered} />
-        {bathrooms}
-          
-          <ul><li>{bedrooms}</li>
-          <li>{pets_allowed}</li>
-        </ul>
+        {acf.bed24id === null ? 
+          <PageError />
+          :
+            <iframe 
+            src={bed24}
+            title="bed 24 widget"
+           />
+      }
       </Content>
     </Container>
   ) : null;
@@ -60,14 +69,30 @@ const Property = ({ state, actions, libraries }) => {
 export default connect(Property);
 
 const Container = styled.div`
-  font-family: 'Montserrat', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SourceSansPro", "Segoe UI", Roboto,
+      "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   width: 100%;
   margin: 0;
   background: #f6f2ec;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .titleBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .titleImg{
+    width: 20%;
+    height: auto;
+    margin-top: -10px;
+  }
 `
 
 const Title = styled.h2`
-  font-size: 2.5rem;
+  font-size: 3.5rem;
+  color: #153211;
 `
 
 
@@ -76,7 +101,9 @@ const Title = styled.h2`
  * This component is the parent of the `content.rendered` HTML. We can use nested
  * selectors to style that HTML.
  */
+
 const Content = styled.div`
+  background-color: #f6f1eb;
   color: rgba(12, 17, 43, 0.8);
   word-break: break-word;
 
@@ -90,8 +117,7 @@ const Content = styled.div`
 
   img {
     width: 100%;
-    object-fit: cover;
-    object-position: center;
+    height: auto;
   }
 
   figure {
@@ -105,8 +131,15 @@ const Content = styled.div`
   }
 
   iframe {
-    display: block;
-    margin: auto;
+    max-width: 95%;
+    width: 1500px;
+    height: 1000px;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    border: 0;
+    margin: 0 auto;
+
   }
 
   blockquote {
