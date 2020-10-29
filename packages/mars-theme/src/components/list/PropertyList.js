@@ -50,8 +50,8 @@ const PropertyList = ({ state }) => {
 export default connect(PropertyList);
 
 const Container = styled.section`
+  max-width: 100%;
   background: #f6f2ec;
-  width: 1200px;
   margin: 0 auto;
   padding-right: 15px;
   padding-left: 15px;
