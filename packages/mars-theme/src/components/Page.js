@@ -50,6 +50,7 @@ const Page = ({ state, actions, libraries }) => {
       </Content>
     </Container>
   ) : null;
+ 
 };
 export default connect(Page);
 const Container = styled.div`
@@ -128,8 +129,7 @@ const Container = styled.div`
       display: flex;
       flex-direction: row;
         .sub-text{
-          display: flex;
-          flex-direction: column;
+          display: inline-block;
           padding: 25px;
           width: 85%;
           h3{
@@ -164,7 +164,7 @@ const Container = styled.div`
           background: url("https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg"); /* The least supported option. */
           background-repeat: no-repeat;
           background-size: cover;
-          background-position:45% 75%;
+          background-position:50% 75%;
         }
         }
         .body1-text{
@@ -263,8 +263,10 @@ const Container = styled.div`
       display: flex;
       flex-direction: column;
       flex-basis: 30%;
-      align-items: center;
+      align-items: flex-start;
+      justify-content: baseline;
       h3{
+        width: 90%;
         color: #153211;
       }
         p {
@@ -380,6 +382,108 @@ const Content = styled.div`
     background-color: #1f38c5;
   }
   /* WordPress Core Align Classes */
+  @media (max-width: 1080px) {
+    .sub-hero{
+      background-color: #f6f2ec;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 20px 40px 20px;
+        .sub-header{
+          margin-left: 10px;
+          h2{
+          color: #013110;
+          font-size: 2.5em;
+          font-weight: 600;
+          padding: 10px;
+          }
+          h4{
+            font-size: 1.5rem;
+            color: #013110;
+            padding: 10px;
+          }
+      }
+      .sub-content{
+      background-color: #f6f2ec;
+      display: flex;
+      flex-direction: column;
+        .sub-text{
+          h3{
+            color: #153211;
+          }
+          img {
+            display: inline-block;
+            min-height: 80%;
+            overflow: hidden;
+          }
+          p{
+            font-size: 1rem;
+            padding: 10px;
+            margin-top: -40px;
+          }
+        }
+      }
+    } 
+    .body1{
+    background-color: #013110;
+      .body1-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #f6f2ec; 
+        .body1-img{
+          min-height: 350px;
+          width: 100%;
+          background: url("https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg");
+          background: url("https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg"); /* The least supported option. */
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position:45% 75%;
+        } 
+        }
+        .body1-text{
+          width: 85%;
+          margin-left: 10px;
+          padding-right: 20px;
+          h2{
+          font-size: 2rem;
+          color: #153211;
+          }
+          h4{
+          font-size: 1rem;
+          color: #153211;
+          }
+          p{
+            color: #153211;
+          }
+          .body1-points{
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            h3{
+              color: #ccb25c;
+              width: 100%;
+              font-size: 2rem;
+            }
+            p{
+              color: #f6f2ec;
+              font-size: 1rem;
+            }
+              .body1-point{
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              padding: 12px;
+              margin-left: -10px;
+              img{
+                width: 90px;
+                height: 90px;
+              }
+          }
+        }
+      }
+    }
+  }
   @media screen and (max-width: 750px) {
     .hero {
       height: 60vh;
@@ -388,7 +492,7 @@ const Content = styled.div`
       object-fit: cover;
     }
     .hero-header{
-      font-size: 1.25rem;
+      font-size: 1.75rem;
     }
     .hero-buttons{
       display: flex;
@@ -428,8 +532,8 @@ const Content = styled.div`
           }
           img {
             max-width: 100%;
-
             height: auto;
+            overflow: hidden;
           }
           p{
             font-size: 1rem;

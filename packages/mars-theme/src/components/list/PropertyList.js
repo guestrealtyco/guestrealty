@@ -19,8 +19,9 @@ const PropertyList = ({ state }) => {
       {data.isPropertyArchive && (
         <Header>
           <img className ="titleImg" src={star_arch} />
-          <h2>Our Properties</h2>
-          <p>Swipe to View</p>
+          <h2>Take a look at some of our rental properties</h2>
+          <p class="swipe">Swipe to View</p>
+          <p class="drag"> Hold down your cursor and drag with your mouse desktop or swipe from your smartphone/tablet </p>
         </Header>
       )}
       {!data.isAwsmJobOpeningsArchive && (
@@ -66,10 +67,23 @@ const Container = styled.section`
   }
   h2{
     margin-top: -10px;
-    font-size: 4.5rem;
+    font-size: 3rem;
   }
-
-
+  .swipe{
+    display: none;
+    font-size: 0.75rem;
+  }
+  .drag{
+    font-size: 0.75rem;
+  }
+  @media (max-width: 550px) {
+  .swipe{
+    display: block;
+  }
+  .drag{
+    display: none;
+  }
+  }
 `;
 
 const CarouselContainer = styled.div`
