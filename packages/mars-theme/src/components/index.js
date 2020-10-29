@@ -6,6 +6,7 @@ import Iframe from "@frontity/html2react/processors/iframe";
 import Header from "./header/header";
 import Footer from "./footer/Footer";
 import List from "./list";
+import PropertyList from "./list/PropertyList";
 import Page from "./Page";
 import Sub from "./Sub";
 import Property from "./Property"
@@ -14,6 +15,7 @@ import Loading from "./loading";
 import Title from "./title";
 import PageError from "./page-error";
 import style from "./styles/style.css";
+import reactcarousel from 'pure-react-carousel/dist/react-carousel.es.css';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
 
@@ -39,6 +41,8 @@ const Theme = ({ state }) => {
       <FontFace />
       <Global styles={globalStyles} />
       <Global styles={css(style)} />
+      <Global styles={reactcarousel} />
+      
 
       {/* Add the header of the site. */}
       <HeadContainer>
@@ -50,6 +54,7 @@ const Theme = ({ state }) => {
       <Main>
         <Switch>
           <Loading when={data.isFetching} />
+          <PropertyList when={data.isPropertyArchive} />
           <List when={data.isArchive} />
           <Sub when={data.isSub} />
           <Property when={data.isProperty} />

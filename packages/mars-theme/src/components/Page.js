@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
 import Link from "./link";
+import PropertyList from "./list/PropertyList"
 import List from "./list";
 // import Testimonials from "./testimonials/Testimonials.js";
 import FeaturedMedia from "./featured-media";
@@ -18,7 +19,7 @@ const Page = ({ state, actions, libraries }) => {
   // Get the html2react component.
 
   const testimonial = state.source.get("/testimonials");
-
+  const properties = state.source.get("/property-list");
 
   const Html2React = libraries.html2react.Component;
   /**
@@ -28,12 +29,12 @@ const Page = ({ state, actions, libraries }) => {
    */
   useEffect(() => {
     actions.source.fetch("/");
-    List.preload()
-    actions.source.fetch("/testimonials");
-    List.preload()
+    List.preload();
+    actions.source.fetch("/property-list");
+    List.preload();
   }, []);
   // Load the post, but only if the data is ready.
-  return data.isReady && testimonial.isReady ? (
+  return data.isReady && properties.isReady ?  (
     <Container>
       <div>
         {/* <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} /> */}
@@ -49,7 +50,7 @@ const Page = ({ state, actions, libraries }) => {
       <Content>
         <Html2React html={page.content.rendered} />
       </Content>
-    {/* <Testimonials /> */}
+      <PropertyList />
     </Container>
   ) : null;
 };
@@ -91,12 +92,13 @@ const Container = styled.div`
     .hero-header-text{
       display: flex;
       flex-direction: column;
+      margin: 10px;
     }
     .hero-header{
       font-style: normal;
       padding: 20px;
       font-weight: 800;
-      font-size: 4rem;
+      font-size: 3rem;
       line-height: 80px;
       /* identical to box height, or 143% */
       text-align: center;
@@ -127,88 +129,92 @@ const Container = styled.div`
       .sub-content{
       background-color: #f6f2ec;
       display: flex;
-      flex-direction: row;
-      flex-wrap: no-wrap;
-      justify-content: space-around;
-      align-items: baseline;
+      flex-direction: ;
         .sub-text{
-          background-color: #f6f2ec;
-          width: 40%;
+          display: flex;
+          flex-direction: column;
+          padding: 25px;
+          width: 85%;
           h3{
-            color: #013110;
-            font-size: 1rem;
+            color: #153211;
           }
-          img{
-            width: 50%;
+          img {
+            width: 100%;
+            max-height: 280px;
+
             height: auto;
-            margin-left: 10px;
-            border-radius: 20px;
           }
           p{
-            color: #000;
-            font-size: 0.80rem;
-            margin: 0px 0.5px 0px 0.5px;
+            font-size: 1rem;
+            padding: 10px;
+            margin-top: 10px;
           }
         }
       }
-    }
+    } 
     .body1{
-      background-color: #013110;
-      .body1-content{
+    background-color: #013110;
+    overflow: hidden;
+    .body1-content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+        .body1-img{
+          display: flex;
+          width: 50%;
+          min-height: 375px;
+          margin-right: -25px;
+          padding: 0;
+          background: #C33764;  /* fallback colour. Make sure this is just one solid colour. */
+          background: url('https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg');
+          background: url('https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg'); /* The least supported option. */
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          img{
+            width: 100%;
+          }
+        }
+      }
+      .body1-top{
+        width: 95%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row-reverse;
         align-items: center;
         justify-content: center;
-        color: #c1ab22; 
-          .body1-img{
-            width: 45%;
-            margin: 0 auto;
-            padding: 0;
-            img{
-              width: 95%;
-            }
-          }
+      }
+      .body1-text{
+        margin-top: 0;
+        padding-top: 0;
+        width: 45%; 
+        margin: 0 auto;
+        padding: 0;
+        h3{
+        font-size: 2.5rem;
+        color: #ccb25c;
         }
-        .body1-top{
-          width: 95%;
+        p{
+          color: #DBDBB6;
+        }
+      }
+      .body1-points{
           display: flex;
-          flex-direction: row-reverse;
-          align-items: center;
-          justify-content: center;
-        }
-        .body1-text{
-          margin-top: 0;
-          padding-top: 0;
-          width: 45%;
-          margin: 0 auto;
-          padding: 0;
-          h3{
-          font-size: 2.5rem;
-          color: #ccb25c;
-          }
-          p{
-            color: #DBDBB6;
-          }
-        }
-        .body1-points{
+          flex-direction: row;
+          .body1-point{
             display: flex;
-            flex-direction: column;
-            .body1-point{
-              display: flex;
-              flex-direction: row;
-              padding: 10px;
-              img{
-                width: 90px;
-                height: 90px;
-              }
-              h4{
-                padding-top: 12px;
-                color: #DBDBB6;
-              }
+            flex-direction: row;
+            padding: 10px;
+            img{
+              width: 90px;
+              height: 90px;
+            }
+            h5{
+              padding-top: 12px;
+              color: #f6f2ec;
             }
           }
       }
-    }
+}
     .benefits{
       display: flex;
       flex-direction: column;
@@ -264,40 +270,35 @@ const Container = styled.div`
       flex-direction: column;
       flex-basis: 30%;
       align-items: center;
+      h3{
+        color: #153211;
+      }
         p {
           width: 90%;
           color: #153211;
         }
-          .user-pic-ph{ 
-          img{
-            width: 25%;
-            border-radius: 50px;
-          }
-        }
       }
     }
+  }
+  .signup{
+    background-color: #013110;
+    padding: 40px;
+    .signup-container{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      .signup-text{
+        font-size: 1.2rem;
+        color: #DBDBB6;
+      }
+      .signup-buttons{
+        display: flex;
+        flex-direction: row;
+      }
     }
-    
-    
-      .signup{
-        background-color: #013110;
-        padding: 40px;
-        .signup-container{
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          align-items: center;
-          justify-content: space-between;
-          .signup-text{
-            font-size: 1.2rem;
-            color: #DBDBB6;
-          }
-          .signup-buttons{
-            display: flex;
-            flex-direction: row;
-          }
-        }
-        
+  }
 `
 /**
  * This component is the parent of the `content.rendered` HTML. We can use nested
@@ -393,7 +394,7 @@ const Content = styled.div`
       object-fit: cover;
     }
     .hero-header{
-      display: none;
+      font-size: 1.25rem;
     }
     .hero-buttons{
       display: flex;
@@ -404,78 +405,99 @@ const Content = styled.div`
       background-color: #f6f2ec;
       display: flex;
       flex-direction: column;
-      padding: 10px;
+      padding: 20px 20px 40px 20px;
         .sub-header{
-          margin-left: 5px;
-          padding: 5px;
+          margin-left: 10px;
           h2{
           color: #013110;
-          font-size: 1.5em;
+          font-size: 2.5em;
           font-weight: 600;
+          padding: 10px;
           }
           h4{
-            font-size: 1rem;
+            font-size: 1.5rem;
+            color: #013110;
+            padding: 10px;
           }
       }
       .sub-content{
       background-color: #f6f2ec;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
-      align-items: stretch;
         .sub-text{
+          display: flex;
+          flex-direction: column;
           padding: 25px;
           width: 85%;
+          h3{
+            color: #153211;
+          }
+          img {
+            width: 100%;
+
+            height: auto;
+          }
           p{
-            font-size: 0.85rem;
+            font-size: 1rem;
+            padding: 10px;
+            margin-top: 10px;
           }
         }
       }
-    }
+    } 
     .body1{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      .body1-content{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        color: #c1ab22; 
-        }
-        .body1-top{
-          width: 95%;
-          flex-direction: column-reverse;
-          align-items: center;
-          justify-content: center;
-        
+    .body1-content{
         .body1-img{
-          width: 95%;
+          width: 100%;
+          min-height: 350px;
+          margin: 0 auto;
+          padding: 0;
           img{
             width: 100%;
           }
         }
-        .body1-text{
-          width: 95%;
-          
-            h3{
-            font-size: 1.5rem;
+      }
+      .body1-top{
+        width: 95%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .body1-text{
+        margin-top: 0;
+        padding-top: 0;
+        width: 80%; 
+        margin: 0 auto;
+        padding: 0;
+        h3{
+        font-size: 2.5rem;
+        color: #ccb25c;
+        }
+        p{
+          color: #DBDBB6;
+        }
+      }
+      .body1-points{
+          display: flex;
+          flex-direction: column;
+          width: 80%;
+          .body1-point{
+            display: flex;
+            flex-direction: row;
+            padding: 10px;
+            img{
+              width: 90px;
+              height: 90px;
             }
-            p{
-            font-size: 0.85rem;
+            h5{
+              padding-top: 12px;
+              color: #f6f2ec;
             }
           }
-        }
-        }
-        .body1-points{
-          margin: 0px 20px 0px 20px;
-            .body1-point{
-              p{
-                font-size: 0.85rem;
-              }
-            }
-          }
+      }  
+}
         .benefits{
         display: none;
       }
@@ -509,22 +531,16 @@ const Content = styled.div`
           width: 75%;
           align-items: center;
           color: #153211;
+          h3{
+            color: #153211;
+          }
           p {
             width: 90%;
             color: #153211;
           }
-          .user-pic-ph {
-            img{
-              background-color: #f5f5f5;
-              height: 100px;
-              width: 100px;
-              border-radius: 50px;
-            }
-          }
         }
       }
     }  
-      
     .signup{
       background-color: #013110;
       padding: 40px;
@@ -541,9 +557,8 @@ const Content = styled.div`
         }
       }
     }
-  }
-    
-    input[type="text"],
+       
+  input[type="text"],
   input[type="email"],
   input[type="url"],
   input[type="tel"],
