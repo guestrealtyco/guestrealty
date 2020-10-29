@@ -455,7 +455,7 @@ const Content = styled.div`
           background-repeat: no-repeat;
           background-size: cover;
           background-position:45% 75%;
-        }
+        } 
         }
         .body1-text{
           width: 85%;
