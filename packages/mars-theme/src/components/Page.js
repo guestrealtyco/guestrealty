@@ -494,7 +494,7 @@ const Content = styled.div`
       object-fit: cover;
     }
     .hero-header{
-      font-size: 1.75rem;
+      font-size: 1.2rem;
     }
     .hero-buttons{
       display: flex;
