@@ -255,6 +255,8 @@ const Container = styled.div`
           width: 75%;
           height: auto;
         }
+
+
         }
       }
     }
