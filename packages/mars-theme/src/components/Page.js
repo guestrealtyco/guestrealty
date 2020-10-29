@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
 import Link from "./link";
-import PropertyList from "./list/PropertyList"
 import List from "./list";
 // import Testimonials from "./testimonials/Testimonials.js";
 import FeaturedMedia from "./featured-media";
@@ -18,8 +17,8 @@ const Page = ({ state, actions, libraries }) => {
   const date = new Date(page.date);
   // Get the html2react component.
 
-  const testimonial = state.source.get("/testimonials");
-  const properties = state.source.get("/property-list");
+
+
 
   const Html2React = libraries.html2react.Component;
   /**
@@ -30,11 +29,10 @@ const Page = ({ state, actions, libraries }) => {
   useEffect(() => {
     actions.source.fetch("/");
     List.preload();
-    actions.source.fetch("/property-list");
-    List.preload();
+
   }, []);
   // Load the post, but only if the data is ready.
-  return data.isReady && properties.isReady ?  (
+  return data.isReady ?  (
     <Container>
       <div>
         {/* <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} /> */}
@@ -50,13 +48,11 @@ const Page = ({ state, actions, libraries }) => {
       <Content>
         <Html2React html={page.content.rendered} />
       </Content>
-      <PropertyList />
     </Container>
   ) : null;
 };
 export default connect(Page);
 const Container = styled.div`
-
   font-family: -apple-system, BlinkMacSystemFont, "SourceSansPro", "Segoe UI", Roboto,
       "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   width: 100%;
@@ -155,67 +151,64 @@ const Container = styled.div`
     } 
     .body1{
     background-color: #013110;
-    overflow: hidden;
-    .body1-content{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-        .body1-img{
-          display: flex;
-          width: 50%;
-          min-height: 375px;
-          margin-right: -25px;
-          padding: 0;
-          background: #C33764;  /* fallback colour. Make sure this is just one solid colour. */
-          background: url('https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg');
-          background: url('https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg'); /* The least supported option. */
-          background-repeat: no-repeat;
-          background-size: 100% 100%;
-          img{
-            width: 100%;
-          }
-        }
-      }
-      .body1-top{
-        width: 95%;
+      .body1-content{
         display: flex;
         flex-direction: row-reverse;
         align-items: center;
         justify-content: center;
-      }
-      .body1-text{
-        margin-top: 0;
-        padding-top: 0;
-        width: 45%; 
-        margin: 0 auto;
-        padding: 0;
-        h3{
-        font-size: 2.5rem;
-        color: #ccb25c;
+        color: #f6f2ec; 
+        .body1-img{
+          min-height: 700px;
+          width: 55%;
+          background: url("https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg");
+          background: url("https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg"); /* The least supported option. */
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position:45% 75%;
         }
-        p{
-          color: #DBDBB6;
         }
-      }
-      .body1-points{
-          display: flex;
-          flex-direction: row;
-          .body1-point{
-            display: flex;
-            flex-direction: row;
-            padding: 10px;
-            img{
-              width: 90px;
-              height: 90px;
-            }
-            h5{
-              padding-top: 12px;
-              color: #f6f2ec;
-            }
+        .body1-text{
+          width: 45%;
+          margin-left: 10px;
+          padding-right: 20px;
+          h2{
+          font-size: 2rem;
+          color: #153211;
           }
+          h4{
+          font-size: 1rem;
+          color: #153211;
+          }
+          p{
+            color: #153211;
+          }
+          .body1-points{
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            h3{
+              color: #ccb25c;
+              width: 100%;
+              font-size: 2rem;
+            }
+            p{
+              color: #f6f2ec;
+              font-size: 1rem;
+            }
+              .body1-point{
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              padding: 12px;
+              margin-left: -10px;
+              img{
+                width: 90px;
+                height: 90px;
+              }
+          }
+        }
       }
-}
+    }
     .benefits{
       display: flex;
       flex-direction: column;
@@ -434,7 +427,7 @@ const Content = styled.div`
             color: #153211;
           }
           img {
-            width: 100%;
+            max-width: 100%;
 
             height: auto;
           }
@@ -447,57 +440,65 @@ const Content = styled.div`
       }
     } 
     .body1{
-    .body1-content{
-        .body1-img{
-          width: 100%;
-          min-height: 350px;
-          margin: 0 auto;
-          padding: 0;
-          img{
-            width: 100%;
-          }
-        }
-      }
-      .body1-top{
-        width: 95%;
+    background-color: #013110;
+      .body1-content{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-      }
-      .body1-text{
-        margin-top: 0;
-        padding-top: 0;
-        width: 80%; 
-        margin: 0 auto;
-        padding: 0;
-        h3{
-        font-size: 2.5rem;
-        color: #ccb25c;
+        color: #f6f2ec; 
+        .body1-img{
+          min-height: 350px;
+          width: 100%;
+          background: url("https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg");
+          background: url("https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg"); /* The least supported option. */
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position:45% 75%;
         }
-        p{
-          color: #DBDBB6;
         }
-      }
-      .body1-points{
-          display: flex;
-          flex-direction: column;
-          width: 80%;
-          .body1-point{
-            display: flex;
-            flex-direction: row;
-            padding: 10px;
-            img{
-              width: 90px;
-              height: 90px;
-            }
-            h5{
-              padding-top: 12px;
-              color: #f6f2ec;
-            }
+        .body1-text{
+          width: 85%;
+          margin-left: 10px;
+          padding-right: 20px;
+          h2{
+          font-size: 2rem;
+          color: #153211;
           }
-      }  
-}
+          h4{
+          font-size: 1rem;
+          color: #153211;
+          }
+          p{
+            color: #153211;
+          }
+          .body1-points{
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            h3{
+              color: #ccb25c;
+              width: 100%;
+              font-size: 2rem;
+            }
+            p{
+              color: #f6f2ec;
+              font-size: 1rem;
+            }
+              .body1-point{
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              padding: 12px;
+              margin-left: -10px;
+              img{
+                width: 90px;
+                height: 90px;
+              }
+          }
+        }
+      }
+    }
 
         
         .benefits{
@@ -543,8 +544,6 @@ const Content = styled.div`
         }
       }
     } 
-  
-      
     .signup{
       background-color: #013110;
       padding: 40px;
@@ -561,11 +560,7 @@ const Content = styled.div`
         }
       }
     }
-    
-  
-
-    
-    input[type="text"],
+  input[type="text"],
   input[type="email"],
   input[type="url"],
   input[type="tel"],

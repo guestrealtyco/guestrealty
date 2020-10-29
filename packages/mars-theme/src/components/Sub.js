@@ -59,6 +59,7 @@ const Sub = ({ state, actions, libraries }) => {
           <Contact />
       }
         </ContactContainer>
+           
       </Content>
       {postType === "owners" ? 
           <PropertyList />
@@ -102,8 +103,6 @@ const Container = styled.div`
       height: 850px;
       /* width: auto; */
     }
-    /* background: -webkit-linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/1600/900");
-    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/1600/900"); The least supported option. */
   }
   .hero-header{
     font-style: normal;
@@ -280,20 +279,22 @@ const Container = styled.div`
         .body2-img{
           height: 625px;
           width: 50%;
-          background: -webkit-linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/900/650");
-          background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/900/650"); /* The least supported option. */
+          background: url("https://guestrealty.co/wp-content/uploads/2020/10/25856_MG_8703-lores.jpg");
+          background: url("https://guestrealty.co/wp-content/uploads/2020/10/25856_MG_8703-lores.jpg"); /* The least supported option. */
+          background-repeat: no-repeat;
+          background-size: cover;
         }
         }
         .body2-text{
           width: 50%;
           margin-left: 20px;
           padding-left: 20px;
-          h3{
+          h2{
           font-size: 1.5rem;
           color: #153211;
           }
           h4{
-          font-size: 1.5rem;
+          font-size: 1rem;
           color: #153211;
           }
           p{
@@ -530,7 +531,58 @@ const Content = styled.div`
     }
     .body2{
       .body2-content{
-        display: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .body2-img{
+          min-height: 350px;
+          width: 100%;
+      }
+      }
+      .body2-text{
+          width: 85%;
+          margin-left: 10px;
+          padding-right: 20px;
+          h2{
+          font-size: 2rem;
+          color: #153211;
+          }
+          h4{
+          font-size: 1rem;
+          color: #153211;
+          }
+          p{
+            color: #153211;
+          }
+          .body2-points{
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            h3{
+              color: #ccb25c;
+              width: 100%;
+              font-size: 2rem;
+            }
+            p{
+              color: #153211;
+              font-size: 1rem;
+            }
+              .body2-point{
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              padding: 12px;
+              margin-left: -10px;
+              img{
+                width: 90px;
+                height: 90px;
+              }
+              .body2-subpoint{
+                color: #153211;
+              }
+        }
+          }
       }
     }
     .signup{

@@ -7,13 +7,10 @@ const Quote = ({ quote, author}) => {
     console.log('Quote')
     console.log({ quote, author})
     return (
-        <Slide>  
             <Blockquote>
                 <h3>" {quote} "</h3>
                 <h4>- {author} </h4>
             </Blockquote>
-        </Slide>
-        
     )
 }
 

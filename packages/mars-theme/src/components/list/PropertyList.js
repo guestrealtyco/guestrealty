@@ -20,6 +20,7 @@ const PropertyList = ({ state }) => {
         <Header>
           <img className ="titleImg" src={star_arch} />
           <h2>Our Properties</h2>
+          <p>Swipe to View</p>
         </Header>
       )}
       {!data.isAwsmJobOpeningsArchive && (
@@ -32,8 +33,8 @@ const PropertyList = ({ state }) => {
           visibleSlides={1}
           totalSlides={data.items.length}
         >
-          <ButtonBack className="button btn-dark">Back</ButtonBack>
-          <ButtonNext className="button btn-dark">Next</ButtonNext>
+          {/* <ButtonBack className="button btn-dark">Back</ButtonBack>
+          <ButtonNext className="button btn-dark">Next</ButtonNext> */}
           <Slider>
             {data.items.map(({ type, index, id }) => {
               const item = state.source[type][id];
@@ -77,5 +78,9 @@ const CarouselContainer = styled.div`
   `
 const Header = styled.h1`
   text-align: center;
+  p{
+    font-style: italic;
+    font-size: 1rem;
+  }
 `
 
