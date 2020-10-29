@@ -278,8 +278,8 @@ const Container = styled.div`
         .body2-img{
           height: 625px;
           width: 50%;
-          background: url("https://guestrealty.co/wp-content/uploads/2020/10/25856_MG_8703-lores.jpg");
-          background: url("https://guestrealty.co/wp-content/uploads/2020/10/25856_MG_8703-lores.jpg"); /* The least supported option. */
+          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/25856_MG_8703-lores.jpg");
+          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/25856_MG_8703-lores.jpg"); /* The least supported option. */
           background-repeat: no-repeat;
           background-size: cover;
         }
