@@ -50,6 +50,7 @@ const Page = ({ state, actions, libraries }) => {
       </Content>
     </Container>
   ) : null;
+ 
 };
 export default connect(Page);
 const Container = styled.div`
@@ -482,8 +483,8 @@ const Content = styled.div`
         }
       }
     }
-  
   }
+
 
   @media screen and (max-width: 750px) {
     .hero {
