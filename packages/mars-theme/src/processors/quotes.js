@@ -4,8 +4,6 @@ import { Slide } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
 const Quote = ({ quote, author}) => {
-    console.log('Quote')
-    console.log({ quote, author})
     return (
             <Blockquote>
                 <h3>" {quote} "</h3>

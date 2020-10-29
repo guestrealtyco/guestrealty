@@ -484,6 +484,8 @@ const Content = styled.div`
       }
     }
   }
+
+
   @media screen and (max-width: 750px) {
     .hero {
       height: 60vh;

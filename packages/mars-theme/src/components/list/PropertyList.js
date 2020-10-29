@@ -84,6 +84,7 @@ const Container = styled.section`
     display: none;
   }
   }
+
 `;
 
 const CarouselContainer = styled.div`

@@ -15,8 +15,6 @@ const Property = ({ state, actions, libraries }) => {
   //Grab advanced custom fields
   const acf = property.acf;
   const images = acf.images;
-  console.log(acf);
-  console.log(acf.images);
 
   // grabs bed 24 id to load into iframe
   const bed24 = `https://beds24.com/booking2.php?ownerid=65282&propid=${acf.bed24id}`
