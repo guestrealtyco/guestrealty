@@ -303,6 +303,12 @@ const Container = styled.div`
           .body2-points{
             display: flex;
             flex-direction: column;
+            h5{
+              color: #153211;
+              margin-right: 10px;
+              font-size: 1rem;
+              padding: 10px;
+            }
             p{
               color: #153211;
             }
@@ -310,6 +316,7 @@ const Container = styled.div`
               display: flex;
               flex-direction: row;
               align-items: center;
+              margin-bottom: -10px;
               img{
                 width: 90px;
                 height: 90px;
@@ -568,7 +575,7 @@ const Content = styled.div`
               color: #153211;
               font-size: 1rem;
             }
-              .body2-point{
+            .body2-point{
               display: flex;
               flex-direction: row;
               align-items: center;
@@ -581,7 +588,7 @@ const Content = styled.div`
               .body2-subpoint{
                 color: #153211;
               }
-        }
+            }
           }
       }
     }
