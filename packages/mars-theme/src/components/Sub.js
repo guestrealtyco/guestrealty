@@ -124,6 +124,7 @@ const Container = styled.div`
       align-items: center;
       justify-content: center;
       padding: 40px;
+      color: #153211;
       h2{
         color: #153211;
         font-size: 2.5rem;
@@ -250,7 +251,6 @@ const Container = styled.div`
         flex-direction: row;
         align-items: baseline;
         justify-content: space-between;
-
         h3{
           font-size: 1.35rem;
         }
@@ -447,8 +447,11 @@ const Content = styled.div`
     color: #153211;
     background-color: #f6f2ec;
   }
-  /* WordPress Core Align Classes */
+  /* WordPress Core Align Classes */  
   @media (max-width: 750px) {
+    .icon-points{
+      flex-direction: column;
+    }
     .hero{
     display: flex;
     flex-direction: column;
@@ -481,6 +484,9 @@ const Content = styled.div`
             font-size: 1rem;
           }
       }
+      .icon-points{
+        display: none;
+      }
     }
     .body1{
       .body1-content{
@@ -508,6 +514,7 @@ const Content = styled.div`
           }
         }
     }
+
     .summary{
       display: flex;
       flex-direction: column;
