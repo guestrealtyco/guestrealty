@@ -16,6 +16,7 @@ import Title from "./title";
 import PageError from "./page-error";
 import style from "./styles/style.css";
 import reactcarousel from 'pure-react-carousel/dist/react-carousel.es.css';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 
 /**

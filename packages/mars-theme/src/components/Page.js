@@ -56,7 +56,6 @@ const Page = ({ state, actions, libraries }) => {
 };
 export default connect(Page);
 const Container = styled.div`
-
   font-family: -apple-system, BlinkMacSystemFont, "SourceSansPro", "Segoe UI", Roboto,
       "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   width: 100%;
@@ -130,7 +129,7 @@ const Container = styled.div`
       .sub-content{
       background-color: #f6f2ec;
       display: flex;
-      flex-direction: row;
+      flex-direction: ;
         .sub-text{
           display: flex;
           flex-direction: column;
@@ -460,6 +459,7 @@ const Content = styled.div`
       }
       .body1-top{
         width: 95%;
+
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -498,8 +498,6 @@ const Content = styled.div`
           }
       }  
 }
-
-        
         .benefits{
         display: none;
       }
@@ -542,9 +540,7 @@ const Content = styled.div`
           }
         }
       }
-    } 
-  
-      
+    }  
     .signup{
       background-color: #013110;
       padding: 40px;
@@ -561,11 +557,8 @@ const Content = styled.div`
         }
       }
     }
-    
-  
-
-    
-    input[type="text"],
+       
+  input[type="text"],
   input[type="email"],
   input[type="url"],
   input[type="tel"],
