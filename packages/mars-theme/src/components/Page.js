@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
 import Link from "./link";
+import PropertyList from "./list/PropertyList"
 import List from "./list";
 // import Testimonials from "./testimonials/Testimonials.js";
 import FeaturedMedia from "./featured-media";
@@ -17,9 +18,6 @@ const Page = ({ state, actions, libraries }) => {
   const date = new Date(page.date);
   // Get the html2react component.
 
-
-
-
   const Html2React = libraries.html2react.Component;
   /**
    * Once the post has loaded in the DOM, prefetch both the
@@ -29,10 +27,10 @@ const Page = ({ state, actions, libraries }) => {
   useEffect(() => {
     actions.source.fetch("/");
     List.preload();
-
   }, []);
   // Load the post, but only if the data is ready.
   return data.isReady ?  (
+
     <Container>
       <div>
         {/* <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} /> */}
@@ -48,6 +46,7 @@ const Page = ({ state, actions, libraries }) => {
       <Content>
         <Html2React html={page.content.rendered} />
       </Content>
+      <PropertyList />
     </Container>
   ) : null;
 };
@@ -206,9 +205,8 @@ const Container = styled.div`
                 height: 90px;
               }
           }
-        }
       }
-    }
+}
     .benefits{
       display: flex;
       flex-direction: column;
@@ -428,7 +426,6 @@ const Content = styled.div`
           }
           img {
             max-width: 100%;
-
             height: auto;
           }
           p{
@@ -499,8 +496,6 @@ const Content = styled.div`
         }
       }
     }
-
-        
         .benefits{
         display: none;
       }
@@ -544,6 +539,7 @@ const Content = styled.div`
         }
       }
     } 
+
     .signup{
       background-color: #013110;
       padding: 40px;

@@ -3,14 +3,11 @@ import { connect, styled } from "frontity"
 import Item from "./list-item";
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 
-
 const Testimonial = ({ state, libraries }) => {
 
     const data = state.source.get("/testimonials");
     const quotes = state.source.page[data.id];
     const Html2React = libraries.html2react.Component;
-
-
       return (
         <>
         <CarouselProvider
