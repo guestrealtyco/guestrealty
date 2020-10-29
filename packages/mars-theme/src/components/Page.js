@@ -4,7 +4,7 @@ import Link from "./link";
 import List from "./list";
 // import Testimonials from "./testimonials/Testimonials.js";
 import FeaturedMedia from "./featured-media";
-const homeHero = "https://guestrealty.co/wp-content/uploads/hero/home-hero.gif";
+const homeHero = "https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/hero/home-hero.gif";
 
 const Page = ({ state, actions, libraries }) => {
   // Get information about the current URL.
@@ -159,8 +159,8 @@ const Container = styled.div`
         .body1-img{
           min-height: 700px;
           width: 55%;
-          background: url("https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg");
-          background: url("https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg"); /* The least supported option. */
+          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/GR_Team.jpeg");
+          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/GR_Team.jpeg"); /* The least supported option. */
           background-repeat: no-repeat;
           background-size: cover;
           background-position:50% 75%;
@@ -433,8 +433,8 @@ const Content = styled.div`
         .body1-img{
           min-height: 350px;
           width: 100%;
-          background: url("https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg");
-          background: url("https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg"); /* The least supported option. */
+          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/GR_Team.jpeg");
+          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/GR_Team.jpeg"); /* The least supported option. */
           background-repeat: no-repeat;
           background-size: cover;
           background-position:45% 75%;
@@ -555,8 +555,8 @@ const Content = styled.div`
         .body1-img{
           min-height: 350px;
           width: 100%;
-          background: url("https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg");
-          background: url("https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg"); /* The least supported option. */
+          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/GR_Team.jpeg");
+          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/GR_Team.jpeg"); /* The least supported option. */
           background-repeat: no-repeat;
           background-size: cover;
           background-position:45% 75%;
