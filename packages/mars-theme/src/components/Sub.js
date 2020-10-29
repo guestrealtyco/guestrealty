@@ -315,9 +315,9 @@ const Container = styled.div`
                 height: 90px;
               }
               .body2-subpoint{
-                color: #DBDBB6;
+                color: #153211;
             }
-          }
+          } 
         }
       }
     }

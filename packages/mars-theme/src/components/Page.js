@@ -540,7 +540,7 @@ const Content = styled.div`
           p {
             width: 90%;
             color: #153211;
-          }
+          } 
         }
       }
     } 
