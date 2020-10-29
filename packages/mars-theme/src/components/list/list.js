@@ -8,23 +8,24 @@ const List = ({ state }) => {
   // Get the data of the current list.
   const data = state.source.get(state.router.link);
   let title = 'Blog';
-  if ( data.isAwsmJobOpeningsArchive ) {
-    title = 'Career';
+  if ( data.isisPropertyArchive ) {
+    null
   }
 
   return (
     <Container>
-      {/* If the list is a blog posts, we render a title. */}
+      {/* If the list is a list of blog posts, we render a title. */}
       {data.isPostArchive && (
         <Header>
           <img className ="titleImg" src={star_arch} />
-          <h2>{title}</h2>
+          <h2>Recent Posts</h2>
         </Header>
       )}
         {/* If the list is a AWSM Job career page, we render a title. */}
-      {data.isAwsmJobOpeningsArchive && (
+      {data.isPropertyArchive && (
         <Header>
-          {title}
+          <img className ="titleImg" src={star_arch} />
+          <h2>Our Properties</h2>
         </Header>
       )}
       {/* If the list is a taxonomy, we render a title. */}

@@ -18,10 +18,6 @@ const settings = {
               "/"
             ],
             [
-              "About",
-              "/sub/about/"
-            ],
-            [
               "For Property Owners",
               "/sub/property-owners/"
             ],
@@ -36,7 +32,7 @@ const settings = {
           ],
           "featured": {
             "showOnList": true,
-            "showOnPost": true
+            "showOnPost": false
           },
           "postInfo": {
             "showOnList": true,
@@ -44,8 +40,9 @@ const settings = {
           },
           "postMeta": {
             "showOnList": true,
-            "showOnPost": false
-          }
+            "showOnPost": true
+          },
+          autoPrefetch: "all",
         }
       }
     },

@@ -34,7 +34,8 @@ const Container = styled.div`
   width: 100%;
   box-sizing: border-box;
   padding: 24px;
-  font-family: "montserrat";
+  font-family: -apple-system, BlinkMacSystemFont, "SourceSansPro", "Segoe UI", Roboto,
+      "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #013110;
   display: flex;
   flex-direction: row;

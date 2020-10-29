@@ -29,7 +29,9 @@ const ContactContainer = styled.div`
     align-items: center;
     background-color: #f6f2ec;
     h2{
+        font-size: 2rem;
         color: #ccb25c;
+        margin-bottom: -50px;
     }
     width: 900px;
     max-width: 90%;
@@ -49,18 +51,17 @@ const ContactForm = styled.div`
     -webkit-box-shadow: 25px 23px 19px -10px rgba(0,0,0,0.47);
     -moz-box-shadow: 25px 23px 19px -10px rgba(0,0,0,0.47);
     box-shadow: 25px 23px 19px -14px rgba(0,0,0,0.47);
-
     .titleImg{
         width: 10%;
     }
-
     form{
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 100%;
-    }
-    label{
+        justify-content: space-around;
+        width: 875px;
+        max-width: 95%;
+        label{
         display: inline-block;
         margin: 0 auto;
         font-weight: 400;
@@ -70,10 +71,15 @@ const ContactForm = styled.div`
         color: #ccb25c;
         font-size: 1rem;
         font-weight: 800;
+        .wpcf7-not-valid-tip {
+            color: #ccb25c;
+            font-size: 1em;
+            font-weight: normal;
+            display: block;
+        }
     }
     input{
         display: block;
-        padding: 20px 12px;
         width: 100%;
         font-size: 16px;
         font-weight: 400;
@@ -89,7 +95,6 @@ const ContactForm = styled.div`
         -webkit-box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
         -moz-box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
         box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
-
         &:focus {
             outline-color: #ccb25c;
         }
@@ -110,33 +115,34 @@ const ContactForm = styled.div`
         box-shadow: 25px 23px 19px -14px rgba(0,0,0,0.47);
     }
     input[type="submit"] {
-    display: inline-block;
-    margin: 0 auto;
-    font-weight: 400;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    background-image: none;
-    border: 1px solid #ccb25c;
-    padding: 12px 36px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    border-radius: 4px;
-    color: var(--white);
-    background-color: transparent;
-    margin-bottom:3.5rem;
-    -webkit-box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
-    -moz-box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
-    box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
-    &:hover {
-        border: 1px solid #f6f2ec;
-        font-weight: 800; 
-      }
+        display: inline-block;
+        margin: 0 auto;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        background-image: none;
+        border: 1px solid #ccb25c;
+        padding: 12px 36px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        border-radius: 4px;
+        color: var(--white);
+        background-color: transparent;
+        margin-bottom:3.5rem;
+        -webkit-box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
+        -moz-box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
+        box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
+        &:hover {
+            border: 1px solid #f6f2ec;
+            font-weight: 800; 
+        }
     }
-
+    
+    }
     @media (max-width: 768px) {
       input{
           width: 80%;

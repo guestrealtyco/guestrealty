@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
+
 import Link from "./link";
 import List from "./list";
+import PropertyList from "./list/PropertyList";
 import FeaturedMedia from "./featured-media";
 import Contact from "./Contact";
 const Sub = ({ state, actions, libraries }) => {
@@ -9,6 +11,13 @@ const Sub = ({ state, actions, libraries }) => {
   const data = state.source.get(state.router.link);
   // Get the data of the post.
   const sub = state.source[data.type][data.id];
+
+  const postType = sub.acf.posttype
+  
+  const testimonial = state.source.get("/testimonials");
+  const properties = state.source.get("/property-list");
+
+  console.log(postType)
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
   /**
@@ -19,9 +28,11 @@ const Sub = ({ state, actions, libraries }) => {
   useEffect(() => {
     actions.source.fetch("/");
     List.preload();
+    actions.source.fetch("/property-list");
+    List.preload();
   }, []);
   // Load the post, but only if the data is ready.
-  return data.isReady ? (
+  return data.isReady && properties.isReady ? (
     <Container>
       <div>
         {/* <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} /> */}
@@ -37,15 +48,31 @@ const Sub = ({ state, actions, libraries }) => {
       <Content>
         <Html2React html={sub.content.rendered} />
         <ContactContainer>
-          <Contact/>
+        {postType === "renters" ? 
+          <iframe 
+          src="https://beds24.com/booking2.php?ownerid=65282&amp;referer=iframe"
+          title="Frontity"
+          width= "80%"
+          height= "3250px"
+        />
+          :
+          <Contact />
+      }
         </ContactContainer>
+           
       </Content>
+      {postType === "owners" ? 
+          <PropertyList />
+          :
+          null
+      }
     </Container>
   ) : null;
 };
 export default connect(Sub);
 const Container = styled.div`
-  font-family: 'Montserrat', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SourceSansPro", "Segoe UI", Roboto,
+      "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   width: 100%;
   margin: 0;
   background: #f6f2ec;
@@ -76,8 +103,6 @@ const Container = styled.div`
       height: 850px;
       /* width: auto; */
     }
-    /* background: -webkit-linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/1600/900");
-    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/1600/900"); The least supported option. */
   }
   .hero-header{
     font-style: normal;
@@ -158,32 +183,88 @@ const Container = styled.div`
         }
       }
     }
+    
     .summary{
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-around;
+      justify-content: center;
       padding: 20px;
+      h2{
+        color: #153211;
+        font-size: 2.5rem;
+      }
       h3{
         color: #153211;
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
       .summary-points{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
+        /* grid-template-columns: 32% 32% 32%;    */
+        column-gap: 10px;
+        row-gap: 15px;
+        /* This is better for small screens, once min() is better supported */
+        /* grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); */
+        grid-gap: 1rem;
+        align-items: baseline;
+        justify-content: center;
+        /* This is the standardized property now, but has slightly less support */
+        /* gap: 1rem */
         width: 90%;
         flex-wrap: wrap;
         h3{
           font-size: 1.5rem;
         }
-        p{
-          color: #153211;
-        }
+        
         .summary-point{
+          padding: 1.5rem;
+          border-radius: 1rem;
+          width: 100%;
+          img{
+          width: 25%;
+          height: auto;
+          margin: 0 auto;
+        }
+        }
+      }
+    }
+    
+    .icongroup{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: stretch;
+      width: 100%;
+      padding: 20px;
+      h2{
+        color: #153211;
+        font-size: 3rem;
+      }
+      h3{
+        color: #153211;
+        font-size: 2rem;
+      }
+      .icon-points{
+        display: flex;
+        width: 90%;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+
+        h3{
+          font-size: 1.35rem;
+        }
+        .icon-point{
+          padding: 1.5rem;
+          border-radius: 1rem;
+          width: 100%;
           display: flex;
           flex-direction: column;
-          width: 45%;
+          img{
+          width: 75%;
+          height: auto;
+        }
         }
       }
     }
@@ -198,16 +279,22 @@ const Container = styled.div`
         .body2-img{
           height: 625px;
           width: 50%;
-          background: -webkit-linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/900/650");
-          background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/900/650"); /* The least supported option. */
+          background: url("https://guestrealty.co/wp-content/uploads/2020/10/25856_MG_8703-lores.jpg");
+          background: url("https://guestrealty.co/wp-content/uploads/2020/10/25856_MG_8703-lores.jpg"); /* The least supported option. */
+          background-repeat: no-repeat;
+          background-size: cover;
         }
         }
         .body2-text{
           width: 50%;
           margin-left: 20px;
           padding-left: 20px;
-          h4{
+          h2{
           font-size: 1.5rem;
+          color: #153211;
+          }
+          h4{
+          font-size: 1rem;
           color: #153211;
           }
           p{
@@ -228,9 +315,9 @@ const Container = styled.div`
                 height: 90px;
               }
               .body2-subpoint{
-                color: #DBDBB6;
+                color: #153211;
             }
-          }
+          } 
         }
       }
     }
@@ -243,16 +330,21 @@ const Container = styled.div`
         flex-direction: column;
         align-items: center;
         padding: 20px;
-        h3{
+        h2{
           color: #153211;
-          font-size: 2rem;
+          font-size: 3rem;
         }
         p{
           color: #153211;
         }
       }
   }
+  .page-elms {
+    height: 25%;
+    margin: -10px;
+  }
 `
+
 const ContactContainer = styled.div`
   background-color: #f6f2ec;
   width: 100%;
@@ -261,6 +353,7 @@ const ContactContainer = styled.div`
   display: flex;
   flex-direction: column;
 `
+
 /**
  * This component is the parent of the `content.rendered` HTML. We can use nested
  * selectors to style that HTML.
@@ -289,7 +382,6 @@ const Content = styled.div`
   }
   iframe {
     display: block;
-    margin: auto;
   }
   blockquote {
     margin: 16px 0;
@@ -439,7 +531,58 @@ const Content = styled.div`
     }
     .body2{
       .body2-content{
-        display: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .body2-img{
+          min-height: 350px;
+          width: 100%;
+      }
+      }
+      .body2-text{
+          width: 85%;
+          margin-left: 10px;
+          padding-right: 20px;
+          h2{
+          font-size: 2rem;
+          color: #153211;
+          }
+          h4{
+          font-size: 1rem;
+          color: #153211;
+          }
+          p{
+            color: #153211;
+          }
+          .body2-points{
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            h3{
+              color: #ccb25c;
+              width: 100%;
+              font-size: 2rem;
+            }
+            p{
+              color: #153211;
+              font-size: 1rem;
+            }
+              .body2-point{
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              padding: 12px;
+              margin-left: -10px;
+              img{
+                width: 90px;
+                height: 90px;
+              }
+              .body2-subpoint{
+                color: #153211;
+              }
+        }
+          }
       }
     }
     .signup{
@@ -450,7 +593,9 @@ const Content = styled.div`
         }
       }
     }
-    
+    iframe{
+      height: 6750px;
+    }
   }
   @media (min-width: 420px) {
     img.aligncenter,

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
 import Link from "./link";
 import List from "./list";
+// import Testimonials from "./testimonials/Testimonials.js";
 import FeaturedMedia from "./featured-media";
 const homeHero = "https://guestrealty.co/wp-content/uploads/hero/home-hero.gif";
 
@@ -15,6 +16,10 @@ const Page = ({ state, actions, libraries }) => {
   // Get a human readable date.
   const date = new Date(page.date);
   // Get the html2react component.
+
+
+
+
   const Html2React = libraries.html2react.Component;
   /**
    * Once the post has loaded in the DOM, prefetch both the
@@ -24,9 +29,10 @@ const Page = ({ state, actions, libraries }) => {
   useEffect(() => {
     actions.source.fetch("/");
     List.preload();
+
   }, []);
   // Load the post, but only if the data is ready.
-  return data.isReady ? (
+  return data.isReady ?  (
     <Container>
       <div>
         {/* <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} /> */}
@@ -47,7 +53,8 @@ const Page = ({ state, actions, libraries }) => {
 };
 export default connect(Page);
 const Container = styled.div`
-  font-family: 'Montserrat', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SourceSansPro", "Segoe UI", Roboto,
+      "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   width: 100%;
   margin: 0;
     .directions{
@@ -82,12 +89,13 @@ const Container = styled.div`
     .hero-header-text{
       display: flex;
       flex-direction: column;
+      margin: 10px;
     }
     .hero-header{
       font-style: normal;
       padding: 20px;
       font-weight: 800;
-      font-size: 4rem;
+      font-size: 3rem;
       line-height: 80px;
       /* identical to box height, or 143% */
       text-align: center;
@@ -100,7 +108,7 @@ const Container = styled.div`
       background-color: #f6f2ec;
       display: flex;
       flex-direction: column;
-      padding: 10px;
+      padding: 20px 20px 40px 20px;
         .sub-header{
           margin-left: 10px;
           h2{
@@ -119,63 +127,84 @@ const Container = styled.div`
       background-color: #f6f2ec;
       display: flex;
       flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-items: stretch;
         .sub-text{
-          background-color: #f6f2ec;
-          width: 40%;
+          display: flex;
+          flex-direction: column;
+          padding: 25px;
+          width: 85%;
           h3{
-            color: #013110
+            color: #153211;
+          }
+          img {
+            width: 100%;
+            max-height: 280px;
+
+            height: auto;
           }
           p{
-            color: #000;
+            font-size: 1rem;
+            padding: 10px;
+            margin-top: 10px;
           }
         }
       }
-    }
+    } 
     .body1{
-      background-color: #013110;
+    background-color: #013110;
       .body1-content{
         display: flex;
-        flex-direction: row;
+        flex-direction: row-reverse;
         align-items: center;
         justify-content: center;
-        color: #c1ab22; 
-          .body1-img{
-            height: 900px;
-            width: 50%;
-            background: -webkit-linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/800/650");
-            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/800/650"); /* The least supported option. */
-            background-size: cover;
-          }
+        color: #f6f2ec; 
+        .body1-img{
+          min-height: 700px;
+          width: 55%;
+          background: url("https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg");
+          background: url("https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg"); /* The least supported option. */
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position:45% 75%;
+        }
         }
         .body1-text{
           width: 45%;
           margin-left: 10px;
-          padding: 20px;
-          h3{
-          font-size: 2.5rem;
-          color: #ccb25c;
+          padding-right: 20px;
+          h2{
+          font-size: 2rem;
+          color: #153211;
+          }
+          h4{
+          font-size: 1rem;
+          color: #153211;
           }
           p{
-            color: #DBDBB6;
+            color: #153211;
           }
           .body1-points{
+            margin-left: 20px;
             display: flex;
             flex-direction: column;
-            .body1-point{
+            h3{
+              color: #ccb25c;
+              width: 100%;
+              font-size: 2rem;
+            }
+            p{
+              color: #f6f2ec;
+              font-size: 1rem;
+            }
+              .body1-point{
               display: flex;
               flex-direction: row;
-              padding: 10px;
+              align-items: center;
+              padding: 12px;
+              margin-left: -10px;
               img{
                 width: 90px;
                 height: 90px;
               }
-              p{
-                padding-top: px;
-              }
-            }
           }
         }
       }
@@ -210,56 +239,60 @@ const Container = styled.div`
           flex-direction: column;
           align-items: center;
         }
-      .reviews{
+    .testimonials{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1%;
+      .testimonialTitle{
         display: flex;
-        flex-direction: row;
-        background-color: #f6f2ec;
-        .reviews-content{
-          width: 40%;
-          margin: 10px;
-          padding: 5%;
-          .reviews-header{
-            h2{
-              color: #013110;
-              font-size: 2rem;
-            }
-            p{
-              color: #000;
-            }
-          }
-          .reviews-logos{
-            display: flex;
-            flex-direction: row;
-          }
-        }
-        .reviews-featured{
-          width: 40%;
-          margin: 5%;
-          padding: 5%;
-          h3{
-            color: #013110;
-            font-size: 1.5rem;
-          }
+        flex-direction: column;
+        align-items: center;
+        font-size: 2rem;
+        color: #153211;
+        p{
+          font-size: 1.5rem;
+          color: #153211;
         }
       }
-      .signup{
-        background-color: #013110;
-        padding: 40px;
-        .signup-container{
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          align-items: center;
-          justify-content: space-between;
-          .signup-text{
-            font-size: 1.2rem;
-            color: #DBDBB6;
-          }
-          .signup-buttons{
-            display: flex;
-            flex-direction: row;
-          }
+      .testimonialBox{
+      display: flex;
+      justify-content: space-evenly;
+      .userComment{
+      display: flex;
+      flex-direction: column;
+      flex-basis: 30%;
+      align-items: center;
+      h3{
+        color: #153211;
+      }
+        p {
+          width: 90%;
+          color: #153211;
         }
+      }
+    }
+  }
+  .signup{
+    background-color: #013110;
+    padding: 40px;
+    .signup-container{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      .signup-text{
+        font-size: 1.2rem;
+        color: #DBDBB6;
+      }
+      .signup-buttons{
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
 `
 /**
  * This component is the parent of the `content.rendered` HTML. We can use nested
@@ -347,7 +380,7 @@ const Content = styled.div`
     background-color: #1f38c5;
   }
   /* WordPress Core Align Classes */
-  @media (max-width: 750px) {
+  @media screen and (max-width: 750px) {
     .hero {
       height: 60vh;
     }
@@ -355,7 +388,7 @@ const Content = styled.div`
       object-fit: cover;
     }
     .hero-header{
-      display: none;
+      font-size: 1.25rem;
     }
     .hero-buttons{
       display: flex;
@@ -366,93 +399,151 @@ const Content = styled.div`
       background-color: #f6f2ec;
       display: flex;
       flex-direction: column;
-      padding: 10px;
+      padding: 20px 20px 40px 20px;
         .sub-header{
           margin-left: 10px;
-          padding: 5px;
           h2{
           color: #013110;
-          font-size: 1.5em;
+          font-size: 2.5em;
           font-weight: 600;
+          padding: 10px;
           }
           h4{
-            font-size: 1rem;
+            font-size: 1.5rem;
+            color: #013110;
+            padding: 10px;
           }
       }
       .sub-content{
       background-color: #f6f2ec;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
-      align-items: stretch;
         .sub-text{
+          display: flex;
+          flex-direction: column;
           padding: 25px;
           width: 85%;
+          h3{
+            color: #153211;
+          }
+          img {
+            max-width: 100%;
+
+            height: auto;
+          }
           p{
-            font-size: 0.85rem;
+            font-size: 1rem;
+            padding: 10px;
+            margin-top: 10px;
           }
         }
       }
-    }
+    } 
     .body1{
+    background-color: #013110;
       .body1-content{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        color: #c1ab22; 
-          .body1-img{
-            display: none;
-          }
+        color: #f6f2ec; 
+        .body1-img{
+          min-height: 350px;
+          width: 100%;
+          background: url("https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg");
+          background: url("https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg"); /* The least supported option. */
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position:45% 75%;
+        } 
         }
         .body1-text{
           width: 85%;
-          padding-left: 10px;
+          margin-left: 10px;
+          padding-right: 20px;
+          h2{
+          font-size: 2rem;
+          color: #153211;
+          }
+          h4{
+          font-size: 1rem;
+          color: #153211;
+          }
+          p{
+            color: #153211;
+          }
+          .body1-points{
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
             h3{
-            font-size: 1.5rem;
+              color: #ccb25c;
+              width: 100%;
+              font-size: 2rem;
             }
             p{
-            font-size: 0.75rem;
+              color: #f6f2ec;
+              font-size: 1rem;
             }
+              .body1-point{
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              padding: 12px;
+              margin-left: -10px;
+              img{
+                width: 90px;
+                height: 90px;
+              }
           }
         }
+      }
+    }
+
+        
         .benefits{
         display: none;
       }
-      .reviews{
+      .testimonials{
         display: flex;
         flex-direction: column;
-        background-color: #f6f2ec;
-        padding: 10px;
-        .reviews-content{
-          width: 100%;
-          .reviews-header{
-            h2{
-              color: #013110;
-              font-size: 2rem;
-            }
+        justify-content: space-between;
+        align-items: center;
+        padding: 1%;
+        .testimonialTitle{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          font-size: 1rem;
+          color: #153211;
           p{
-              color: #000;
-            }
-          }
-          .reviews-logos{
-            display: flex;
-            flex-direction: row;
+            font-size: 1rem;
+            color: #153211;
           }
         }
-        .reviews-featured{
-          width: 80%;
-          padding: 20px;
-            h3{
-              color: #013110;
-              font-size: 1.5rem;
-            }
-            p{
-              font-size: 0.75rem;
-            }
+    .testimonialBox{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        color: #153211;
+        .userComment{
+          display: flex;
+          flex-direction: column;
+          flex-basis: 30%;
+          width: 75%;
+          align-items: center;
+          color: #153211;
+          h3{
+            color: #153211;
+          }
+          p {
+            width: 90%;
+            color: #153211;
+          } 
         }
       }
-      
+    } 
     .signup{
       background-color: #013110;
       padding: 40px;
@@ -467,10 +558,20 @@ const Content = styled.div`
           display: flex;
           flex-direction: column;
         }
-      } 
+      }
     }
-     
+  input[type="text"],
+  input[type="email"],
+  input[type="url"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="date"],
+  textarea,
+  select {
+    font-size: 0.75rem;
   }
+     
+
   
   @media (min-width: 420px) {
     img.aligncenter,

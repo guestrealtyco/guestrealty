@@ -26,6 +26,9 @@ const Item = ({ state, item }) => {
     <>
       {!isJobs && (
         <Article>
+        <Link className="article-title" link={item.link}>
+          <Title dangerouslySetInnerHTML={{ __html: item.title.rendered }} />
+        </Link>  
         {state.theme.featured.showOnList && (
           <FeaturedMedia id={item.featured_media} />
         )}
@@ -46,9 +49,7 @@ const Item = ({ state, item }) => {
           </PublishDate>
         </div>
 
-        <Link className="article-title" link={item.link}>
-          <Title dangerouslySetInnerHTML={{ __html: item.title.rendered }} />
-        </Link>
+        
 
         {/* If the post has an excerpt (short summary text), we render it */}
         {item.excerpt && (
