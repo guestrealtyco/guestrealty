@@ -17,7 +17,6 @@ const Sub = ({ state, actions, libraries }) => {
   const testimonial = state.source.get("/testimonials");
   const properties = state.source.get("/property-list");
 
-  console.log(postType)
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
   /**
