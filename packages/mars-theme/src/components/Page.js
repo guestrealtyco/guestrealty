@@ -130,10 +130,8 @@ const Container = styled.div`
       .sub-content{
       background-color: #f6f2ec;
       display: flex;
-      flex-direction: column;
-      border: 2px solid red;
+      flex-direction: row;
         .sub-text{
-          border: 2px solid blue;
           display: flex;
           flex-direction: column;
           padding: 25px;
@@ -151,68 +149,73 @@ const Container = styled.div`
             font-size: 1rem;
             padding: 10px;
             margin-top: 10px;
-            border: 2px solid red;
           }
         }
       }
     } 
     .body1{
-      background-color: #013110;
-      .body1-content{
+    background-color: #013110;
+    overflow: hidden;
+    .body1-content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+        .body1-img{
+          display: flex;
+          width: 50%;
+          min-height: 375px;
+          margin-right: -25px;
+          padding: 0;
+          background: #C33764;  /* fallback colour. Make sure this is just one solid colour. */
+          background: url('https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg');
+          background: url('https://guestrealty.co/wp-content/uploads/2020/10/GR_Team.jpeg'); /* The least supported option. */
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          img{
+            width: 100%;
+          }
+        }
+      }
+      .body1-top{
+        width: 95%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row-reverse;
         align-items: center;
         justify-content: center;
-        
-          .body1-img{
-            width: 45%;
-            margin: 0 auto;
-            padding: 0;
-            img{
-              width: 95%;
-            }
-          }
+      }
+      .body1-text{
+        margin-top: 0;
+        padding-top: 0;
+        width: 45%; 
+        margin: 0 auto;
+        padding: 0;
+        h3{
+        font-size: 2.5rem;
+        color: #ccb25c;
         }
-        .body1-top{
-          width: 95%;
+        p{
+          color: #DBDBB6;
+        }
+      }
+      .body1-points{
           display: flex;
-          flex-direction: row-reverse;
-          align-items: center;
-          justify-content: center;
-        }
-        .body1-text{
-          margin-top: 0;
-          padding-top: 0;
-          width: 45%; 
-          margin: 0 auto;
-          padding: 0;
-          h3{
-          font-size: 2.5rem;
-          color: #ccb25c;
-          }
-          p{
-            color: #DBDBB6;
-          }
-        }
-        .body1-points{
+          flex-direction: row;
+          .body1-point{
             display: flex;
-            flex-direction: column;
-            .body1-point{
-              display: flex;
-              flex-direction: row;
-              padding: 10px;
-              img{
-                width: 90px;
-                height: 90px;
-              }
-              h4{
-                padding-top: 12px;
-                color: #DBDBB6;
-              }
+            flex-direction: row;
+            padding: 10px;
+            img{
+              width: 90px;
+              height: 90px;
+            }
+            h5{
+              padding-top: 12px;
+              color: #f6f2ec;
             }
           }
       }
-    }
+}
     .benefits{
       display: flex;
       flex-direction: column;
@@ -268,43 +271,35 @@ const Container = styled.div`
       flex-direction: column;
       flex-basis: 30%;
       align-items: center;
+      h3{
+        color: #153211;
+      }
         p {
           width: 90%;
           color: #153211;
         }
-          .user-pic-ph{ 
-          img{
-            width: 25%;
-            border-radius: 50px;
-          }
-        }
       }
     }
+  }
+  .signup{
+    background-color: #013110;
+    padding: 40px;
+    .signup-container{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      .signup-text{
+        font-size: 1.2rem;
+        color: #DBDBB6;
+      }
+      .signup-buttons{
+        display: flex;
+        flex-direction: row;
+      }
     }
-    
-    
-      .signup{
-        background-color: #013110;
-        padding: 40px;
-        .signup-container{
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          align-items: center;
-          justify-content: space-between;
-          .signup-text{
-            font-size: 1.2rem;
-            color: #DBDBB6;
-          }
-          .signup-buttons{
-            display: flex;
-            flex-direction: row;
-          }
-        }
-        
-`
-const CarouselContainer = styled.div`
-width: 100%;
+  }
 `
 /**
  * This component is the parent of the `content.rendered` HTML. We can use nested
@@ -400,7 +395,7 @@ const Content = styled.div`
       object-fit: cover;
     }
     .hero-header{
-      font-size: 1.5rem;
+      font-size: 1.25rem;
     }
     .hero-buttons{
       display: flex;
@@ -411,82 +406,100 @@ const Content = styled.div`
       background-color: #f6f2ec;
       display: flex;
       flex-direction: column;
-      padding: 10px;
+      padding: 20px 20px 40px 20px;
         .sub-header{
-          margin-left: 5px;
-          padding: 5px;
+          margin-left: 10px;
           h2{
           color: #013110;
-          font-size: 1.5em;
+          font-size: 2.5em;
           font-weight: 600;
+          padding: 10px;
           }
           h4{
-            font-size: 1rem;
+            font-size: 1.5rem;
+            color: #013110;
+            padding: 10px;
           }
       }
       .sub-content{
       background-color: #f6f2ec;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
-      align-items: stretch;
         .sub-text{
+          display: flex;
+          flex-direction: column;
           padding: 25px;
           width: 85%;
+          h3{
+            color: #153211;
+          }
           img {
-            min-height: 200px;
+            width: 100%;
+
             height: auto;
           }
           p{
-            font-size: 0.85rem;
+            font-size: 1rem;
+            padding: 10px;
+            margin-top: 10px;
           }
         }
       }
-    }
+    } 
     .body1{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      .body1-content{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        color: #c1ab22; 
-        }
-        .body1-top{
-          width: 95%;
-          flex-direction: column-reverse;
-          align-items: center;
-          justify-content: center;
-        
+    .body1-content{
         .body1-img{
-          width: 95%;
+          width: 100%;
+          min-height: 350px;
+          margin: 0 auto;
+          padding: 0;
           img{
             width: 100%;
           }
         }
-        .body1-text{
-          width: 95%;
-          
-            h3{
-            font-size: 1.5rem;
+      }
+      .body1-top{
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .body1-text{
+        margin-top: 0;
+        padding-top: 0;
+        width: 80%; 
+        margin: 0 auto;
+        padding: 0;
+        h3{
+        font-size: 2.5rem;
+        color: #ccb25c;
+        }
+        p{
+          color: #DBDBB6;
+        }
+      }
+      .body1-points{
+          display: flex;
+          flex-direction: column;
+          width: 80%;
+          .body1-point{
+            display: flex;
+            flex-direction: row;
+            padding: 10px;
+            img{
+              width: 90px;
+              height: 90px;
             }
-            p{
-            font-size: 0.85rem;
+            h5{
+              padding-top: 12px;
+              color: #f6f2ec;
             }
           }
-        }
-        }
-        .body1-points{
-          margin: 0px 20px 0px 20px;
-            .body1-point{
-              p{
-                font-size: 0.85rem;
-              }
-            }
-          }
+      }  
+}
+
+        
         .benefits{
         display: none;
       }
@@ -520,21 +533,17 @@ const Content = styled.div`
           width: 75%;
           align-items: center;
           color: #153211;
+          h3{
+            color: #153211;
+          }
           p {
             width: 90%;
             color: #153211;
           }
-          .user-pic-ph {
-            img{
-              background-color: #f5f5f5;
-              height: 100px;
-              width: 100px;
-              border-radius: 50px;
-            }
-          }
         }
       }
-    }  
+    } 
+  
       
     .signup{
       background-color: #013110;
@@ -552,7 +561,9 @@ const Content = styled.div`
         }
       }
     }
-  }
+    
+  
+
     
     input[type="text"],
   input[type="email"],
