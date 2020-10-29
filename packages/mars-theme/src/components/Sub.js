@@ -3,6 +3,7 @@ import { connect, styled } from "frontity";
 
 import Link from "./link";
 import List from "./list";
+import PropertyList from "./list/PropertyList";
 import FeaturedMedia from "./featured-media";
 import Contact from "./Contact";
 const Sub = ({ state, actions, libraries }) => {
@@ -13,6 +14,9 @@ const Sub = ({ state, actions, libraries }) => {
 
   const postType = sub.acf.posttype
   
+  const testimonial = state.source.get("/testimonials");
+  const properties = state.source.get("/property-list");
+
   console.log(postType)
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
@@ -24,9 +28,11 @@ const Sub = ({ state, actions, libraries }) => {
   useEffect(() => {
     actions.source.fetch("/");
     List.preload();
+    actions.source.fetch("/property-list");
+    List.preload();
   }, []);
   // Load the post, but only if the data is ready.
-  return data.isReady ? (
+  return data.isReady && properties.isReady ? (
     <Container>
       <div>
         {/* <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} /> */}
@@ -54,6 +60,11 @@ const Sub = ({ state, actions, libraries }) => {
       }
         </ContactContainer>
       </Content>
+      {postType === "owners" ? 
+          <PropertyList />
+          :
+          null
+      }
     </Container>
   ) : null;
 };

@@ -8,8 +8,8 @@ const List = ({ state }) => {
   // Get the data of the current list.
   const data = state.source.get(state.router.link);
   let title = 'Blog';
-  if ( data.isAwsmJobOpeningsArchive ) {
-    title = 'Career';
+  if ( data.isisPropertyArchive ) {
+    null
   }
 
   return (

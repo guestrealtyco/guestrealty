@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
 import Link from "./link";
+import PropertyList from "./list/PropertyList"
 import List from "./list";
 // import Testimonials from "./testimonials/Testimonials.js";
 import FeaturedMedia from "./featured-media";
@@ -18,7 +19,7 @@ const Page = ({ state, actions, libraries }) => {
   // Get the html2react component.
 
   const testimonial = state.source.get("/testimonials");
-
+  const properties = state.source.get("/property-list");
 
   const Html2React = libraries.html2react.Component;
   /**
@@ -28,12 +29,12 @@ const Page = ({ state, actions, libraries }) => {
    */
   useEffect(() => {
     actions.source.fetch("/");
-    List.preload()
-    actions.source.fetch("/testimonials");
-    List.preload()
+    List.preload();
+    actions.source.fetch("/property-list");
+    List.preload();
   }, []);
   // Load the post, but only if the data is ready.
-  return data.isReady && testimonial.isReady ? (
+  return data.isReady && properties.isReady ?  (
     <Container>
       <div>
         {/* <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} /> */}
@@ -49,7 +50,7 @@ const Page = ({ state, actions, libraries }) => {
       <Content>
         <Html2React html={page.content.rendered} />
       </Content>
-    {/* <Testimonials /> */}
+      <PropertyList />
     </Container>
   ) : null;
 };
@@ -91,12 +92,13 @@ const Container = styled.div`
     .hero-header-text{
       display: flex;
       flex-direction: column;
+      margin: 10px;
     }
     .hero-header{
       font-style: normal;
       padding: 20px;
       font-weight: 800;
-      font-size: 4rem;
+      font-size: 3rem;
       line-height: 80px;
       /* identical to box height, or 143% */
       text-align: center;
@@ -127,31 +129,32 @@ const Container = styled.div`
       .sub-content{
       background-color: #f6f2ec;
       display: flex;
-      flex-direction: row;
-      flex-wrap: no-wrap;
-      justify-content: space-around;
-      align-items: baseline;
+      flex-direction: column;
+      border: 2px solid red;
         .sub-text{
-          background-color: #f6f2ec;
-          width: 40%;
+          border: 2px solid blue;
+          display: flex;
+          flex-direction: column;
+          padding: 25px;
+          width: 85%;
           h3{
-            color: #013110;
-            font-size: 1rem;
+            color: #153211;
           }
-          img{
-            width: 50%;
+          img {
+            width: 100%;
+            max-height: 280px;
+
             height: auto;
-            margin-left: 10px;
-            border-radius: 20px;
           }
           p{
-            color: #000;
-            font-size: 0.80rem;
-            margin: 0px 0.5px 0px 0.5px;
+            font-size: 1rem;
+            padding: 10px;
+            margin-top: 10px;
+            border: 2px solid red;
           }
         }
       }
-    }
+    } 
     .body1{
       background-color: #013110;
       .body1-content{
@@ -159,7 +162,7 @@ const Container = styled.div`
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        color: #c1ab22; 
+        
           .body1-img{
             width: 45%;
             margin: 0 auto;
@@ -179,7 +182,7 @@ const Container = styled.div`
         .body1-text{
           margin-top: 0;
           padding-top: 0;
-          width: 45%;
+          width: 45%; 
           margin: 0 auto;
           padding: 0;
           h3{
@@ -299,6 +302,9 @@ const Container = styled.div`
         }
         
 `
+const CarouselContainer = styled.div`
+width: 100%;
+`
 /**
  * This component is the parent of the `content.rendered` HTML. We can use nested
  * selectors to style that HTML.
@@ -393,7 +399,7 @@ const Content = styled.div`
       object-fit: cover;
     }
     .hero-header{
-      display: none;
+      font-size: 1.5rem;
     }
     .hero-buttons{
       display: flex;
@@ -426,6 +432,10 @@ const Content = styled.div`
         .sub-text{
           padding: 25px;
           width: 85%;
+          img {
+            min-height: 200px;
+            height: auto;
+          }
           p{
             font-size: 0.85rem;
           }
