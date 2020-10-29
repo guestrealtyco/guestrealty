@@ -50,7 +50,7 @@ const settings = {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          "api": "https://guestrealty.co/wp-json",
+          "api": "https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-json",
           "homepage": "/home",
           "postsPage": "/blog",
           "postTypes": [
