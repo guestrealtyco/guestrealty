@@ -23,7 +23,7 @@ const Nav = ({ state }) => (
         </NavItem>
       );
     })}
-    <a href="tel:+610280956240"><button className="nav-button btn-dark">Call Us</button></a>
+    <a href="tel:+610280956240"><button className="nav-button btn-gold-light">Call Us</button></a>
     {/* <a href="/sub/for-renters/"><button className="nav-button btn-dark">Book Now</button></a> */}
   </NavContainer>
 );
@@ -31,6 +31,9 @@ const Nav = ({ state }) => (
 export default connect(Nav);
 
 const NavContainer = styled.nav`
+  font-family: freight-sans-pro, sans-serif;
+  font-style: normal;
+  font-weight: 400;
   list-style: none;
   display: flex;
   justify-content: flex-end;
@@ -50,11 +53,15 @@ const NavContainer = styled.nav`
 const NavItem = styled.div`
   padding: 0;
   margin: 0 16px;
-  color: #013110;
+  color: #f6f2ec;
   font-size: 1rem;
   font-weight: 550;
   box-sizing: border-box;
   flex-shrink: 0;
+  font-family: freight-sans-pro, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 1px;
 
   & > a {
     display: inline-block;
@@ -65,11 +72,14 @@ const NavItem = styled.div`
     /* Use for semantic approach to style the current link */
     &[aria-current="page"] {
       border-bottom-color: #ccb25c;
+      font-family: freight-sans-pro, sans-serif;
       font-weight: 750;
     }
     &:hover {
         color:#ccb25c;
-        font-weight: 800; 
+        font-weight: 600; 
+        font-family: freight-sans-pro, sans-serif;
+        font-style: normal;
       }
   }
 

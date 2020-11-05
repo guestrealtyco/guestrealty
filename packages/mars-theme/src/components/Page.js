@@ -4,6 +4,8 @@ import Link from "./link";
 import List from "./list";
 // import Testimonials from "./testimonials/Testimonials.js";
 import FeaturedMedia from "./featured-media";
+import FadeIn from 'react-fade-in';
+
 const homeHero = "https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/hero/home-hero.gif";
 
 const Page = ({ state, actions, libraries }) => {
@@ -33,7 +35,10 @@ const Page = ({ state, actions, libraries }) => {
   }, []);
   // Load the post, but only if the data is ready.
   return data.isReady ?  (
-    <Container>
+    <FadeIn
+    transitionDuration = '1400'
+    >
+      <Container>
       <div>
         {/* <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} /> */}
         {/* Only display author and date on posts */}
@@ -45,10 +50,16 @@ const Page = ({ state, actions, libraries }) => {
       )}
       {/* Render the content using the Html2React component so the HTML is processed
        by the processors we included in the libraries.html2react.processors array. */}
+      <FadeIn
+        transitionDuration = '1400'
+      >
       <Content>
         <Html2React html={page.content.rendered} />
       </Content>
+      </FadeIn>
     </Container>
+    </FadeIn>
+    
   ) : null;
  
 };
@@ -88,6 +99,10 @@ const Container = styled.div`
       object-fit: cover;
     }
     .hero-header-text{
+      font-family: ivymode, sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 0.95em;
       display: flex;
       flex-direction: column;
       margin: 10px;
@@ -117,11 +132,13 @@ const Container = styled.div`
           font-size: 2.5em;
           font-weight: 600;
           padding: 10px;
+          font-family: ivymode;
           }
           h4{
             font-size: 1.5rem;
             color: #013110;
             padding: 10px;
+            font-family: ivymode;
           }
       }
       .sub-content{
@@ -133,7 +150,9 @@ const Container = styled.div`
           padding: 25px;
           width: 85%;
           h3{
-            color: #153211;
+            color: #013110;
+            font-family: ivymode;
+            font-size: 1rem;
           }
           img {
             width: 100%;
@@ -145,6 +164,9 @@ const Container = styled.div`
             font-size: 1rem;
             padding: 10px;
             margin-top: 10px;
+            font-family: freight-sans-pro;
+            font-weight: 500;
+            color: #013110;
           }
         }
       }
@@ -160,11 +182,11 @@ const Container = styled.div`
         .body1-img{
           min-height: 700px;
           width: 55%;
-          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/GR_Team.jpeg");
-          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/GR_Team.jpeg"); /* The least supported option. */
+          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/11/grteam.jpg");
+          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/11/grteam.jpg"); /* The least supported option. */
           background-repeat: no-repeat;
           background-size: cover;
-          background-position:50% 75%;
+          background-position:45% 75%;
         }
         }
         .body1-text{
@@ -173,14 +195,18 @@ const Container = styled.div`
           padding-right: 20px;
           h2{
           font-size: 2rem;
-          color: #153211;
+          color: #013110;
+          font-family: ivymode;
+          letter-spacing: 2px;
           }
           h4{
           font-size: 1rem;
-          color: #153211;
+          color: #013110;
+          font-family: ivymode;
+          letter-spacing: 2px;
           }
           p{
-            color: #153211;
+            color: #013110;
           }
           .body1-points{
             margin-left: 20px;
@@ -190,16 +216,21 @@ const Container = styled.div`
               color: #ccb25c;
               width: 100%;
               font-size: 2rem;
+              font-family: ivymode;
+              letter-spacing: 2px;
             }
             p{
               color: #f6f2ec;
               font-size: 1rem;
+              font-family: freight-sans-pro;
             }
               .body1-point{
               display: flex;
               flex-direction: row;
               align-items: center;
               padding: 12px;
+              font-family: ivymode;
+              font-weight: 400;
               margin-left: -10px;
               img{
                 width: 90px;
@@ -222,12 +253,15 @@ const Container = styled.div`
         font-size: 2rem;
         color: #013110;
         padding: 10px;
+        font-family: ivymode;
       }
       .benefits-content{
         display: flex;
         flex-direction: row;
         align-items: baseline;
         justify-content: space-around;
+        font-family: freight-sans-pro;
+        color: #013110;
         padding: 20px;
         img{
           height: 100px;
@@ -250,10 +284,12 @@ const Container = styled.div`
         flex-direction: column;
         align-items: center;
         font-size: 2rem;
-        color: #153211;
+        font-family: ivymode;
+        background-color: #013110;
+        color: #ccb25c;
         p{
           font-size: 1.5rem;
-          color: #153211;
+          color: #ccb25c;
         }
       }
       .testimonialBox{
@@ -267,11 +303,13 @@ const Container = styled.div`
       justify-content: baseline;
       h3{
         width: 90%;
-        color: #153211;
+        color: #013110;
+        font-family: ivymode;
       }
         p {
           width: 90%;
-          color: #153211;
+          color: #013110;
+          font-family: freight-sans-pro;
         }
       }
     }
@@ -286,8 +324,10 @@ const Container = styled.div`
       align-items: center;
       justify-content: space-between;
       .signup-text{
-        font-size: 1.2rem;
+        font-size: 1rem;
         color: #DBDBB6;
+        font-family: ivymode, sans-serif;
+        font-style: normal;
       }
       .signup-buttons{
         display: flex;
@@ -408,7 +448,7 @@ const Content = styled.div`
       flex-direction: column;
         .sub-text{
           h3{
-            color: #153211;
+            color: #013110;
           }
           img {
             display: inline-block;
@@ -432,13 +472,9 @@ const Content = styled.div`
         justify-content: center;
         color: #f6f2ec; 
         .body1-img{
-          min-height: 350px;
+          min-height: 650px;
           width: 100%;
-          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/GR_Team.jpeg");
-          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/GR_Team.jpeg"); /* The least supported option. */
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position:45% 75%;
+          background-position: 20% 40%;
         } 
         }
         .body1-text{
@@ -447,14 +483,14 @@ const Content = styled.div`
           padding-right: 20px;
           h2{
           font-size: 2rem;
-          color: #153211;
+          color: #013110;
           }
           h4{
           font-size: 1rem;
-          color: #153211;
+          color: #013110;
           }
           p{
-            color: #153211;
+            color: #013110;
           }
           .body1-points{
             margin-left: 20px;
@@ -530,7 +566,7 @@ const Content = styled.div`
           padding: 25px;
           width: 85%;
           h3{
-            color: #153211;
+            color: #013110;
           }
           img {
             max-width: 100%;
@@ -556,11 +592,7 @@ const Content = styled.div`
         .body1-img{
           min-height: 350px;
           width: 100%;
-          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/GR_Team.jpeg");
-          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/GR_Team.jpeg"); /* The least supported option. */
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position:45% 75%;
+          
         } 
         }
         .body1-text{
@@ -569,14 +601,14 @@ const Content = styled.div`
           padding-right: 20px;
           h2{
           font-size: 2rem;
-          color: #153211;
+          color: #013110;
           }
           h4{
           font-size: 1rem;
-          color: #153211;
+          color: #013110;
           }
           p{
-            color: #153211;
+            color: #013110;
           }
           .body1-points{
             margin-left: 20px;
@@ -621,10 +653,10 @@ const Content = styled.div`
           flex-direction: column;
           align-items: center;
           font-size: 1rem;
-          color: #153211;
+          color: #013110;
           p{
             font-size: 1rem;
-            color: #153211;
+            color: #013110;
           }
         }
     .testimonialBox{
@@ -632,20 +664,20 @@ const Content = styled.div`
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
-        color: #153211;
+        color: #013110;
         .userComment{
           display: flex;
           flex-direction: column;
           flex-basis: 30%;
           width: 75%;
           align-items: center;
-          color: #153211;
+          color: #013110;
           h3{
-            color: #153211;
+            color: #013110;
           }
           p {
             width: 90%;
-            color: #153211;
+            color: #013110;
           } 
         }
       }

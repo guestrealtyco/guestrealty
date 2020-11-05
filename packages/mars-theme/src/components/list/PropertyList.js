@@ -20,29 +20,29 @@ const PropertyList = ({ state }) => {
         <Header>
           <img className ="titleImg" src={star_arch} />
           <h2>Take a look at some of our rental properties</h2>
-          <p class="swipe">Swipe to View</p>
-          <p class="drag"> Hold down your cursor and drag with your mouse desktop or swipe from your smartphone/tablet </p>
         </Header>
       )}
       {!data.isAwsmJobOpeningsArchive && (
         <CarouselProvider
-          naturalSlideWidth={100}
-          naturalSlideHeight={250}
+          naturalSlideWidth={10}
+          naturalSlideHeight={10}
           infinite={true}
           isIntrinsicHeight={true}
           touchEnabled={true}
-          visibleSlides={1}
+          visibleSlides={2.5}
           totalSlides={data.items.length}
         >
-          {/* <ButtonBack className="button btn-dark">Back</ButtonBack>
-          <ButtonNext className="button btn-dark">Next</ButtonNext> */}
-          <Slider>
-            {data.items.map(({ type, index, id }) => {
-              const item = state.source[type][id];
-              // Render one Item component for each one.
-              return <Slide index={index}><Item key={item.id} item={item} /></Slide>;
-            })}
-          </Slider>
+          <CarouselHorizontal>
+            <ButtonBack>&#x2190;</ButtonBack>
+            <ButtonNext>&#x2192;</ButtonNext>
+            <Slider>
+              {data.items.map(({ type, index, id }) => {
+                const item = state.source[type][id];
+                // Render one Item component for each one.
+                return <Slide index={index}><Item key={item.id} item={item} /></Slide>;
+              })}
+            </Slider>
+          </CarouselHorizontal> 
         </CarouselProvider>
       )}
     </Container>
@@ -58,7 +58,9 @@ const Container = styled.section`
   padding-right: 15px;
   padding-left: 15px;
   list-style: none;
-  color: #153211;
+  color: #013110;
+  display: block;
+  position: relative;
   
   .titleImg{
     width: 20%;
@@ -69,30 +71,88 @@ const Container = styled.section`
     margin-top: -10px;
     font-size: 3rem;
   }
-  .swipe{
-    display: none;
-    font-size: 0.75rem;
+  .carousel__slide{
+    margin: 10px;
+    min-height: 500px;
+    max-width: 25%;
+    h1{
+      font-size: 1.2rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      line-height: 40px; /* fallback */
+      -webkit-line-clamp: 1; /* number of lines to show */
+      -webkit-box-orient: vertical;
+    }
+    p{
+      font-size: 0.75rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      line-height: 40px; /* fallback */
+      -webkit-line-clamp: 1; /* number of lines to show */
+      -webkit-box-orient: vertical;
+    }
   }
-  .drag{
-    font-size: 0.75rem;
+
+  .carousel__back-button{
+    position: absolute;
+    background: #ccb25c;
+    color: #013110;
+    border: 2px solid #013110;
+    transition: all .3s ease; 
+    height: 30px;
+    width: 45px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-family: freight-sans-pro;
+    font-size: 1rem;
+    left: -10px;
+    top: 250px;
+    z-index: 2;
+    &:hover{
+      background: #013110;
+      color: #f6f2ec;
+      border: 2px solid #ccb25c;
+    }
+  
   }
-  @media (max-width: 550px) {
-  .swipe{
-    display: block;
-  }
-  .drag{
-    display: none;
-  }
+  .carousel__next-button{
+    position: absolute;
+    background: #ccb25c;
+    color: #013110;
+    border: 2px solid #013110;
+    transition: all .3s ease; 
+    height: 30px;
+    width: 45px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-family: freight-sans-pro;
+    font-size: 1rem;
+    right: -10px;
+    top: 250px;
+    z-index: 2;
+    &:hover{
+      background: #013110;
+      color: #f6f2ec;
+      border: 2px solid #ccb25c;
+    }
   }
 
 `;
 
-const CarouselContainer = styled.div`
-  width: 100%;
-
+const CarouselHorizontal = styled.div`
+  width: 98%;
+  position: relative;
   `
+
 const Header = styled.h1`
   text-align: center;
+  h2{
+    font-family: ivymode, sans-serif;
+  }
   p{
     font-style: italic;
     font-size: 1rem;

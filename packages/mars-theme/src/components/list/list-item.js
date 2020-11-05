@@ -15,16 +15,33 @@ const Item = ({ state, item }) => {
   const data = state.source.get(state.router.link);
   const author = state.source.author[item.author];
   const date = new Date(item.date);
-  const isJobs = data.isAwsmJobOpeningsArchive;
+  const isProperty = data.isPropertyArchive;
 
+  console.log(isProperty)
   let readMoreLabel = 'Read more';
-  if ( isJobs ) {
+  if ( isProperty ) {
     readMoreLabel = 'More Details';
   }
-
+  
   return (
     <>
-      {!isJobs && (
+      {isProperty && (
+        <Article>
+        <Link className="article-title" link={item.link}>
+           
+        {state.theme.featured.showOnList && (
+          <FeaturedMedia id={item.featured_media} />
+        )}
+        <Title dangerouslySetInnerHTML={{ __html: item.title.rendered }} />
+        </Link> 
+        {/* If the post has an excerpt (short summary text), we render it */}
+        {item.excerpt && (
+          <Excerpt dangerouslySetInnerHTML={{ __html: item.excerpt.rendered }} />
+        )}
+        <Link className="redmore-btn" link={item.link}>{ readMoreLabel }...</Link>
+        </Article>
+      )}
+      {!isProperty && (
         <Article>
         <Link className="article-title" link={item.link}>
           <Title dangerouslySetInnerHTML={{ __html: item.title.rendered }} />
@@ -58,24 +75,7 @@ const Item = ({ state, item }) => {
         <Link className="redmore-btn" link={item.link}>{ readMoreLabel }...</Link>
         </Article>
       )}
-      {isJobs && (
-        <Article className="job-article col-12 col-md-6 col-lg-4 align-self-strech">
-        <div className="job-box">
-            <Link className="job-title" link={item.link}>
-              <h4 dangerouslySetInnerHTML={{ __html: item.title.rendered }} />
-            </Link>
-            {/* If the post has an excerpt (short summary text), we render it */}
-            {item.excerpt && (
-              <Excerpt dangerouslySetInnerHTML={{ __html: item.excerpt.rendered }} />
-            )}
-            {isJobs && item.awsm_in_specs && (
-              <div dangerouslySetInnerHTML={{ __html: item.awsm_in_specs }}></div>
-            )}
-
-            <Link className="brand-btnhollow" link={item.link}>{ readMoreLabel } <svg width="14px" height="9px" viewBox="0 0 14 9" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="Symbols" stroke="none" strokeWidth="1" fillRule="evenodd"><g id="Icons/Right-arrow" transform="translate(0.000000, -2.000000)"  fillRule="nonzero"><g id="interface" transform="translate(0.000000, 2.000000)"><path d="M13.7823071,3.98623766 L9.90356292,0.21135247 C9.61303376,-0.0713855917 9.14311798,-0.0703331717 8.85392477,0.213820214 C8.56476866,0.497937309 8.56588194,0.957481922 8.85641109,1.24025627 L11.460152,3.77419318 L0.742187132,3.77419318 C0.332277179,3.77419318 -3.09974268e-13,4.09913691 -3.09974268e-13,4.5 C-3.09974268e-13,4.90086317 0.332277179,5.2258069 0.742187132,5.2258069 L11.4601149,5.2258069 L8.8564482,7.75974381 C8.56591905,8.04251816 8.56480577,8.50206277 8.85396188,8.78617987 C9.14315509,9.07036955 9.61310798,9.07134938 9.90360003,8.78864761 L13.7816762,5.01445194 C14.0730218,4.73004453 14.0720941,4.26901201 13.7823071,3.98623766 Z" id="Path"></path></g></g></g></svg></Link>
-        </div>
-        </Article>
-      )}
+      
     </>
   );
 };
@@ -83,7 +83,7 @@ const Item = ({ state, item }) => {
 // Connect the Item to gain access to `state` as a prop
 export default connect(Item);
 const Article = styled.article`
-  background-color: #153211;
+  background-color: #013110;
   color: #f6f2ec;
   border: 3px solid #ccb25c;
   border-radius: 15px;
@@ -111,7 +111,7 @@ const Article = styled.article`
     &:hover {
       h1 {
         color:#ccb25c;
-        font-weight: 800; 
+        font-weight: 800;
       }
     }
   }
@@ -145,6 +145,7 @@ const Article = styled.article`
         text-decoration:none;
         h4 {
           transition: all .3s ease;
+          font-family: ivymode, sans-serif;
         }        
         &:hover {
           h4 {
@@ -210,16 +211,19 @@ const Title = styled.h1`
   color: #ccb25c;
   box-sizing: border-box;
   transition: all .3s ease;
+  font-family: ivymode, sans-serif;
 `;
 
 const AuthorName = styled.span`
   color: #ccb25c;
   font-size: 1rem;
   margin-right:1rem;
+  font-family: ivymode, sans-serif;
 `;
 
 const StyledLink = styled(Link)`
   padding: 15px 0;
+  font-family: ivymode, sans-serif;
 `;
 
 const PublishDate = styled.span`

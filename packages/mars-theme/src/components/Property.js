@@ -90,7 +90,7 @@ const Container = styled.div`
 
 const Title = styled.h2`
   font-size: 3.5rem;
-  color: #153211;
+  color: #013110;
 `
 
 
@@ -169,7 +169,7 @@ const Content = styled.div`
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
-    color: #153211;
+    color: #013110;
     background-color: #f6f2ec;
     background-clip: padding-box;
     border: 1px solid #ced4da;
@@ -179,7 +179,7 @@ const Content = styled.div`
     margin: 8px 0 4px 0;
 
     &:focus {
-      outline-color: #153211;
+      outline-color: #013110;
     }
   }
 
@@ -194,12 +194,12 @@ const Content = styled.div`
     touch-action: manipulation;
     cursor: pointer;
     background-image: none;
-    background-color: #153211;
-    border: 1px solid #153211;
+    background-color: #013110;
+    border: 1px solid #013110;
     font-size: 14px;
     line-height: 1.42857143;
     border-radius: 4px;
-    color: #153211;
+    color: #013110;
     background-color: #f6f2ec;
   }
 

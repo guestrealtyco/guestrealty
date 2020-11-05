@@ -33,7 +33,7 @@ const Container = styled.div`
 `
 
 const Blockquote = styled.div`
-    background: #153211;
+    background: #013110;
     border: 2px solid #ccb25c;
     border-radius: 25px;
     padding: 10px;
