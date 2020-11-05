@@ -592,7 +592,6 @@ const Content = styled.div`
         .body1-img{
           min-height: 350px;
           width: 100%;
-          
         } 
         }
         .body1-text{

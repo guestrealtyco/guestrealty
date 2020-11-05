@@ -140,7 +140,6 @@ const Container = styled.section`
       border: 2px solid #ccb25c;
     }
   }
-
 `;
 
 const CarouselHorizontal = styled.div`
