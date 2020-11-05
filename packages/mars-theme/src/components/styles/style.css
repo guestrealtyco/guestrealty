@@ -1,5 +1,5 @@
 
-
+@import url("https://use.typekit.net/nrn0kia.css");
 
 /* Common Styles */
 p{
@@ -21,20 +21,26 @@ h4{
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    font-family: freight-sans-pro;
   }
   .button{
     height: 52px;
     width: 192px;
     border-radius: 6px;
+    font-weight: 500;
+    font-family: freight-sans-pro;
+    font-size: 1rem;
     margin: 10px;
-    font-weight: 600;
   }
+
   .nav-button{
     height: 52px;
     width: 75px;
     border-radius: 6px;
     margin: 10px;
     font-weight: 600;
+    letter-spacing: 1px;
+    font-family: freight-sans-pro;
   }
   .btn-dark{
     background: #013110;
@@ -109,3 +115,6 @@ h4{
     width: 40%;
     background-color: #DBC472;
   }
+
+  /* Contact Form */
+  

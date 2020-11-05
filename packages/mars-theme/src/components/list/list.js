@@ -3,6 +3,8 @@ import { connect, styled, decode } from "frontity";
 import Item from "./list-item";
 import Pagination from "./pagination";
 import star_arch from "../../assets/elements/star_arch.png";
+import FadeIn from 'react-fade-in';
+
 
 const List = ({ state }) => {
   // Get the data of the current list.
@@ -13,37 +15,58 @@ const List = ({ state }) => {
   }
 
   return (
+    <FadeIn
+    transitionDuration = '1400'
+  >
     <Container>
       {/* If the list is a list of blog posts, we render a title. */}
       {data.isPostArchive && (
+        <FadeIn
+        transitionDuration = '1400'
+      >
         <Header>
           <img className ="titleImg" src={star_arch} />
           <h2>Recent Posts</h2>
         </Header>
+        </FadeIn>
       )}
         {/* If the list is a AWSM Job career page, we render a title. */}
       {data.isPropertyArchive && (
+        <FadeIn
+        transitionDuration = '1400'
+      >
         <Header>
           <img className ="titleImg" src={star_arch} />
           <h2>Our Properties</h2>
         </Header>
+        </FadeIn>
       )}
       {/* If the list is a taxonomy, we render a title. */}
       {data.isTaxonomy && (
+        <FadeIn
+        transitionDuration = '1400'
+      >
         <Header>
           {data.taxonomy}:{" "}
           <b>{decode(state.source[data.taxonomy][data.id].name)}</b>
         </Header>
+        </FadeIn>
       )}
 
       {/* If the list is for a specific author, we render a title. */}
       {data.isAuthor && (
+        <FadeIn
+        transitionDuration = '1400'
+      >
         <Header>
           Author: <b>{decode(state.source.author[data.id].name)}</b>
         </Header>
+        </FadeIn>
       )}
-    
-      {/* Iterate over the items of the list. */}
+      <FadeIn
+      transitionDuration = '1400'
+    >
+        {/* Iterate over the items of the list. */}
       {data.isAwsmJobOpeningsArchive && (
           <section className="section job-listing">
             <div className="container">
@@ -67,9 +90,14 @@ const List = ({ state }) => {
             })}
           </>
       )}
-      
+    </FadeIn>
+    <FadeIn
+      transitionDuration = '1400'
+    >
       <Pagination />
+    </FadeIn>
     </Container>
+    </FadeIn>
   );
 };
 
@@ -82,7 +110,7 @@ const Container = styled.section`
   padding-right: 15px;
   padding-left: 15px;
   list-style: none;
-  color: #153211;
+  color: #013110;
   .titleImg{
     width: 20%;
     height: auto;

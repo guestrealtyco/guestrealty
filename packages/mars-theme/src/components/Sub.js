@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
+import FadeIn from 'react-fade-in';
+
 
 import Link from "./link";
 import List from "./list";
@@ -32,40 +34,50 @@ const Sub = ({ state, actions, libraries }) => {
   }, []);
   // Load the post, but only if the data is ready.
   return data.isReady && properties.isReady ? (
-    <Container>
-      <div>
-        {/* <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} /> */}
-        {/* Only display author and date on posts */}
-        {data.isSub}
-      </div>
-      {/* Look at the settings to see if we should include the featured image */}
-      {state.theme.featured.showOnPost && (
-        <FeaturedMedia id={sub.featured_media} />
-      )}
-      {/* Render the content using the Html2React component so the HTML is processed
-       by the processors we included in the libraries.html2react.processors array. */}
-      <Content>
-        <Html2React html={sub.content.rendered} />
-        <ContactContainer>
-        {postType === "renters" ? 
-          <iframe 
-          src="https://beds24.com/booking2.php?ownerid=65282&amp;referer=iframe"
-          title="Frontity"
-          width= "80%"
-          height= "3250px"
-        />
-          :
-          <Contact />
-      }
-        </ContactContainer>
-           
-      </Content>
-      {postType === "owners" ? 
-          <PropertyList />
-          :
-          null
-      }
-    </Container>
+    <FadeIn
+      transitionDuration = '1400'
+    >
+       <Container>
+        <div>
+          {/* <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} /> */}
+          {/* Only display author and date on posts */}
+          {data.isSub}
+        </div>
+        {/* Look at the settings to see if we should include the featured image */}
+        {state.theme.featured.showOnPost && (
+          <FeaturedMedia id={sub.featured_media} />
+        )}
+        {/* Render the content using the Html2React component so the HTML is processed
+        by the processors we included in the libraries.html2react.processors array. */}
+        <FadeIn
+          transitionDuration = '1400'
+        >
+          <Content>
+            <Html2React html={sub.content.rendered} />
+            <ContactContainer>
+            {postType === "renters" ? 
+              <iframe 
+              src="https://beds24.com/booking2.php?ownerid=65282&amp;referer=iframe"
+              title="Frontity"
+              width= "80%"
+              height= "3250px"
+            />
+              :
+              null
+              // <Contact />
+          }
+            </ContactContainer>
+              
+          </Content>
+          {postType === "owners" ? 
+              <PropertyList />
+              :
+              null
+          }
+        </FadeIn>
+        
+      </Container>
+    </FadeIn>
   ) : null;
 };
 export default connect(Sub);
@@ -81,8 +93,9 @@ const Container = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: #153211;
+    background-color: #013110;
     color: #ccb25c;
+    background-color: #01230b;
   }
   .hero-header-text{
     display: flex;
@@ -104,6 +117,7 @@ const Container = styled.div`
     }
   }
   .hero-header{
+    font-family: ivymode, sans-serif;
     font-style: normal;
     font-weight: 800;
     font-size: 4rem;
@@ -124,13 +138,16 @@ const Container = styled.div`
       align-items: center;
       justify-content: center;
       padding: 40px;
-      color: #153211;
+      color: #013110;
       h2{
-        color: #153211;
+        color: #013110;
         font-size: 2.5rem;
+        font-family: ivymode, sans-serif;
       }
       h4{
-        color: #153211;
+        color: #013110;
+        font-family: freight-sans-pro, sans-serif;
+        font-size: 1.2rem;
       }
     }
   }
@@ -191,19 +208,21 @@ const Container = styled.div`
       justify-content: center;
       padding: 20px;
       h2{
-        color: #153211;
+        color: #013110;
         font-size: 2.5rem;
+        font-family: ivymode, sans-serif;
       }
       h3{
-        color: #153211;
+        color: #013110;
         font-size: 1.5rem;
+        font-family: ivymode, sans-serif;
       }
       .summary-points{
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
         /* grid-template-columns: 32% 32% 32%;    */
-        column-gap: 10px;
-        row-gap: 15px;
+        column-gap: 100px;
+        row-gap: 40px;
         /* This is better for small screens, once min() is better supported */
         /* grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); */
         grid-gap: 1rem;
@@ -218,13 +237,17 @@ const Container = styled.div`
         }
         
         .summary-point{
+          display: inline-block;
           padding: 1.5rem;
           border-radius: 1rem;
           width: 100%;
+          min-height: 300px;
+          margin: 10px;
           img{
           width: 25%;
           height: auto;
           margin: 0 auto;
+          
         }
         }
       }
@@ -238,11 +261,11 @@ const Container = styled.div`
       width: 100%;
       padding: 20px;
       h2{
-        color: #153211;
+        color: #013110;
         font-size: 3rem;
       }
       h3{
-        color: #153211;
+        color: #013110;
         font-size: 2rem;
       }
       .icon-points{
@@ -252,7 +275,8 @@ const Container = styled.div`
         align-items: baseline;
         justify-content: space-between;
         h3{
-          font-size: 1.35rem;
+          font-size: 1.15rem;
+          font-family: ivymode, sans-serif;
         }
         .icon-point{
           padding: 1.5rem;
@@ -290,26 +314,30 @@ const Container = styled.div`
           padding-left: 20px;
           h2{
           font-size: 1.5rem;
-          color: #153211;
+          color: #013110;
+          font-family: ivymode, sans-serif;
           }
           h4{
           font-size: 1rem;
-          color: #153211;
+          color: #013110;
+          font-family: ivymode, sans-serif;
           }
           p{
-            color: #153211;
+            color: #013110;
+            font-family: freight-sans-pro, sans-serif;
           }
           .body2-points{
             display: flex;
             flex-direction: column;
             h5{
-              color: #153211;
+              color: #013110;
               margin-right: 10px;
               font-size: 1rem;
               padding: 10px;
+              font-family: freight-sans-pro, sans-serif;
             }
             p{
-              color: #153211;
+              color: #013110;
             }
               .body2-point{
               display: flex;
@@ -321,7 +349,7 @@ const Container = styled.div`
                 height: 90px;
               }
               .body2-subpoint{
-                color: #153211;
+                color: #013110;
             }
           } 
         }
@@ -337,11 +365,13 @@ const Container = styled.div`
         align-items: center;
         padding: 20px;
         h2{
-          color: #153211;
+          color: #013110;
           font-size: 3rem;
+          font-family: ivymode, sans-serif;
         }
         p{
-          color: #153211;
+          color: #013110;
+          font-family: freight-sans-pro, sans-serif;
         }
       }
   }
@@ -358,6 +388,7 @@ const ContactContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  background: #f6f2ec;
 `
 
 /**
@@ -416,7 +447,7 @@ const Content = styled.div`
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
-    color: #153211;
+    color: #013110;
     background-color: #f6f2ec;
     background-clip: padding-box;
     border: 1px solid #ced4da;
@@ -425,7 +456,7 @@ const Content = styled.div`
     transition: outline-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     margin: 8px 0 4px 0;
     &:focus {
-      outline-color: #153211;
+      outline-color: #013110;
     }
   }
   input[type="submit"] {
@@ -439,12 +470,12 @@ const Content = styled.div`
     touch-action: manipulation;
     cursor: pointer;
     background-image: none;
-    background-color: #153211;
-    border: 1px solid #153211;
+    background-color: #013110;
+    border: 1px solid #013110;
     font-size: 14px;
     line-height: 1.42857143;
     border-radius: 4px;
-    color: #153211;
+    color: #013110;
     background-color: #f6f2ec;
   }
   /* WordPress Core Align Classes */  
@@ -464,6 +495,7 @@ const Content = styled.div`
       height: 100%;
       flex-direction: column;
       font-size: 1rem;
+      padding: 15px;
     }
     .hero-img{
       display: none;
@@ -521,7 +553,7 @@ const Content = styled.div`
       align-items: center;
       justify-content: space-around;
       h3{
-        color: #153211;
+        color: #013110;
         font-size: 1.5rem;
       }
       .summary-points{
@@ -533,7 +565,7 @@ const Content = styled.div`
           padding: 10px;
         }
         p{
-          color: #153211;
+          color: #013110;
         }
         .summary-point{
           display: flex;
@@ -559,14 +591,14 @@ const Content = styled.div`
           padding-right: 20px;
           h2{
           font-size: 2rem;
-          color: #153211;
+          color: #013110;
           }
           h4{
           font-size: 1rem;
-          color: #153211;
+          color: #013110;
           }
           p{
-            color: #153211;
+            color: #013110;
           }
           .body2-points{
             margin-left: 20px;
@@ -578,7 +610,7 @@ const Content = styled.div`
               font-size: 2rem;
             }
             p{
-              color: #153211;
+              color: #013110;
               font-size: 1rem;
             }
             .body2-point{
@@ -592,7 +624,7 @@ const Content = styled.div`
                 height: 90px;
               }
               .body2-subpoint{
-                color: #153211;
+                color: #013110;
               }
             }
           }

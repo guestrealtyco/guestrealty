@@ -50,22 +50,23 @@ const Container = styled.div`
 const StyledLink = styled(Link)`
   text-decoration: none;
   font-weight: 800;
-  color: #153211;
+  color: #013110;
 `;
 
 const Title = styled.h1`
+  font-family: ivymode;
   margin: 0;
   margin-top: 24px;
   margin-bottom: 8px;
   color: rgba(12, 17, 43);
   font-size: 4em;
-  color: #153211;
+  color: #013110;
 `;
 
 const Description = styled.div`
   line-height: 1.6em;
   color: rgba(12, 17, 43, 0.8);
   margin: 24px 0;
-  color: #153211
+  color: #013110
 `;
 

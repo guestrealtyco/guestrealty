@@ -5,6 +5,8 @@ import List from "../list";
 import FeaturedMedia from "../featured-media";
 import Comments from "../comments";
 import star_arch from "../../assets/elements/star_arch.png";
+import FadeIn from 'react-fade-in';
+
 
 const Post = ({ state, actions, libraries }) => {
   // Get information about the current URL.
@@ -31,39 +33,50 @@ const Post = ({ state, actions, libraries }) => {
 
   // Load the post, but only if the data is ready.
   return data.isReady ? (
-    <ArticleContainer>
-      <div className="post-title">
-        <img className ="titleImg" src={star_arch} />
-        <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+    <FadeIn
+      transitionDuration = '1400'
+    >
+       <ArticleContainer>
+        <div className="post-title">
+          <img className ="titleImg" src={star_arch} />
+          <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
 
-        {/* Only display author and date on posts */}
-        {data.isPost && (
-          <div>
-            {author && (
-              <StyledLink link={author.link}>
-                <Author>
-                  By <b>{author.name}</b>
-                </Author>
-              </StyledLink>
-            )}
-            <DateWrapper>
-              {" "}
-              on <b>{date.toDateString()}</b>
-            </DateWrapper>
-          </div>
+          {/* Only display author and date on posts */}
+          {data.isPost && (
+            <div>
+              {author && (
+                <StyledLink link={author.link}>
+                  <Author>
+                    By <b>{author.name}</b>
+                  </Author>
+                </StyledLink>
+              )}
+              <DateWrapper>
+                {" "}
+                on <b>{date.toDateString()}</b>
+              </DateWrapper>
+            </div>
+          )}
+        </div>
+
+        {/* Look at the settings to see if we should include the featured image */}
+        {state.theme.featured.showOnPost && (
+          <FeaturedMedia id={post.featured_media} />
         )}
-      </div>
-
-      {/* Look at the settings to see if we should include the featured image */}
-      {state.theme.featured.showOnPost && (
-        <FeaturedMedia id={post.featured_media} />
-      )}
-
-      <Content>
-        <Html2React html={post.content.rendered} />
-      </Content>
-      <Comments postId ={post.id} />
-    </ArticleContainer>
+        <FadeIn
+      transitionDuration = '1400'
+    >
+          <Content>
+            <Html2React html={post.content.rendered} />
+          </Content>
+        </FadeIn>
+        <FadeIn
+      transitionDuration = '1400'
+    >
+        <Comments postId ={post.id} />
+        </FadeIn>
+      </ArticleContainer>
+    </FadeIn>
   ) : null;
 };
 
@@ -87,7 +100,7 @@ const ArticleContainer = styled.div`
 
 const Title = styled.h1`
   margin-bottom: 1.2rem;
-  color: #153211;
+  color: #013110;
   font-size: 4.5rem;
   padding: 10px;  
   @media (max-width: 768px) {
@@ -97,17 +110,17 @@ const Title = styled.h1`
 
 const StyledLink = styled(Link)`
   padding: 15px 0;
-  color: #153211;
+  color: #013110;
 `;
 
 const Author = styled.p`
   font-size: 0.9em;
   display: inline;
-  color: #153211;
+  color: #013110;
 `;
 
 const DateWrapper = styled.p`
-  color: #153211;
+  color: #013110;
   font-size: 0.9em;
   display: inline;
 `;

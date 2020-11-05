@@ -10,67 +10,168 @@ const Contact = ({ state, libraries }) => {
 
     return (
         <>
-        <ContactContainer>
-            <ContactForm>
-            <img className ="titleImg" src={star_arch} />
-            <h2>Contact Us</h2>
-                <Html2React html={contactForm.content.rendered} />
-            </ContactForm>  
-        </ContactContainer>
-                
+        <Container>
+            <HalfContainer>
+                <TextContainer>
+                    <h1 class="text">Have a question for us? <br />We'd love to offer our expertise.</h1>
+                </TextContainer>
+            </HalfContainer>
+
+            <HalfContainer>
+                <div className="cta-container">
+                    <div className="cta-text">
+                    <h2>Get in touch with us.</h2>
+                    <Arrow><svg xmlns="http://www.w3.org/2000/svg" id="arrow"  viewBox="0 0 24 24">
+                    <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                </svg></Arrow>
+                    <ContactForm>
+                        <Html2React html={contactForm.content.rendered} />
+                    </ContactForm>
+                    </div>
+                </div>
+            </HalfContainer>
+        </Container>
         </>
     );
 };
 
 export default connect(Contact);
-const ContactContainer = styled.div`
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f6f2ec;
-    h2{
-        font-size: 2rem;
-        color: #ccb25c;
-        margin-bottom: -50px;
+
+const Container =styled.div`
+    min-height: 100%;
+    color: white;
+    overflow: hidden;
+`
+const HalfContainer = styled.div`
+    color: white;
+    float: left;
+    width: 50%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    .cta-container{
+        background: #FFCE45;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 30vh;
+        transition: 1s all;
+        overflow: hidden;
+        &:before {
+        content: "";
+        position: absolute;
+        background: #E7BB3F;
+        width: 150%;
+        height: 100%;
+        left: -50%;
+        bottom: -50%;
+        transform: rotate(25deg);
+        display: block;
+        }
+        .cta-text{
+            text-align: center;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: 1s all;
+        }
     }
-    width: 900px;
-    max-width: 90%;
 `
 
+const TextContainer = styled.div`
+    position: relative;
+    padding: 20px;
+    top: 50%;
+    transform: translateY(-80%);
+    transition: 1s all;
+    text-align: center;
+    &.is-active {
+      transform: translateY(-50%);
+      transition-delay: 1s;
+    }
+`
+
+
+//   .cta-container.is-active {
+//     height: 100vh;
+//     .cta-text {
+//       position: absolute;
+//       left: 0;
+//       right: 0;
+//       margin: auto;
+//       top: 45%;
+//       transform: translateY(-200%);
+//       transition-delay: 1s;
+//     }
+//     .form-container {
+//       opacity: 1;
+//       label,.submit {
+//         opacity: 1;
+//       }
+//       label:nth-of-type(1) {
+//         transition-delay: 1.8s;
+//       }
+//       label:nth-of-type(2) {
+//         transition-delay: 2.0s;
+//       }
+//       label:nth-of-type(3) {
+//         transition-delay: 2.2s;
+//       }
+//       .submit {
+//         transition-delay: 2.6s;
+//       }
+//     }
+//     .arrow {
+//       opacity: 0;
+//     }
+//   }
+  
+  const Arrow = styled.div`
+    transition: .4s all;
+    cursor: pointer;
+    transform-origin: center;
+    width: 30px;
+    height: 30px;
+    margin: auto;
+    &:hover {
+      transform: rotate(90deg) scale(1.3);
+    }
+    svg path {
+    fill: #0D735D;
+    }
+  `
+
 const ContactForm = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 90%;
-    width: 900px;
-    padding: 10px;
-    box-sizing: border-box;
-    border-radius: 15px;
-    border: 1px solid #ccb25c;
-    background: #153211; /* Old browsers */
-    -webkit-box-shadow: 25px 23px 19px -10px rgba(0,0,0,0.47);
-    -moz-box-shadow: 25px 23px 19px -10px rgba(0,0,0,0.47);
-    box-shadow: 25px 23px 19px -14px rgba(0,0,0,0.47);
+    opacity: 0;
+    padding: 20px;
+    position: absolute;
+    transition: .3s all 1s;
+    text-align: left;
+    left: 0;
+    right: 0;
+    margin: auto;
     .titleImg{
         width: 10%;
     }
     form{
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: baseline;
         justify-content: space-around;
-        width: 875px;
+        
         max-width: 95%;
         label{
-        display: inline-block;
-        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        margin: 0px 100px 0px 100px;
         font-weight: 400;
-        text-align: center;
+        text-align: left;
         white-space: nowrap;
         vertical-align: middle;
         color: #ccb25c;
         font-size: 1rem;
         font-weight: 800;
+        width: 100%;
         .wpcf7-not-valid-tip {
             color: #ccb25c;
             font-size: 1em;
@@ -79,7 +180,7 @@ const ContactForm = styled.div`
         }
     }
     input{
-        display: block;
+        display: flex;
         width: 100%;
         font-size: 16px;
         font-weight: 400;
@@ -91,7 +192,7 @@ const ContactForm = styled.div`
         border-radius: 4px;
         outline-color: transparent;
         transition: outline-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        margin: 8px 0 4px 0;
+        margin: 0px 100px 0px 100px;
         -webkit-box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
         -moz-box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
         box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);

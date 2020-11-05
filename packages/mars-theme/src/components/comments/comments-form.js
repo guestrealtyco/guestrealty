@@ -80,7 +80,7 @@ flex-direction: column;
 align-items: center;
 width: 100%;
     h2{
-        color: #153211;
+        color: #013110;
     }
 `
 const Form = styled.form`
@@ -89,7 +89,7 @@ flex-direction: column;
 align-items: center;
 justify-content: space-between;
 border: 0.25px solid gray;
-background-color: #153211;
+background-color: #013110;
 border-radius: 15px;
 padding: 50px;
 margin-bottom: 20px;
@@ -128,7 +128,7 @@ select {
   box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
 
   &:focus {
-    outline-color: #153211;
+    outline-color: #013110;
   }
 }
 
@@ -148,7 +148,7 @@ input[type="submit"] {
   border-radius: 4px;
   width: 50%;
   color: #ccb25c;
-  background-color: #153211;
+  background-color: #013110;
   border: 1px solid #ccb25c;
   outline-color: #ccb25c;
   transition: outline-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;

@@ -34,9 +34,10 @@ const Container = styled.div`
   width: 100%;
   box-sizing: border-box;
   padding: 24px;
-  font-family: -apple-system, BlinkMacSystemFont, "SourceSansPro", "Segoe UI", Roboto,
-      "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #013110;
+  font-family: freight-sans-pro, sans-serif;
+  font-style: normal;
+  font-size: 1.2rem;
+  color: #ccb25e;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,6 +46,7 @@ const Container = styled.div`
 
 const TitleContainer = styled.div`
  height: 100%;
+ 
 `
 
 const NavContainer = styled.div`
@@ -72,11 +74,11 @@ const SocialIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  fill: #153211;
+  fill: #ccb25c;
   svg{
     height: 40px;
     width: 40px;
-    fill: #013110;
+    fill: #ccb25c;
   }
 `
 

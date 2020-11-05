@@ -40,7 +40,7 @@ align-items: center;
 width: 90%;
 max-width: 900px;
 margin: 40px;
-color: #153211;
+color: #013110;
     #bar{
       height: 5px;
       width: 40%;
@@ -51,7 +51,7 @@ color: #153211;
 const Comment = styled.div`
 border: 1px solid gray;
 border-radius: 15px;
-background-color: #153211;
+background-color: #013110;
 color: #ccb25c;
 width: 80%;
 padding: 25px;

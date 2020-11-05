@@ -1,7 +1,7 @@
 import React from "react";
 import { connect, styled } from "frontity";
 import Link from "../link";
-import greenLogo from "../../assets/logo/greenLogo.png";
+import goldOutlineLogo from "../../assets/logo/goldOutlineLogo.png";
 
 /**
  * Navigation Component
@@ -18,7 +18,7 @@ const FooterNav = ({ state }) => {
               <StyledLink link="/sub/property-owners/">
                 For Property Owners
               </StyledLink>
-              <FooterLogo><a href="/"><img src={greenLogo} alt="logo"/></a></FooterLogo>
+              <FooterLogo><a href="/"><img src={goldOutlineLogo} alt="logo"/></a></FooterLogo>
               <StyledLink link="/sub/for-renters/">
                 For Renters
               </StyledLink>

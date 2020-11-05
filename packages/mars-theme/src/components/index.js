@@ -2,6 +2,7 @@ import React from "react";
 import { Global, css, connect, styled, Head } from "frontity";
 import FontFace from "./styles/fontFace"
 import Switch from "@frontity/components/switch";
+import Headroom from 'react-headroom';
 import Iframe from "@frontity/html2react/processors/iframe";
 import Header from "./header/header";
 import Footer from "./footer/Footer";
@@ -44,9 +45,12 @@ const Theme = ({ state }) => {
       
 
       {/* Add the header of the site. */}
-      <HeadContainer>
-        <Header />
-      </HeadContainer>
+      <Headroom>
+        <HeadContainer>
+          <Header />
+        </HeadContainer>
+      </Headroom>
+      
 
       {/* Add the main section. It renders a different component depending
       on the type of URL we are in. */}
@@ -74,7 +78,7 @@ export default connect(Theme);
 const globalStyles = css`
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "SourceSansPro", "Segoe UI", Roboto,
+    font-family: -apple-system, BlinkMacSystemFont, "SourceSansPro", "ivymode", "freight-sans-pro", "Segoe UI", Roboto,
       "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
   a,
@@ -88,7 +92,11 @@ const HeadContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #f6f2ec;
+  background-color: #013110;
+  background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/11/GR_waves-bg.jpg");
+  background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/11/GR_waves-bg.jpg"); /* The least supported option. */
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const Main = styled.div`
@@ -102,5 +110,9 @@ const FooterContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #f6f2ec;
+  background-color: #013110;
+  background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/11/GR_waves-bg.jpg");
+  background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/11/GR_waves-bg.jpg"); /* The least supported option. */
+  background-repeat: no-repeat;
+  background-size: cover;
 `

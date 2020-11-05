@@ -10,7 +10,7 @@ export const HamburgerIcon = ({ size, color }) => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <title>Open menu</title>
-      <g fill="#013110">
+      <g fill="#ccb25c">
         <rect height="3" width="23" rx="1" ry="1" x=".5" y="2.5" />
         <rect height="3" width="23" rx="1" ry="1" x=".5" y="10.5" />
         <rect height="3" width="23" rx="1" ry="1" x=".5" y="18.5" />

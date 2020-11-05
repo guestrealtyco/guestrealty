@@ -36,6 +36,12 @@ const MenuOverlay = styled.div`
   z-index: 2;
   top: 0;
   left: 0;
+  background-color: #013110;
+  background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/11/GR_waves-bg.jpg");
+  background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/11/GR_waves-bg.jpg"); /* The least supported option. */
+  background-repeat: no-repeat;
+  background-size: cover;
+
 `;
 
 const MenuContent = styled.div`
@@ -44,6 +50,7 @@ const MenuContent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #f6f2ec;
 `;
 
 const MenuLink = styled(Link)`
@@ -53,14 +60,17 @@ const MenuLink = styled(Link)`
   font-size: 20px;
   text-align: center;
   padding: 1.2rem 0;
+  font-family: freight-sans-pro;
+  color: #ccb25c;
 
   &:hover,
   &:focus {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(204,178, 92, 0.05);
+    color: #ccb25c;
   }
   /* styles for active link */
   &[aria-current="page"] {
-    color: #013110;
+    color: #ccb25c;
     font-weight: bold;
     /* border-bottom: 4px solid yellow; */
   }

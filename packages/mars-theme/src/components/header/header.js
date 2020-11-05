@@ -4,7 +4,7 @@ import FontFace from "../styles/fontFace";
 import Link from "../link";
 import Nav from "./nav";
 import MobileMenu from "./menu";
-import greenLogo from "../../assets/logo/greenLogo.png";
+import goldOutlineLogo from "../../assets/logo/goldOutlineLogo.png";
 
 const Header = ({ state }) => {
   return (
@@ -13,7 +13,8 @@ const Header = ({ state }) => {
         <FontFace />
         <TitleContainer>
         <StyledLink link="/">
-        <HeaderLogo><img src={greenLogo} alt="logo"/></HeaderLogo>
+        <HeaderLogo><img src={goldOutlineLogo} alt="logo"/></HeaderLogo>
+        <div><span>GUEST REALTY</span></div>
         </StyledLink>
         </TitleContainer>
         <NavContainer>
@@ -34,9 +35,9 @@ const Container = styled.div`
   width: 100%;
   box-sizing: border-box;
   padding: 24px;
-  font-family: -apple-system, BlinkMacSystemFont, "SourceSansPro", "Segoe UI", Roboto,
+  font-family: -apple-system, BlinkMacSystemFont, "SourceSansPro", "ivymode", "freight-sans-pro", "Segoe UI", Roboto,
       "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #013110;
+  color: #f6f2ec;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -44,16 +45,29 @@ const Container = styled.div`
 `;
 
 const TitleContainer = styled.div`
- width: 10%;
- height: auto;
+ width: 100%;
  display: flex;
- align-items: baseline;
+ flex-direction: row;
+ flex-wrap: nowrap;
+div{
+    display: flex;
+    flex-direction: row;
+  span{
+    padding-top: 10px;
+    padding-left: 10px;
+    font-family: ivymode, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+ }
+}
+ 
 `
 
 const HeaderLogo = styled.div`
   img{
-    height: 90px;
-    width: 90px;
+    height: 50px;
+    width: 50px;
   }
   `
 
@@ -68,4 +82,5 @@ const NavContainer = styled.div`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  display: flex;
 `;
