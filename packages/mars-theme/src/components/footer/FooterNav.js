@@ -50,11 +50,11 @@ const NavContainer = styled.nav`
 `;
 
 const FooterLogo = styled.div`
-  height: 70px;
-  width: 70px;
+  height: 40px;
+  width: 40px;
   img{
-    height: 70px;
-    width: 70px;
+    height: 40px;
+    width: 40px;
   }
 `
 
@@ -67,6 +67,7 @@ const LinkContainer = styled.div`
 `
 const StyledLink = styled(Link)`
   display: flex;
+  font-family: ivymode, serif;
   text-decoration: none;
   align-items: center;
   justify-content: center;
