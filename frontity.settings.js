@@ -70,7 +70,9 @@ const settings = {
     "@frontity/tiny-router",
     "@frontity/html2react",
     "@frontity/wp-comments",
-    "frontity-contact-form-7"
+    "frontity-contact-form-7",
+    "@frontity/head-tags",
+    "@frontity/yoast"
   ]
 };
 

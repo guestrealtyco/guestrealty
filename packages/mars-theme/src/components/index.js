@@ -97,12 +97,14 @@ const HeadContainer = styled.div`
   background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/11/GR_waves-bg.jpg"); /* The least supported option. */
   background-repeat: no-repeat;
   background-size: cover;
+  z-index: 2;
 `;
 
 const Main = styled.div`
   display: flex;
   justify-content: center;
   background-color: #f6f2ec;
+  z-index: 0;
 `;
 
 

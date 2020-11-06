@@ -42,6 +42,7 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  z-index: 2;
 `;
 
 const TitleContainer = styled.div`

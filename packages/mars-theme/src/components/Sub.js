@@ -34,10 +34,10 @@ const Sub = ({ state, actions, libraries }) => {
   }, []);
   // Load the post, but only if the data is ready.
   return data.isReady && properties.isReady ? (
-    <FadeIn
+       <Container>
+         <FadeIn
       transitionDuration = '1400'
     >
-       <Container>
         <div>
           {/* <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} /> */}
           {/* Only display author and date on posts */}
@@ -75,9 +75,8 @@ const Sub = ({ state, actions, libraries }) => {
               null
           }
         </FadeIn>
-        
+        </FadeIn>
       </Container>
-    </FadeIn>
   ) : null;
 };
 export default connect(Sub);
@@ -87,16 +86,26 @@ const Container = styled.div`
   width: 100%;
   margin: 0;
   background: #f6f2ec;
-  
+  #myVideo {
+      position: relative;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      object-fit: cover;
+      min-height: 100%;
+    }
   .hero{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: #013110;
     color: #ccb25c;
-    background-color: #01230b;
-  }
+    background: #122e1c; /* Old browsers */
+    background: -moz-linear-gradient(-45deg,  #122e1c 11%, #000000 67%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg,  #122e1c 11%,#000000 67%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg,  #122e1c 11%,#000000 67%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#122e1c', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+ }
   .hero-header-text{
     display: flex;
     width: 50%;

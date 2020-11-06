@@ -83,7 +83,7 @@ const Item = ({ state, item }) => {
 // Connect the Item to gain access to `state` as a prop
 export default connect(Item);
 const Article = styled.article`
-  background-color: #013110;
+  background: #122e1c; /* Old browsers */
   color: #f6f2ec;
   border: 3px solid #ccb25c;
   border-radius: 15px;
