@@ -7,6 +7,7 @@ import FeaturedMedia from "./featured-media";
 import FadeIn from 'react-fade-in';
 
 const homeHero = "https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/hero/home-hero.gif";
+const homeVideo = "https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/11/hero_home.mp4";
 
 const Page = ({ state, actions, libraries }) => {
   // Get information about the current URL.
@@ -82,18 +83,24 @@ const Container = styled.div`
       width: 40%;
       background-color: #DBC472;
     }
+    #myVideo {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      object-fit: cover;
+      min-width: 100%;
+      min-height: 100%;
+    }
+
     .hero {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 600px;
+    height: 550px;
     width: 100vw;
     overflow: hidden;
-    background: #C33764;  /* fallback colour. Make sure this is just one solid colour. */
-    background: -webkit-linear-gradient(rgba(255, 255, 255, 0.3), rgba(21, 50, 17, 0.3)), url(${homeHero});
-    background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(21, 50, 17, 0.3)), url(${homeHero}); /* The least supported option. */
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    overflow: clip;
     }
     img {
       object-fit: cover;
@@ -106,6 +113,9 @@ const Container = styled.div`
       display: flex;
       flex-direction: column;
       margin: 10px;
+      background-color: transparent;
+      z-index: 0;
+    
     }
     .hero-header{
       font-style: normal;
@@ -118,6 +128,7 @@ const Container = styled.div`
       letter-spacing: -0.015em;
       color: #f6f2ec;
       text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
     }
     
     .sub-hero{
@@ -125,8 +136,10 @@ const Container = styled.div`
       display: flex;
       flex-direction: column;
       padding: 20px 20px 40px 20px;
+    
         .sub-header{
           margin-left: 10px;
+        
           h2{
           color: #013110;
           font-size: 2.5em;
@@ -145,7 +158,9 @@ const Container = styled.div`
       background-color: #f6f2ec;
       display: flex;
       flex-direction: row;
+    
         .sub-text{
+        
           display: inline-block;
           padding: 25px;
           width: 85%;
@@ -173,13 +188,16 @@ const Container = styled.div`
     } 
     .body1{
     background-color: #013110;
+  
       .body1-content{
+      
         display: flex;
         flex-direction: row-reverse;
         align-items: center;
         justify-content: center;
         color: #f6f2ec; 
         .body1-img{
+        
           min-height: 700px;
           width: 55%;
           background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/11/grteam.jpg");
@@ -241,12 +259,14 @@ const Container = styled.div`
       }
     }
     .benefits{
+    
       display: flex;
       flex-direction: column;
       background-color: #f6f2ec;
       padding: 20px;
     }
     .benefits-header{
+    
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -256,6 +276,7 @@ const Container = styled.div`
         font-family: ivymode;
       }
       .benefits-content{
+      
         display: flex;
         flex-direction: row;
         align-items: baseline;
@@ -269,11 +290,13 @@ const Container = styled.div`
         }
       }
       .benefit-icon{
+      
           display: flex;
           flex-direction: column;
           align-items: center;
         }
     .testimonials{
+    
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -293,9 +316,11 @@ const Container = styled.div`
         }
       }
       .testimonialBox{
+      
       display: flex;
       justify-content: space-evenly;
       .userComment{
+      
       display: flex;
       flex-direction: column;
       flex-basis: 30%;
@@ -315,6 +340,7 @@ const Container = styled.div`
     }
   }
   .signup{
+  
     background-color: #013110;
     padding: 40px;
     .signup-container{
@@ -341,6 +367,7 @@ const Container = styled.div`
  * selectors to style that HTML.
  */
 const Content = styled.div`
+  z-index: 1;
   color: rgba(12, 17, 43, 0.8);
   word-break: break-word;
   * {
@@ -524,13 +551,13 @@ const Content = styled.div`
 
   @media screen and (max-width: 750px) {
     .hero {
-      height: 60vh;
+      height: 80vh;
     }
     img {
       object-fit: cover;
     }
     .hero-header{
-      font-size: 1.2rem;
+      font-size: 1.8rem;
     }
     .hero-buttons{
       display: flex;
@@ -682,7 +709,7 @@ const Content = styled.div`
       }
     } 
     .signup{
-      background-color: #013110;
+      background-color: #112C1B;
       padding: 40px;
       .signup-container{
         display: flex;
