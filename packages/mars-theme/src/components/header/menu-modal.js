@@ -61,7 +61,7 @@ const MenuLink = styled(Link)`
   font-size: 20px;
   text-align: center;
   padding: 1.2rem 0;
-  font-family: freight-sans-pro;
+  font-family: ivymode, serif;
   color: #ccb25c;
   z-index: 2;
   &:hover,

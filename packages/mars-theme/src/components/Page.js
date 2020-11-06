@@ -97,7 +97,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 550px;
+    height: 600px;
     width: 100vw;
     overflow: hidden;
     overflow: clip;

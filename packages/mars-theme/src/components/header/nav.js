@@ -31,7 +31,7 @@ const Nav = ({ state }) => (
 export default connect(Nav);
 
 const NavContainer = styled.nav`
-  font-family: freight-sans-pro, sans-serif;
+  font-family: ivymode, sans-serif;
   font-style: normal;
   font-weight: 400;
   list-style: none;
@@ -59,7 +59,7 @@ const NavItem = styled.div`
   font-weight: 550;
   box-sizing: border-box;
   flex-shrink: 0;
-  font-family: freight-sans-pro, sans-serif;
+  font-family: ivymode, serif;
   font-style: normal;
   font-weight: 400;
   letter-spacing: 1px;
@@ -73,13 +73,13 @@ const NavItem = styled.div`
     /* Use for semantic approach to style the current link */
     &[aria-current="page"] {
       border-bottom-color: #ccb25c;
-      font-family: freight-sans-pro, sans-serif;
+      font-family: ivymode, serif;
       font-weight: 750;
     }
     &:hover {
         color:#ccb25c;
         font-weight: 600; 
-        font-family: freight-sans-pro, sans-serif;
+        font-family: ivymode, serif;
         font-style: normal;
       }
   }
