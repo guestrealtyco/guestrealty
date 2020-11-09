@@ -254,13 +254,13 @@ const Content = styled.div`
       letter-spacing: -0.015em;
       color: #f6f2ec;
       text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    
     }
     .sub-hero{
       background-color: #f6f2ec;
       display: flex;
       flex-direction: column;
       padding: 20px 20px 40px 20px;
+
       .sub-header{
         margin-left: 10px;
         h2{
@@ -487,12 +487,14 @@ const Content = styled.div`
         }
     }
     .benefits{
+    
       display: flex;
       flex-direction: column;
       background-color: #f6f2ec;
       padding: 20px;
     }
     .benefits-header{
+    
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -502,6 +504,7 @@ const Content = styled.div`
         font-family: ivymode;
       }
       .benefits-content{
+      
         display: flex;
         flex-direction: row;
         align-items: baseline;
@@ -522,6 +525,7 @@ const Content = styled.div`
         }
       }
       .benefit-icon{
+      
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -531,6 +535,7 @@ const Content = styled.div`
           }
         }
     .testimonials{
+    
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -584,6 +589,7 @@ const Content = styled.div`
       }
     }
   .signup{
+  
     background-color: #013110;
       background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/11/GR_waves-bg.jpg");
       background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/11/GR_waves-bg.jpg"); /* The least supported option. */

@@ -142,6 +142,10 @@ const Container = styled.section`
       border: 2px solid #ccb25c;
     }
   }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 6e3c8c676befa2de28259bcea61061c8ea348129
 `;
 
 const CarouselHorizontal = styled.div`
