@@ -97,6 +97,7 @@ const Container = styled.div`
 const Title = styled.h2`
   font-size: 3.5rem;
   color: #013110;
+  font-family: ivymode, serif;
 `
 
 

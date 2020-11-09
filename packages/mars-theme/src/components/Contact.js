@@ -11,25 +11,25 @@ const Contact = ({ state, libraries }) => {
     return (
         <>
         <Container>
+          <BoxContainer>
             <HalfContainer>
-                <TextContainer>
-                    <h1 class="text">Have a question for us? <br />We'd love to offer our expertise.</h1>
-                </TextContainer>
-            </HalfContainer>
-
-            <HalfContainer>
-                <div className="cta-container">
-                    <div className="cta-text">
-                    <h2>Get in touch with us.</h2>
-                    <Arrow><svg xmlns="http://www.w3.org/2000/svg" id="arrow"  viewBox="0 0 24 24">
-                    <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-                </svg></Arrow>
-                    <ContactForm>
-                        <Html2React html={contactForm.content.rendered} />
-                    </ContactForm>
-                    </div>
+              <Cta>
+                <div className="ctaOutsideBorder">
+                <div className="imageCta">
+                  <img src="https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/11/animation_500_kha1qbom.gif" alt="guest realty sydney property management" />
                 </div>
+                <div className ="textCta">
+                  <h2>We Can Help!</h2>
+                  <p>Fill out your details in the form, or else give us a call by pressing the call button below.</p>
+                  <a href="tel:+610280956240"><button className="button btn-gold-dark">Call Us</button></a>
+                </div>
+                </div>
+              </Cta>
             </HalfContainer>
+          <ContactContainer>
+          <Html2React html={contactForm.content.rendered} />
+          </ContactContainer>
+          </BoxContainer>
         </Container>
         </>
     );
@@ -37,119 +37,66 @@ const Contact = ({ state, libraries }) => {
 
 export default connect(Contact);
 
-const Container =styled.div`
+const Container = styled.div`
     min-height: 100%;
-    color: white;
-    overflow: hidden;
+    min-width: 100%;
+    color: #013110;
+    border: 2px solid #ccb25c;
+`
+const BoxContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ccb25c;
+  background: #013110;
+  width: 100%;
+  @media screen and (max-width: 1080px){
+    flex-direction: column
+  }
 `
 const HalfContainer = styled.div`
-    color: white;
-    float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  background: #f6f2ec;
+  @media screen and (max-width: 1080px){
+    width: 100%;
+  }
+
+`
+const Cta = styled.div`
+  display: flex;
+  flex-direction: row;
+  background: #013110;
+  margin: 10px;
+  .ctaOutsideBorder{
+    display: flex;
+    align-items: center;
+    background: #013110;
+    border: 2px solid #ccb25c;
+    padding: 20px;
+    
+  }
+  .imageCta{
+    width: 40%;
+    img{
+      width: 100%;
+    }
+  }
+  .textCta{
+    h2{
+      color: #ccb25c;
+      font-family: ivymode, serif;
+    }
+    p{
+      font-family: freight-sans-pro, sans-serif;
+      color: #f6f2ec;
+    }
+  }
+`
+const ContactContainer = styled.div`
     width: 50%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-    .cta-container{
-        background: #FFCE45;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 30vh;
-        transition: 1s all;
-        overflow: hidden;
-        &:before {
-        content: "";
-        position: absolute;
-        background: #E7BB3F;
-        width: 150%;
-        height: 100%;
-        left: -50%;
-        bottom: -50%;
-        transform: rotate(25deg);
-        display: block;
-        }
-        .cta-text{
-            text-align: center;
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: 1s all;
-        }
-    }
-`
-
-const TextContainer = styled.div`
-    position: relative;
-    padding: 20px;
-    top: 50%;
-    transform: translateY(-80%);
-    transition: 1s all;
-    text-align: center;
-    &.is-active {
-      transform: translateY(-50%);
-      transition-delay: 1s;
-    }
-`
-
-
-//   .cta-container.is-active {
-//     height: 100vh;
-//     .cta-text {
-//       position: absolute;
-//       left: 0;
-//       right: 0;
-//       margin: auto;
-//       top: 45%;
-//       transform: translateY(-200%);
-//       transition-delay: 1s;
-//     }
-//     .form-container {
-//       opacity: 1;
-//       label,.submit {
-//         opacity: 1;
-//       }
-//       label:nth-of-type(1) {
-//         transition-delay: 1.8s;
-//       }
-//       label:nth-of-type(2) {
-//         transition-delay: 2.0s;
-//       }
-//       label:nth-of-type(3) {
-//         transition-delay: 2.2s;
-//       }
-//       .submit {
-//         transition-delay: 2.6s;
-//       }
-//     }
-//     .arrow {
-//       opacity: 0;
-//     }
-//   }
-  
-  const Arrow = styled.div`
-    transition: .4s all;
-    cursor: pointer;
-    transform-origin: center;
-    width: 30px;
-    height: 30px;
-    margin: auto;
-    &:hover {
-      transform: rotate(90deg) scale(1.3);
-    }
-    svg path {
-    fill: #0D735D;
-    }
-  `
-
-const ContactForm = styled.div`
-    opacity: 0;
-    padding: 20px;
-    position: absolute;
-    transition: .3s all 1s;
-    text-align: left;
-    left: 0;
-    right: 0;
-    margin: auto;
+    display: inline-block;
     .titleImg{
         width: 10%;
     }
@@ -158,10 +105,9 @@ const ContactForm = styled.div`
         flex-direction: column;
         align-items: baseline;
         justify-content: space-around;
-        
         max-width: 95%;
         label{
-        display: flex;
+        display: inline-block;
         flex-direction: row;
         margin: 0px 100px 0px 100px;
         font-weight: 400;
@@ -172,6 +118,7 @@ const ContactForm = styled.div`
         font-size: 1rem;
         font-weight: 800;
         width: 100%;
+        font-family: ivymode, serif;
         .wpcf7-not-valid-tip {
             color: #ccb25c;
             font-size: 1em;
@@ -181,7 +128,7 @@ const ContactForm = styled.div`
     }
     input{
         display: flex;
-        width: 100%;
+        width: 50%;
         font-size: 16px;
         font-weight: 400;
         line-height: 1.5;
@@ -189,7 +136,8 @@ const ContactForm = styled.div`
         background-color: #f6f2ec;
         background-clip: padding-box;
         border: 1px solid gray;
-        border-radius: 4px;
+        font-family: freight-sans-pro, sans-serif;
+        border-radius: 10px;
         outline-color: transparent;
         transition: outline-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         margin: 0px 100px 0px 100px;
@@ -210,7 +158,7 @@ const ContactForm = styled.div`
     select{
         padding: 10px;
         margin: 1px;
-        width: 100%;
+        width: 50%;
         -webkit-box-shadow: 25px 23px 19px -10px rgba(0,0,0,0.47);
         -moz-box-shadow: 25px 23px 19px -10px rgba(0,0,0,0.47);
         box-shadow: 25px 23px 19px -14px rgba(0,0,0,0.47);
@@ -220,6 +168,7 @@ const ContactForm = styled.div`
         margin: 0 auto;
         font-weight: 400;
         text-align: center;
+        font-family: ivymode, serif;
         white-space: nowrap;
         vertical-align: middle;
         -ms-touch-action: manipulation;
@@ -249,7 +198,7 @@ const ContactForm = styled.div`
           width: 80%;
       }
       input[type="submit"] {
-          width: 100%;
+          width: 50%;
       }
     }
 `

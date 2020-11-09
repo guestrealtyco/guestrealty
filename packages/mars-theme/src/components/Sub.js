@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
 import FadeIn from 'react-fade-in';
-
-
 import Link from "./link";
 import List from "./list";
 import PropertyList from "./list/PropertyList";
 import FeaturedMedia from "./featured-media";
 import Contact from "./Contact";
+
 const Sub = ({ state, actions, libraries }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
@@ -53,27 +52,16 @@ const Sub = ({ state, actions, libraries }) => {
           transitionDuration = '1400'
         >
           <Content>
-            <Html2React html={sub.content.rendered} />
-            <ContactContainer>
-            {postType === "renters" ? 
-              <iframe 
-              src="https://beds24.com/booking2.php?ownerid=65282&amp;referer=iframe"
-              title="Frontity"
-              width= "80%"
-              height= "3250px"
-            />
+            <Html2React html={sub.content.rendered} />              
+          </Content>
+          <ContactContainer>
+          {postType === "owners" ?  
+              <Contact />
               :
               null
-              // <Contact />
           }
             </ContactContainer>
-              
-          </Content>
-          {postType === "owners" ? 
               <PropertyList />
-              :
-              null
-          }
         </FadeIn>
         </FadeIn>
       </Container>
@@ -81,321 +69,20 @@ const Sub = ({ state, actions, libraries }) => {
 };
 export default connect(Sub);
 const Container = styled.div`
-  font-family: -apple-system, BlinkMacSystemFont, "SourceSansPro", "Segoe UI", Roboto,
+  font-family: -apple-system, BlinkMacSystemFont, "freight-sans-pro", "Segoe UI", Roboto,
       "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  width: 100%;
+  min-width: 100%;
   margin: 0;
   background: #f6f2ec;
-  #myVideo {
-      position: relative;
-      right: 0;
-      bottom: 0;
-      z-index: 0;
-      object-fit: cover;
-      min-height: 100%;
-    }
-  .hero{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    color: #ccb25c;
-    background: #122e1c; /* Old browsers */
-    background: -moz-linear-gradient(-45deg,  #122e1c 11%, #000000 67%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(-45deg,  #122e1c 11%,#000000 67%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(135deg,  #122e1c 11%,#000000 67%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#122e1c', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
- }
-  .hero-header-text{
-    display: flex;
-    width: 50%;
-    height: 100%;
-    flex-direction: column;
-  }
-  .hero-img{
-    height: 800px;
-    width: 50%;
-    overflow: hidden;
-    background: #f6f2ec;  
-    /* fallback colour. Make sure this is just one solid colour. */
-    img{
-      position: relative;
-      margin-top: -25px;
-      height: 850px;
-      /* width: auto; */
-    }
-  }
-  .hero-header{
-    font-family: ivymode, sans-serif;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 4rem;
-    line-height: 80px;
-    /* identical to box height, or 143% */
-    text-align: center;
-    letter-spacing: -0.015em;
-    color: #ccb25c;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-  .sub-hero{
-    display: flex;
-    flex-direction: column;
-    background-color: #f6f2ec;
-    .sub-header{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-      color: #013110;
-      h2{
-        color: #013110;
-        font-size: 2.5rem;
-        font-family: ivymode, sans-serif;
-      }
-      h4{
-        color: #013110;
-        font-family: freight-sans-pro, sans-serif;
-        font-size: 1.2rem;
-      }
-    }
-  }
-  .body1{
-      background-color: #013110;
-      .body1-content{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        color: #c1ab22; 
-        .body1-img{
-          height: 900px;
-          width: 50%;
-          background: -webkit-linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/900/650");
-          background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/900/650"); /* The least supported option. */
-        }
-        }
-        .body1-text{
-          width: 50%;
-          margin-left: 20px;
-          padding-left: 20px;
-          padding-right: 15px;
-          h4{
-          font-size: 1.5rem;
-          color: #ccb25c;
-          }
-          p{
-            color: #DBDBB6;
-          }
-          .body1-points{
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            p{
-              color: #DBDBB6;
-            }
-              .body1-point{
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              img{
-                width: 90px;
-                height: 90px;
-              }
-              .body1-subpoint{
-                color: #DBDBB6;
-            }
-          }
-        }
-      }
-    }
-    
-    .summary{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      h2{
-        color: #013110;
-        font-size: 2.5rem;
-        font-family: ivymode, sans-serif;
-      }
-      h3{
-        color: #013110;
-        font-size: 1.5rem;
-        font-family: ivymode, sans-serif;
-      }
-      .summary-points{
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
-        /* grid-template-columns: 32% 32% 32%;    */
-        column-gap: 100px;
-        row-gap: 40px;
-        /* This is better for small screens, once min() is better supported */
-        /* grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); */
-        grid-gap: 1rem;
-        align-items: baseline;
-        justify-content: center;
-        /* This is the standardized property now, but has slightly less support */
-        /* gap: 1rem */
-        width: 90%;
-        flex-wrap: wrap;
-        h3{
-          font-size: 1.5rem;
-        }
-        
-        .summary-point{
-          display: inline-block;
-          padding: 1.5rem;
-          border-radius: 1rem;
-          width: 100%;
-          min-height: 300px;
-          margin: 10px;
-          img{
-          width: 25%;
-          height: auto;
-          margin: 0 auto;
-          
-        }
-        }
-      }
-    }
-    
-    .icongroup{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: stretch;
-      width: 100%;
-      padding: 20px;
-      h2{
-        color: #013110;
-        font-size: 3rem;
-      }
-      h3{
-        color: #013110;
-        font-size: 2rem;
-      }
-      .icon-points{
-        display: flex;
-        width: 90%;
-        flex-direction: row;
-        align-items: baseline;
-        justify-content: space-between;
-        h3{
-          font-size: 1.15rem;
-          font-family: ivymode, sans-serif;
-        }
-        .icon-point{
-          padding: 1.5rem;
-          border-radius: 1rem;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          img{
-          width: 75%;
-          height: auto;
-        }
-        }
-      }
-    }
-    .body2{
-      background-color: #f6f2ec;
-      .body2-content{
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
-        justify-content: center;
-        color: #c1ab22; 
-        .body2-img{
-          height: 625px;
-          width: 50%;
-          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/25856_MG_8703-lores.jpg");
-          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/25856_MG_8703-lores.jpg"); /* The least supported option. */
-          background-repeat: no-repeat;
-          background-size: cover;
-        }
-        }
-        .body2-text{
-          width: 50%;
-          margin-left: 20px;
-          padding-left: 20px;
-          h2{
-          font-size: 1.5rem;
-          color: #013110;
-          font-family: ivymode, sans-serif;
-          }
-          h4{
-          font-size: 1rem;
-          color: #013110;
-          font-family: ivymode, sans-serif;
-          }
-          p{
-            color: #013110;
-            font-family: freight-sans-pro, sans-serif;
-          }
-          .body2-points{
-            display: flex;
-            flex-direction: column;
-            h5{
-              color: #013110;
-              margin-right: 10px;
-              font-size: 1rem;
-              padding: 10px;
-              font-family: freight-sans-pro, sans-serif;
-            }
-            p{
-              color: #013110;
-            }
-              .body2-point{
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              margin-bottom: -10px;
-              img{
-                width: 90px;
-                height: 90px;
-              }
-              .body2-subpoint{
-                color: #013110;
-            }
-          } 
-        }
-      }
-    }
-    .signup{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      div{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-        h2{
-          color: #013110;
-          font-size: 3rem;
-          font-family: ivymode, sans-serif;
-        }
-        p{
-          color: #013110;
-          font-family: freight-sans-pro, sans-serif;
-        }
-      }
-  }
-  .page-elms {
-    height: 25%;
-    margin: -10px;
-  }
 `
 
 const ContactContainer = styled.div`
   background-color: #f6f2ec;
-  width: 100%;
+  min-width: 100%;
   padding: 10px;
   align-items: center;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   background: #f6f2ec;
 `
@@ -488,100 +175,977 @@ const Content = styled.div`
     background-color: #f6f2ec;
   }
   /* WordPress Core Align Classes */  
-  @media (max-width: 750px) {
-    .icon-points{
-      flex-direction: column;
-    }
-    .hero{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    }
-    .hero-header-text{
-      display: flex;
-      width: 100%;
-      height: 100%;
-      flex-direction: column;
-      font-size: 1rem;
-      padding: 15px;
-    }
-    .hero-img{
-      display: none;
-      img{
-        display: none;
+
+
+  @media screen and (min-width: 1081px) {
+      #myVideo {
+        position: relative;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        object-fit: cover;
+        min-height: 100%;
       }
-    }
-    .hero-header{
-      font-size: 2rem;
-      line-height: 50px;
-    }
-    .sub-hero{
-      .sub-header{
-          h2{
-            font-size: 1.5rem;
-          }
-          h4{
-            font-size: 1rem;
-          }
-      }
-      .icon-points{
-        display: none;
-      }
-    }
-    .body1{
-      .body1-content{
+      .hero{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        justify-content: space-around;
-        .body1-img{
-          display: none;     
+        justify-content: center;
+        color: #ccb25c;
+        background: #122e1c; /* Old browsers */
+        background: -moz-linear-gradient(-45deg,  #122e1c 11%, #000000 67%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(-45deg,  #122e1c 11%,#000000 67%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(135deg,  #122e1c 11%,#000000 67%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#122e1c', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    }
+      .hero-header-text{
+        display: flex;
+        padding: 25px;
+        width: 50%;
+        height: 100%;
+        flex-direction: column;
+      }
+      .hero-img{
+        height: 800px;
+        width: 50%;
+        overflow: hidden;
+        background: #f6f2ec;  
+        /* fallback colour. Make sure this is just one solid colour. */
+        img{
+          position: relative;
+          margin-top: -25px;
+          height: 850px;
+          /* width: auto; */
         }
       }
-      .body1-text{
-        width: 1000%;
+      .hero-header{
+        font-family: ivymode, sans-serif;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 4rem;
+        line-height: 80px;
+        /* identical to box height, or 143% */
+        text-align: center;
+        letter-spacing: -0.015em;
+        color: #ccb25c;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
+      .sub-hero{
+        display: flex;
+        flex-direction: column;
+        background-color: #f6f2ec;
+        .sub-header{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 40px;
+          color: #013110;
+          h2{
+            color: #013110;
+            font-size: 2.5rem;
+            font-family: ivymode, sans-serif;
+          }
           h4{
-          font-size: 1rem;
+            color: #013110;
+            font-family: freight-sans-pro, sans-serif;
+            font-size: 1.2rem;
           }
-          p{
-            font-size: 0.75rem;
+        }
+      }
+      .body1{
+        background-color: #013110;
+        .body1-content{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          color: #c1ab22; 
+          .body1-img{
+            height: 900px;
+            width: 50%;
+            background: -webkit-linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/900/650");
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/900/650"); /* The least supported option. */
           }
-          .body1-point{
-            img{
-              width: 10px;
-              height: 10px;
+          }
+          .body1-text{
+            width: 50%;
+            margin-left: 20px;
+            padding-left: 20px;
+            padding-right: 15px;
+            h4{
+            font-size: 1.5rem;
+            color: #ccb25c;
+            }
+            p{
+              color: #DBDBB6;
+            }
+            .body1-points{
+              display: flex;
+              flex-direction: column;
+              padding: 20px;
+              p{
+                color: #DBDBB6;
+              }
+                .body1-point{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                img{
+                  width: 90px;
+                  height: 90px;
+                }
+                .body1-subpoint{
+                  color: #DBDBB6;
+              }
             }
           }
         }
-    }
+      }
 
     .summary{
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-around;
+      justify-content: center;
+      padding: 20px;
+      h2{
+        color: #013110;
+        font-size: 2.5rem;
+        font-family: ivymode, sans-serif;
+      }
       h3{
         color: #013110;
         font-size: 1.5rem;
+        font-family: ivymode, sans-serif;
       }
       .summary-points{
-        display: flex;
-        flex-direction: column;
-        width: 80%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
+        /* grid-template-columns: 32% 32% 32%;    */
+        column-gap: 100px;
+        row-gap: 40px;
+        /* This is better for small screens, once min() is better supported */
+        /* grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); */
+        grid-gap: 1rem;
+        align-items: baseline;
+        justify-content: center;
+        /* This is the standardized property now, but has slightly less support */
+        /* gap: 1rem */
+        width: 90%;
+        flex-wrap: wrap;
         h3{
           font-size: 1.5rem;
-          padding: 10px;
+        }
+        
+        .summary-point{
+          display: inline-block;
+          padding: 1.5rem;
+          border-radius: 1rem;
+          width: 100%;
+          min-height: 300px;
+          margin: 10px;
+          img{
+          width: 25%;
+          height: auto;
+          margin: 0 auto;
+          
+        }
+        }
+      }
+    }
+    
+    .icongroup{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: stretch;
+      width: 100%;
+      padding: 20px;
+      h2{
+        color: #013110;
+        font-size: 3rem;
+      }
+      h3{
+        color: #013110;
+        font-size: 2rem;
+      }
+      .icon-points{
+        display: flex;
+        width: 90%;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+        h3{
+          font-size: 1.15rem;
+          font-family: ivymode, sans-serif;
+        }
+        .icon-point{
+          padding: 1.5rem;
+          border-radius: 1rem;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          img{
+          width: 75%;
+          height: auto;
+          transition: all .2s ease-in-out;
+          &:hover{
+            transform: scale(1.05);
+          }
+        }
+        }
+      }
+    }
+    .body2{
+      background-color: #f6f2ec;
+      .body2-content{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
+        color: #c1ab22; 
+          .body2-img{
+            height: 625px;
+            width: 50%;
+            background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/25856_MG_8703-lores.jpg");
+            background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/25856_MG_8703-lores.jpg"); /* The least supported option. */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 20px bottom 10px;
+          }
+      }
+      .body2-text{
+        width: 50%;
+        margin-left: 20px;
+        padding-left: 20px;
+        h2{
+          font-size: 1.5rem;
+          color: #013110;
+          font-family: ivymode, sans-serif;
+        }
+        h4{
+          font-size: 1rem;
+          color: #013110;
+          font-family: ivymode, sans-serif;
         }
         p{
           color: #013110;
+          font-family: freight-sans-pro, sans-serif;
         }
-        .summary-point{
+        .body2-points{
           display: flex;
           flex-direction: column;
-          width: 100%;
+          h5{
+            color: #013110;
+            margin-right: 10px;
+            font-size: 1rem;
+            padding: 10px;
+            font-family: freight-sans-pro, sans-serif;
+          }
+          p{
+            color: #013110;
+          }
+          .body2-point{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: -10px;
+            img{
+              width: 90px;
+              height: 90px;
+            }
+            .body2-subpoint{
+              color: #013110;
+            }
+          } 
         }
       }
+    } 
+    .signup{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        h2{
+          color: #013110;
+          font-size: 3rem;
+          font-family: ivymode, sans-serif;
+        }
+        p{
+          color: #013110;
+          font-family: freight-sans-pro, sans-serif;
+        }
+      }
+    }
+    .page-elms {
+      height: 25%;
+      margin: -10px;
+    }
+  }
+  @media screen and (min-width: 751px) and (max-width: 1080px) {
+    .icon-points{
+      flex-direction: column;
+    }
+    .hero{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        color: #ccb25c;
+        background: #122e1c; /* Old browsers */
+        background: -moz-linear-gradient(-45deg,  #122e1c 11%, #000000 67%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(-45deg,  #122e1c 11%,#000000 67%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(135deg,  #122e1c 11%,#000000 67%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#122e1c', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    }
+      .hero-header-text{
+        display: flex;
+        padding: 25px;
+        width: 50%;
+        height: 100%;
+        flex-direction: column;
+      }
+      .hero-img{
+        display: none;
+        }
+      }
+      .hero-header{
+        font-family: ivymode, sans-serif;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 4rem;
+        line-height: 80px;
+        /* identical to box height, or 143% */
+        text-align: center;
+        letter-spacing: -0.015em;
+        color: #ccb25c;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
+      .sub-hero{
+        display: flex;
+        flex-direction: column;
+        background-color: #f6f2ec;
+        .sub-header{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 40px;
+          color: #013110;
+          h2{
+            color: #013110;
+            font-size: 2.5rem;
+            font-family: ivymode, sans-serif;
+          }
+          h4{
+            color: #013110;
+            font-family: freight-sans-pro, sans-serif;
+            font-size: 1.2rem;
+          }
+        }
+      }
+      .body1{
+        background-color: #013110;
+        .body1-content{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          color: #c1ab22; 
+          .body1-img{
+            height: 900px;
+            width: 50%;
+            background: -webkit-linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/900/650");
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/900/650"); /* The least supported option. */
+          }
+          }
+          .body1-text{
+            width: 50%;
+            margin-left: 20px;
+            padding-left: 20px;
+            padding-right: 15px;
+            h4{
+            font-size: 1.5rem;
+            color: #ccb25c;
+            }
+            p{
+              color: #013110;
+            }
+            .body1-points{
+              display: flex;
+              flex-direction: column;
+              padding: 20px;
+              p{
+                color: #013110;
+              }
+                .body1-point{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                img{
+                  width: 90px;
+                  height: 90px;
+                }
+                .body1-subpoint{
+                  color: #013110;
+              }
+            }
+          }
+        }
+      }
+
+    .summary{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      h2{
+        color: #013110;
+        font-size: 2.5rem;
+        font-family: ivymode, sans-serif;
+      }
+      h3{
+        color: #013110;
+        font-size: 1.5rem;
+        font-family: ivymode, sans-serif;
+      }
+      .summary-points{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
+        /* grid-template-columns: 32% 32% 32%;    */
+        column-gap: 100px;
+        row-gap: 40px;
+        /* This is better for small screens, once min() is better supported */
+        /* grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); */
+        grid-gap: 1rem;
+        align-items: baseline;
+        justify-content: center;
+        /* This is the standardized property now, but has slightly less support */
+        /* gap: 1rem */
+        width: 90%;
+        flex-wrap: wrap;
+        h3{
+          font-size: 1.5rem;
+        }
+        
+        .summary-point{
+          display: inline-block;
+          padding: 1.5rem;
+          border-radius: 1rem;
+          width: 100%;
+          min-height: 300px;
+          margin: 10px;
+          img{
+          width: 25%;
+          height: auto;
+          margin: 0 auto;
+          
+        }
+        }
+      }
+    }
+    
+    .icongroup{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: stretch;
+      width: 100%;
+      padding: 20px;
+      h2{
+        color: #013110;
+        font-size: 3rem;
+      }
+      h3{
+        color: #013110;
+        font-size: 2rem;
+      }
+      .icon-points{
+        display: flex;
+        width: 90%;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+        h3{
+          font-size: 1.15rem;
+          font-family: ivymode, sans-serif;
+        }
+        .icon-point{
+          padding: 1.5rem;
+          border-radius: 1rem;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          img{
+          width: 75%;
+          height: auto;
+          transition: all .2s ease-in-out;
+          &:hover{
+            transform: scale(1.05);
+          }
+        }
+        }
+      }
+    }
+
+    .body2{
+      background-color: #f6f2ec;
+      .body2-content{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
+        color: #c1ab22; 
+        .body2-img{
+          height: 625px;
+          width: 50%;
+          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/25856_MG_8703-lores.jpg");
+          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/25856_MG_8703-lores.jpg"); /* The least supported option. */
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        }
+        .body2-text{
+          width: 50%;
+          margin-left: 20px;
+          padding-left: 20px;
+          h2{
+          font-size: 1.5rem;
+          color: #013110;
+          font-family: ivymode, sans-serif;
+          }
+          h4{
+          font-size: 1rem;
+          color: #013110;
+          font-family: ivymode, sans-serif;
+          }
+          p{
+            color: #013110;
+            font-family: freight-sans-pro, sans-serif;
+          }
+          .body2-points{
+            display: flex;
+            flex-direction: column;
+            h5{
+              color: #013110;
+              margin-right: 10px;
+              font-size: 1rem;
+              padding: 10px;
+              font-family: freight-sans-pro, sans-serif;
+            }
+            p{
+              color: #013110;
+            }
+              .body2-point{
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              margin-bottom: -10px;
+              img{
+                width: 90px;
+                height: 90px;
+              }
+              .body2-subpoint{
+                color: #013110;
+                margin-bottom: -10px;
+            }
+          } 
+        }
+      }
+    }
+    .signup{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        h2{
+          color: #013110;
+          font-size: 3rem;
+          font-family: ivymode, sans-serif;
+        }
+        p{
+          color: #013110;
+          font-family: freight-sans-pro, sans-serif;
+        }
+      }
+    }
+    .page-elms {
+      height: 25%;
+      margin: -10px;
+    }
+    .body2{
+      .body2-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .body2-img{
+          min-height: 350px;
+          width: 100%;
+      }
+      }
+      .body2-text{
+          width: 85%;
+          margin-left: 10px;
+          padding-right: 20px;
+          h2{
+          font-size: 2rem;
+          color: #013110;
+          }
+          h4{
+          font-size: 1rem;
+          color: #013110;
+          }
+          p{
+            color: #013110;
+          }
+          .body2-points{
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            h3{
+              color: #ccb25c;
+              width: 100%;
+              font-size: 2rem;
+            }
+            p{
+              color: #013110;
+              font-size: 1rem;
+            }
+            .body2-point{
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              padding: 12px;
+              margin-left: -10px;
+              img{
+                width: 90px;
+                height: 90px;
+              }
+              .body2-subpoint{
+                color: #013110;
+              }
+            }
+          }
+      }
+    }
+    .signup{
+      padding: 25px;
+      div{
+        h3{
+        font-size: 1.5rem;
+        }
+      }
+    }
+    iframe{
+      height: 6750px;
+    }
+  }
+  @media screen and (max-width: 750px) {
+    .icon-points{
+      flex-direction: column;
+    }
+    .hero{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        color: #ccb25c;
+        background: #122e1c; /* Old browsers */
+        background: -moz-linear-gradient(-45deg,  #122e1c 11%, #000000 67%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(-45deg,  #122e1c 11%,#000000 67%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(135deg,  #122e1c 11%,#000000 67%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#122e1c', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    }
+      .hero-header-text{
+        display: flex;
+        padding: 25px;
+        width: 50%;
+        height: 100%;
+        flex-direction: column;
+      }
+      .hero-img{
+       display: none;
+      }
+      .hero-header{
+        font-family: ivymode, sans-serif;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 2rem;
+        /* identical to box height, or 143% */
+        text-align: center;
+        letter-spacing: -0.015em;
+        color: #ccb25c;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
+      .sub-hero{
+        display: flex;
+        flex-direction: column;
+        background-color: #f6f2ec;
+        .sub-header{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 40px;
+          color: #013110;
+          h2{
+            color: #013110;
+            font-size: 2.5rem;
+            font-family: ivymode, sans-serif;
+          }
+          h4{
+            color: #013110;
+            font-family: freight-sans-pro, sans-serif;
+            font-size: 1.2rem;
+          }
+        }
+      }
+      .body1{
+        background-color: #013110;
+        .body1-content{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          color: #c1ab22; 
+          .body1-img{
+            height: 900px;
+            width: 50%;
+            background: -webkit-linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/900/650");
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(21, 50, 17, 0.8)), url("https://picsum.photos/900/650"); /* The least supported option. */
+          }
+          }
+          .body1-text{
+            width: 50%;
+            margin-left: 20px;
+            padding-left: 20px;
+            padding-right: 15px;
+            h4{
+            font-size: 1.5rem;
+            color: #ccb25c;
+            }
+            p{
+              color: #013110;
+            }
+            .body1-points{
+              display: flex;
+              flex-direction: column;
+              padding: 20px;
+              p{
+                color: #013110;
+              }
+                .body1-point{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                img{
+                  width: 90px;
+                  height: 90px;
+                }
+                .body1-subpoint{
+                  color: #013110;
+              }
+            }
+          }
+        }
+      }
+
+    .summary{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      h2{
+        color: #013110;
+        font-size: 2.5rem;
+        font-family: ivymode, sans-serif;
+      }
+      h3{
+        color: #013110;
+        font-size: 1.5rem;
+        font-family: ivymode, sans-serif;
+      }
+      .summary-points{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
+        /* grid-template-columns: 32% 32% 32%;    */
+        column-gap: 100px;
+        row-gap: 40px;
+        /* This is better for small screens, once min() is better supported */
+        /* grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); */
+        grid-gap: 1rem;
+        align-items: baseline;
+        justify-content: center;
+        /* This is the standardized property now, but has slightly less support */
+        /* gap: 1rem */
+        width: 90%;
+        flex-wrap: wrap;
+        h3{
+          font-size: 1.5rem;
+        }
+        
+        .summary-point{
+          display: inline-block;
+          padding: 1.5rem;
+          border-radius: 1rem;
+          width: 100%;
+          min-height: 300px;
+          margin: 10px;
+          img{
+          width: 25%;
+          height: auto;
+          margin: 0 auto;
+          
+        }
+        }
+      }
+    }
+    
+    .icongroup{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: stretch;
+      width: 100%;
+      padding: 20px;
+      h2{
+        color: #013110;
+        font-size: 3rem;
+      }
+      h3{
+        color: #013110;
+        font-size: 2rem;
+      }
+      .icon-points{
+        display: flex;
+        width: 90%;
+        flex-direction: column;
+        align-items: baseline;
+        justify-content: space-between;
+        h3{
+          font-size: 1.15rem;
+          font-family: ivymode, sans-serif;
+        }
+        .icon-point{
+          padding: 1.5rem;
+          border-radius: 1rem;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 0;
+          img{
+          width: 50%;
+          height: auto;
+          margin: 0;
+          padding: 0;
+          transition: all .2s ease-in-out;
+          &:hover{
+            transform: scale(1.05);
+          }
+        }
+        }
+        }
+      }
+
+    .body2{
+      background-color: #f6f2ec;
+      .body2-content{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
+        color: #c1ab22; 
+        .body2-img{
+          height: 625px;
+          width: 50%;
+          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/25856_MG_8703-lores.jpg");
+          background: url("https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/10/25856_MG_8703-lores.jpg"); /* The least supported option. */
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        }
+        .body2-text{
+          width: 50%;
+          margin-left: 20px;
+          padding-left: 20px;
+          h2{
+          font-size: 1.5rem;
+          color: #013110;
+          font-family: ivymode, sans-serif;
+          }
+          h4{
+          font-size: 1rem;
+          color: #013110;
+          font-family: ivymode, sans-serif;
+          }
+          p{
+            color: #013110;
+            font-family: freight-sans-pro, sans-serif;
+          }
+          .body2-points{
+            display: flex;
+            flex-direction: column;
+            h5{
+              color: #013110;
+              margin-right: 10px;
+              font-size: 1rem;
+              padding: 10px;
+              font-family: freight-sans-pro, sans-serif;
+            }
+            p{
+              color: #013110;
+            }
+              .body2-point{
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              margin-bottom: -10px;
+              img{
+                width: 90px;
+                height: 90px;
+              }
+              .body2-subpoint{
+                color: #013110;
+            }
+          } 
+        }
+      }
+    }
+    .signup{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        h2{
+          color: #013110;
+          font-size: 2rem;
+          font-family: ivymode, sans-serif;
+        }
+        p{
+          color: #013110;
+          font-family: freight-sans-pro, sans-serif;
+        }
+      }
+    }
+    .page-elms {
+      height: 25%;
+      margin: -10px;
     }
     .body2{
       .body2-content{

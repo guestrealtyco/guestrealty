@@ -83,7 +83,7 @@ const Post = ({ state, actions, libraries }) => {
 export default connect(Post);
 
 const ArticleContainer = styled.div`
-  width:90%;
+  width:100%;
   max-width:1035px;
   margin: 0 auto;
   padding-right: 15px;
@@ -97,6 +97,7 @@ const ArticleContainer = styled.div`
     height: auto;
   }
 `;
+
 
 const Title = styled.h1`
   margin-bottom: 1.2rem;
@@ -131,11 +132,18 @@ const DateWrapper = styled.p`
  * selectors to style that HTML.
  */
 const Content = styled.div`
+  border-left: 1px solid #ccb25c;
+  border-right: 1px solid #ccb25c;
+  margin: 10px;
+  color: #013110;
   word-break: break-word;
   * {
     max-width: 771px;
-    width: 100%;
+    width: 90%;
     margin:0 auto;
+  }
+  .wp-block-spacer{
+    max-height: 25px;
   }
   p {
     margin-bottom:1.5rem;
