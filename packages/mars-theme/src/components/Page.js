@@ -226,7 +226,7 @@ const Content = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 500px;
+    height: 90vh;
     width: 100vw;
     overflow: hidden;
     overflow: clip;
