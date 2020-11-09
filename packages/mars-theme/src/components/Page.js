@@ -1057,7 +1057,6 @@ const Content = styled.div`
       font-size: 0.95em;
       display: flex;
       flex-direction: column;
-      
       margin: 10px;
       background-color: transparent;
       z-index: 0;
