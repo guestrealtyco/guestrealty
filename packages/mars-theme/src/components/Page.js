@@ -1066,7 +1066,7 @@ const Content = styled.div`
       font-style: normal;
       padding: 20px;
       font-weight: 800;
-      font-size: 3rem;
+      font-size: 1.5rem;
       line-height: 80px;
       /* identical to box height, or 143% */
       text-align: center;
