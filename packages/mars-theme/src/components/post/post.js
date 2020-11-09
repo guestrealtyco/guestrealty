@@ -33,9 +33,6 @@ const Post = ({ state, actions, libraries }) => {
 
   // Load the post, but only if the data is ready.
   return data.isReady ? (
-    <FadeIn
-      transitionDuration = '1400'
-    >
        <ArticleContainer>
         <div className="post-title">
           <img className ="titleImg" src={star_arch} />
@@ -76,7 +73,6 @@ const Post = ({ state, actions, libraries }) => {
         <Comments postId ={post.id} />
         </FadeIn>
       </ArticleContainer>
-    </FadeIn>
   ) : null;
 };
 

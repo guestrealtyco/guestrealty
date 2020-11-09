@@ -95,7 +95,6 @@ const Article = styled.article`
   -webkit-box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
   -moz-box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
   box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
-  
   .bio-info {
     color: #ccb25c;
     margin-bottom:1rem;
