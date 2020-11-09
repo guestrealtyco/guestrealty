@@ -15,9 +15,6 @@ const List = ({ state }) => {
   }
 
   return (
-    <FadeIn
-    transitionDuration = '1400'
-  >
     <Container>
       {/* If the list is a list of blog posts, we render a title. */}
       {data.isPostArchive && (
@@ -91,13 +88,8 @@ const List = ({ state }) => {
           </>
       )}
     </FadeIn>
-    <FadeIn
-      transitionDuration = '1400'
-    >
       <Pagination />
-    </FadeIn>
     </Container>
-    </FadeIn>
   );
 };
 

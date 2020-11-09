@@ -20,6 +20,7 @@ const PropertyList = ({ state }) => {
         <Header>
           <img className ="titleImg" src={star_arch} />
           <h2>Take a look at some of our rental properties</h2>
+          <a href="/our-properties"><button className="button btn-dark"> View All</button></a>
         </Header>
       )}
       {!data.isAwsmJobOpeningsArchive && (
@@ -29,7 +30,7 @@ const PropertyList = ({ state }) => {
           infinite={true}
           isIntrinsicHeight={true}
           touchEnabled={true}
-          visibleSlides={2.5}
+          visibleSlides={2.25}
           totalSlides={data.items.length}
         >
           <CarouselHorizontal>
@@ -62,14 +63,15 @@ const Container = styled.section`
   display: block;
   position: relative;
   
+
   .titleImg{
-    width: 20%;
+    width: 8%;
     height: auto;
     margin-bottom: -10px;
   }
   h2{
     margin-top: -10px;
-    font-size: 3rem;
+    font-size: 2rem;
   }
   .carousel__slide{
     margin: 10px;
@@ -158,6 +160,10 @@ const Header = styled.h1`
   }
   p{
     font-style: italic;
+    font-size: 1rem;
+  }
+
+  @media screen and (max-width: 750px) {
     font-size: 1rem;
   }
 `

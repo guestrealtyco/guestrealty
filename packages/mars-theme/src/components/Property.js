@@ -4,7 +4,7 @@ import Link from "./link";
 import List from "./list";
 import FeaturedMedia from "./featured-media";
 import star_divider from "../assets/elements/star_divider.png";
-
+import FadeIn from 'react-fade-in';
 
 const Property = ({ state, actions, libraries }) => {
   // Get information about the current URL.
@@ -35,20 +35,25 @@ const Property = ({ state, actions, libraries }) => {
   // Load the post, but only if the data is ready.
   return data.isReady ? (
     <Container>
+      <FadeIn>
       <div className ="titleBox">
         <Title dangerouslySetInnerHTML={{ __html: property.title.rendered }} /> 
         <img className ="titleImg" src={star_divider} />
         {/* Only display author and date on posts */}
         {data.isProperty}
       </div>
-
+      </FadeIn>
+      
+      <FadeIn>
       {/* Look at the settings to see if we should include the featured image */}
       {state.theme.featured.showOnPost && (
         <FeaturedMedia id={property.featured_media} />
       )}
-
+      </FadeIn>
+      
       {/* Render the content using the Html2React component so the HTML is processed
        by the processors we included in the libraries.html2react.processors array. */}
+      <FadeIn>
       <Content>
         <Html2React html={property.content.rendered} />
         {acf.bed24id === null ? 
@@ -60,6 +65,7 @@ const Property = ({ state, actions, libraries }) => {
            />
       }
       </Content>
+      </FadeIn>
     </Container>
   ) : null;
 };
@@ -91,6 +97,7 @@ const Container = styled.div`
 const Title = styled.h2`
   font-size: 3.5rem;
   color: #013110;
+  font-family: ivymode, serif;
 `
 
 

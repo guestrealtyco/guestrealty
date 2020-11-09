@@ -83,7 +83,7 @@ const Item = ({ state, item }) => {
 // Connect the Item to gain access to `state` as a prop
 export default connect(Item);
 const Article = styled.article`
-  background: #122e1c; /* Old browsers */
+  background: #013110; /* Old browsers */
   color: #f6f2ec;
   border: 3px solid #ccb25c;
   border-radius: 15px;
@@ -95,7 +95,6 @@ const Article = styled.article`
   -webkit-box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
   -moz-box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
   box-shadow: 19px 17px 12px -14px rgba(0,0,0,0.47);
-  
   .bio-info {
     color: #ccb25c;
     margin-bottom:1rem;
