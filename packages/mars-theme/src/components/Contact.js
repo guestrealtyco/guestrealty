@@ -39,7 +39,7 @@ export default connect(Contact);
 
 const Container = styled.div`
     min-height: 100%;
-    min-width: 100%;
+    max-width: 100%;
     color: #013110;
     border: 2px solid #ccb25c;
 `
@@ -69,6 +69,7 @@ const Cta = styled.div`
   flex-direction: row;
   background: #013110;
   margin: 10px;
+  min-height: 100%;
   .ctaOutsideBorder{
     display: flex;
     align-items: center;
