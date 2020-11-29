@@ -33,6 +33,7 @@ const Theme = ({ state }) => {
       <Title />
       <Head>
         <meta name="description" content={state.frontity.description} />
+        
         <html lang="en" />
       </Head>
 
@@ -106,7 +107,6 @@ const Main = styled.div`
   background-color: #f6f2ec;
   z-index: 0;
 `;
-
 
 const FooterContainer = styled.div`
   display: flex;

@@ -36,7 +36,7 @@ const AllProperties = ({ state }) => {
 export default connect(AllProperties);
 
 const Container = styled.section`
-  min-width: 100%;
+  max-width: 100%;
   background: #f6f2ec;
   margin: 0 auto;
   padding-right: 15px;
