@@ -63,7 +63,7 @@ const Container = styled.div`
   margin: 0;
   background: #f6f2ec;
   overflow: hidden;
-`
+`;
 
 /**
  * This component is the parent of the `content.rendered` HTML. We can use nested
@@ -76,4 +76,4 @@ const Content = styled.div`
   * {
     max-width: 100%;
   }
-  `;
+`;
