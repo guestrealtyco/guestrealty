@@ -1,7 +1,5 @@
 import React from 'react';
 import { styled } from "frontity";
-import { Slide } from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
 
 const Quote = ({ quote, author}) => {
     return (
