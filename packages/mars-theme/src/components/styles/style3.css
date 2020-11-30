@@ -266,6 +266,23 @@ h4{
   display: flex;
   flex-direction: column;
   margin-top: -80px;
+  position: relative;
+  z-index: 0;
+}
+.services-bg{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url(https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/2020/11/caleb-semeri-kVhce-9iEWs-unsplash.jpg) center center;
+  background-attachment: fixed;
+  opacity: .3;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .Services h2{
   color: #153211;
@@ -278,7 +295,6 @@ h4{
   color: #153211;
   font-family: freight-sans-pro, sans-serif;
   font-size: 1.35rem;
-  padding: 10px 40px 40px 40px;
 }
 .Services #bar2{
   margin: 0 auto;
@@ -306,118 +322,45 @@ h4{
   align-items: center;
   margin: 10px;
 }
-.services-container img{
-  max-width: 25vw;
-  height: auto;
-  display: inline-block;
-  border-radius: 20px;
+.Services-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
   margin: 10px;
+  min-height: 400px;
+  max-width: 500px;
+  border-radius: 20px;
+  background-color: rgba(1, 49, 16, 0.25);
+  border: 2px dotted #ccb25c;
 }
-.services-container .card {
-  position: relative;
-  height: 10rem;
-  line-height: 1.2rem;
-  transition: all 0.3s ease-in-out;
-  background-color: rgba(31, 33, 29, 0.5);
-  margin: -200px 5px 5px 10px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-.services-container .card:hover {
-  box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
-  background-color: rgba(31, 33, 29, 0.5);
-  margin-top: -200px;
-  line-height: 1.2rem;
-  height: 11rem;
-
-}
-.services-container .card img{
-  max-width: 30rem;
-  height: auto;
-}
-.services-container .card__link {
-  display: block;
-  padding: 1em;
-  text-decoration: none;
-}
-.services-container .card__icon {
-  position: absolute;
-  transition: all 0.3s ease-in-out;
-  width: 12em;
-  height: 5rem;
-}
-.services-container .card:hover .card__icon {
-  opacity: 0;
-  transform: scale(0);
-
-}
-.services-container .card__icon h3 {
+.Services-card h3{
   color: #f6f2ec;
-  margin-top: -10px;
   font-family: ivymode, serif;
+  font-size: 1.8rem;
 }
-.services-container .card__media p {
-  color: #f6f2ec;
-  margin-top: -40px;
-  font-size: 1.1rem;
+.Services-card #bar2{
+  margin: 0px auto;
+  margin-bottom: 20px;
+}
+.Services-card h3{
+  font-size: 1.6rem;
+}
+.Services-card p{
+  color: #1f211d;
+  font-family: ivymode, serif;
+  font-size: .2rem;
   font-weight: 400;
-  font-family: "freight-sans-pro", sans-serif;
-  text-align: center;
-  display: none;
-  opacity: 0;
-  padding: 5px;
-  transition: all 0.3s ease-in-out;
-  transform-origin: center center;
-}
-.services-container .card__media {
-  padding: 2em 0;
-}
-.services-container .card__media h3 {
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
-  transform-origin: center center;
-}
-.services-container .card:hover .card__media h3 {
-  animation: fadeInScale 0.3s ease-in-out forwards;
-}
-.services-container .card:hover .card__media p {
-  animation: fadeInScale 0.3s ease-in-out forwards;
-  display: inline-block;
-}
-.services-container .card:hover .card__media h3:nth-child(2) {
-  animation-delay: 0.1s;
-}
-.services-container .card:hover .card__media p:nth-child(2) {
-  animation-delay: 0.1s;
-}
-.services-container .card:hover .card__media h3:nth-child(3) {
-  animation-delay: 0.2s;
-}
-.services-container .card:hover .card__media p:nth-child(3) {
-  animation-delay: 0.2s;
-}
-.services-container .card__header {
-  position: relative;
-}
-.services-container .card__header-icon {
-  opacity: 1;
-  position: absolute;
-  right: 0;
-  top: 10%;
-  margin-top: -3.5rem;
-  width: 2em;
-  height: 2em;
-  transform: translateX(0);
-}
-.services-container .card:hover .card__header-icon {
-  opacity: 0;
-  transform: translateX(-20%);
-  transition: all 0.3s ease-in-out;
+  margin: 20px auto;
 }
 /* How It Works/ Need Help Planning*/
 .Steps { 
   grid-area: Steps; 
   padding: 40px;
+}
+.Steps-Title{
+  margin: 0 auto;
 }
 .Steps h2{
   font-size: 2.5rem;
@@ -428,7 +371,7 @@ h4{
   padding: 20px;
 }
 .Steps p{
-  font-size: 1.4rem;
+  font-size: 2rem;
   color: #153211;
   text-align: left;
   font-family: freight-sans-pro, sans-serif;
@@ -437,7 +380,7 @@ h4{
 }
 
 .Steps span{
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   color: #153211;
   background: linear-gradient(to top, #ccb25c 25%, transparent 50%);
   font-family: ivymode, sans-serif;
@@ -453,9 +396,9 @@ h4{
   background: #ccb25c;
   font-family: ivymode, serif;
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   padding: 0.25rem 0.75rem;
-  border-radius: 2.5px;
+  border-top-left-radius: 2.5px;
 }
 .card,
 .container__step1 div,
@@ -464,21 +407,37 @@ h4{
   line-height: 2;
   background: #FFF;
   padding: 1.2rem 1rem;
-  border-radius: 4px;
-  box-shadow: 0 2px 10px #e6e6e6;
+  border-radius: 20px;
 }
 
 .steps-container {
-  margin: -20px 2.5vw 5vh 2.5vw;
+  margin: 0;
   padding: 15vh 0;
   background-attachment: fixed;
 	background-color: #f6f2ec;
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1118' height='1118' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23ccb25c' stroke-width='0.1' stroke-opacity='0.17'%3E%3Crect x='-40' y='40' width='75' height='75'/%3E%3Crect x='-35' y='45' width='65' height='65'/%3E%3Crect x='-30' y='50' width='55' height='55'/%3E%3Crect x='-25' y='55' width='45' height='45'/%3E%3Crect x='-20' y='60' width='35' height='35'/%3E%3Crect x='-15' y='65' width='25' height='25'/%3E%3Crect x='-10' y='70' width='15' height='15'/%3E%3Crect x='-5' y='75' width='5' height='5'/%3E%3Crect width='35' height='35'/%3E%3Crect x='5' y='5' width='25' height='25'/%3E%3Crect x='10' y='10' width='15' height='15'/%3E%3Crect x='15' y='15' width='5' height='5'/%3E%3Crect x='40' width='75' height='75'/%3E%3Crect x='45' y='5' width='65' height='65'/%3E%3Crect x='50' y='10' width='55' height='55'/%3E%3Crect x='55' y='15' width='45' height='45'/%3E%3Crect x='60' y='20' width='35' height='35'/%3E%3Crect x='65' y='25' width='25' height='25'/%3E%3Crect x='70' y='30' width='15' height='15'/%3E%3Crect x='75' y='35' width='5' height='5'/%3E%3Crect x='40' y='80' width='35' height='35'/%3E%3Crect x='45' y='85' width='25' height='25'/%3E%3Crect x='50' y='90' width='15' height='15'/%3E%3Crect x='55' y='95' width='5' height='5'/%3E%3Crect x='120' y='-40' width='75' height='75'/%3E%3Crect x='125' y='-35' width='65' height='65'/%3E%3Crect x='130' y='-30' width='55' height='55'/%3E%3Crect x='135' y='-25' width='45' height='45'/%3E%3Crect x='140' y='-20' width='35' height='35'/%3E%3Crect x='145' y='-15' width='25' height='25'/%3E%3Crect x='150' y='-10' width='15' height='15'/%3E%3Crect x='155' y='-5' width='5' height='5'/%3E%3Crect x='120' y='40' width='35' height='35'/%3E%3Crect x='125' y='45' width='25' height='25'/%3E%3Crect x='130' y='50' width='15' height='15'/%3E%3Crect x='135' y='55' width='5' height='5'/%3E%3Crect y='120' width='75' height='75'/%3E%3Crect x='5' y='125' width='65' height='65'/%3E%3Crect x='10' y='130' width='55' height='55'/%3E%3Crect x='15' y='135' width='45' height='45'/%3E%3Crect x='20' y='140' width='35' height='35'/%3E%3Crect x='25' y='145' width='25' height='25'/%3E%3Crect x='30' y='150' width='15' height='15'/%3E%3Crect x='35' y='155' width='5' height='5'/%3E%3Crect x='200' y='120' width='75' height='75'/%3E%3Crect x='40' y='200' width='75' height='75'/%3E%3Crect x='80' y='80' width='75' height='75'/%3E%3Crect x='85' y='85' width='65' height='65'/%3E%3Crect x='90' y='90' width='55' height='55'/%3E%3Crect x='95' y='95' width='45' height='45'/%3E%3Crect x='100' y='100' width='35' height='35'/%3E%3Crect x='105' y='105' width='25' height='25'/%3E%3Crect x='110' y='110' width='15' height='15'/%3E%3Crect x='115' y='115' width='5' height='5'/%3E%3Crect x='80' y='160' width='35' height='35'/%3E%3Crect x='85' y='165' width='25' height='25'/%3E%3Crect x='90' y='170' width='15' height='15'/%3E%3Crect x='95' y='175' width='5' height='5'/%3E%3Crect x='120' y='160' width='75' height='75'/%3E%3Crect x='125' y='165' width='65' height='65'/%3E%3Crect x='130' y='170' width='55' height='55'/%3E%3Crect x='135' y='175' width='45' height='45'/%3E%3Crect x='140' y='180' width='35' height='35'/%3E%3Crect x='145' y='185' width='25' height='25'/%3E%3Crect x='150' y='190' width='15' height='15'/%3E%3Crect x='155' y='195' width='5' height='5'/%3E%3Crect x='160' y='40' width='75' height='75'/%3E%3Crect x='165' y='45' width='65' height='65'/%3E%3Crect x='170' y='50' width='55' height='55'/%3E%3Crect x='175' y='55' width='45' height='45'/%3E%3Crect x='180' y='60' width='35' height='35'/%3E%3Crect x='185' y='65' width='25' height='25'/%3E%3Crect x='190' y='70' width='15' height='15'/%3E%3Crect x='195' y='75' width='5' height='5'/%3E%3Crect x='160' y='120' width='35' height='35'/%3E%3Crect x='165' y='125' width='25' height='25'/%3E%3Crect x='170' y='130' width='15' height='15'/%3E%3Crect x='175' y='135' width='5' height='5'/%3E%3Crect x='200' y='200' width='35' height='35'/%3E%3Crect x='200' width='35' height='35'/%3E%3Crect y='200' width='35' height='35'/%3E%3C/g%3E%3C/svg%3E");
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  position: relative;
+  z-index: 0;
+}
+.steps-bg{
+position: absolute;
+z-index: -1;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+background: url(https://guestrealty-71f30a.ingress-comporellon.easywp.com/wp-content/uploads/properties/33_Bronte/33-Gardyne-St-Bronte-14.jpg) center center;
+background-attachment: fixed;
+opacity: .3;
+width: 100%;
+height: 100%;
+background-repeat: no-repeat;
+background-size: cover;
 }
 .steps-container svg {
   height: 5rem;
@@ -492,14 +451,14 @@ h4{
 }
 .steps-container h3 {
   font-family: ivymode, serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   text-align: center;
   margin: 0 auto;
   color: #013110;
 }
 .steps-container p {
   font-family: freight-sans-pro, sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 400;
   text-align: center;
   margin: 0 auto;
@@ -521,7 +480,7 @@ h4{
   border-radius: 8px;
   padding: 1.5rem;
   border: 3px solid #ccb25c;
-  background-color: rgba(1, 49, 16, 0.25);
+  background-color: none;
   position: relative;
 }
 .container__step1 img{
@@ -541,7 +500,7 @@ h4{
   display: grid;
   border-radius: 8px;
   border: 3px solid #ccb25c;
-	background-color: rgba(1, 49, 16, 0.25);
+	background-color: none;
   position: relative;
 }
 .container__step2:before {
@@ -567,7 +526,7 @@ h4{
   display: grid;
   border-radius: 8px;
   border: 3px solid #ccb25c;
-	background-color: rgba(1, 49, 16, 0.25);
+	background-color: none;
   position: relative;
 }
 .container__step3 img{
@@ -776,7 +735,7 @@ flex-direction: row;
   .signup{
     grid-area: signup;
     max-width: 100vw;
-    margin-top: -180px;
+    margin-top: -10px;
   }
   .signup-container{
     flex-direction: column;
@@ -897,7 +856,7 @@ flex-direction: row;
    .signup{
     grid-area: signup;
     max-width: 100vw;
-    margin-top: -180px
+    margin-top: 10px;
   }
   .signup-buttons{
     flex-direction: column;
@@ -921,75 +880,33 @@ flex-direction: row;
     max-width: 100vw;
   }
     /* Services -m */
-  .Services{
-    grid-area: Services;
-    max-width: 100vw;
-  }
-  .Services h2{
-    font-size: 2rem;
-  }
-  .Services p{
-    color: #153211;
-    font-family: freight-sans-pro, sans-serif;
-    font-size: 1rem;
-  }
-  .Services h2{
-    font-size: 1.6rem;
-  }
-  .Services p{
-    font-size: 1rem;
-  }
-  .services-container {
-    flex-direction: row;
-    margin-top: 0px;
-    max-width: 90vw;
-    margin-left: -5px;
-  }
-  .services-row{
-    flex-direction: column;
-  }
-  .services-container img{
-    min-height: 250px;
-    width: 100%;
-    max-width: 40vw;
-    height: auto;
-    display: inline-block;
-    overflow: clip;
-    border-radius: 20px;
-    margin: 10px;
-  }
-  .services-container .card {
-    height: 6rem;
-    margin-top: -110px;
-  }
-  .services-container .card:hover {
-    margin-top: -255px;
-    height: 15rem;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    padding: 0;
-  }
-  .services-container .card__header-icon {
-    margin-top: -2.5rem;
-  }
-  .services-container .card__icon h3 {
-    font-size: 1rem;
-    width: 100%;
-    padding: 5px;
-    font-weight: 600;
-  }
-  .services-container .card__media p {
-    font-size: 1rem;
-    width: 100%;
-    padding: 5px;
-    margin-top: 20px;
-  }
+    .Services{
+      grid-area: Services;
+      max-width: 100vw;
+    }
+    .Services h2{
+      font-size: 2.4rem;
+      margin-bottom: -20px;
+    }
+    .Services p{
+      font-size: 1.4rem;
+      margin: 0 auto;
+    }
+    .services-container {
+      flex-direction: column;
+    }
+    .services-row{
+      flex-direction: column;
+    }
+    .Services-card p{
+      font-size: 1.2em;
+      margin: 0 auto;
+      width: 100%;
+    }
     /* Steps -m */
   .Steps{
     grid-area: Steps;
     max-width: 100vw;
-    margin-left: -90px;
-    margin-bottom: -80px;
   }
    /* Signup - m */
    .signup{
@@ -1028,7 +945,6 @@ flex-direction: row;
   .Services p{
     font-size: 1.4rem;
     margin: 0 auto;
-    padding: 0px 120px 20px 120px;
     width: 100%;
   }
   .services-container {
@@ -1037,32 +953,12 @@ flex-direction: row;
   .services-row{
     flex-direction: row;
   }
-  .services-container img{
-    min-height: 250px;
-    max-width: 25vw;
-    height: auto;
-    display: inline-block;
-    overflow: clip;
-    border-radius: 20px;
-    margin: 10px 20px 10px 20px;
-  }
-  .services-container .card {
-    max-width: 25vw;
-    height: 6rem;
-    margin-top: -110px;
-    margin-left: 20px;
-  }
-  .services-container .card:hover {
-    max-width: 25vw;
-  }
-  .services-container .card__icon h3 {
-    font-size: 1.2rem;
-  }
-  .services-container .card__media p {
-    font-size: .90rem;
+  .Services-card p{
+    font-size: 1.2em;
+    margin: 0 auto;
     width: 100%;
-    padding: 5px;
   }
+  
 
    /* Steps -lg */
    .Steps{
